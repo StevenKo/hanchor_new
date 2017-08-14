@@ -1,12 +1,3 @@
-GIT
-  remote: https://github.com/Compass/compass-rails.git
-  revision: 17414438f601d695225ba9c55f259d2ec557942c
-  specs:
-    compass-rails (3.0.2)
-      compass (~> 1.0.0)
-      sass-rails (< 5.1)
-      sprockets (< 4.0)
-
 GEM
   remote: https://rubygems.org/
   specs:
@@ -104,7 +95,6 @@ GEM
       mime-types (>= 1.16)
     childprocess (0.7.1)
       ffi (~> 1.0, >= 1.0.11)
-    chunky_png (1.3.8)
     ckeditor (4.2.4)
       cocaine
       orm_adapter (~> 0.5.0)
@@ -118,18 +108,6 @@ GEM
       coffee-script-source
       execjs
     coffee-script-source (1.12.2)
-    compass (1.0.3)
-      chunky_png (~> 1.2)
-      compass-core (~> 1.0.2)
-      compass-import-once (~> 1.0.5)
-      rb-fsevent (>= 0.9.3)
-      rb-inotify (>= 0.9)
-      sass (>= 3.3.13, < 3.5)
-    compass-core (1.0.3)
-      multi_json (~> 1.0)
-      sass (>= 3.3.0, < 3.5)
-    compass-import-once (1.0.5)
-      sass (>= 3.2, < 3.5)
     concurrent-ruby (1.0.5)
     erubi (1.6.1)
     erubis (2.7.0)
@@ -236,11 +214,6 @@ GEM
     sexp_processor (4.10.0)
     sitemap_generator (5.3.1)
       builder (~> 3.0)
-    spring (2.0.2)
-      activesupport (>= 4.2)
-    spring-watcher-listen (2.0.1)
-      listen (>= 2.7, < 4.0)
-      spring (>= 1.2, < 3.0)
     sprockets (3.7.1)
       concurrent-ruby (~> 1.0)
       rack (> 1, < 3)
@@ -293,7 +266,6 @@ DEPENDENCIES
   carrierwave
   ckeditor
   coffee-rails (~> 4.2)
-  compass-rails!
   fancybox2-rails
   haml-rails
   jbuilder (~> 2.5)
@@ -306,8 +278,6 @@ DEPENDENCIES
   sass-rails (~> 5.0)
   selenium-webdriver
   sitemap_generator
-  spring
-  spring-watcher-listen (~> 2.0.0)
   truncate_html
   tzinfo-data
   uglifier (>= 1.3.0)
