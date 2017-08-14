@@ -1,33 +1,189 @@
-# Files in the config/locales directory are used for internationalization
-# and are automatically loaded by Rails. If you want to use locales other
-# than English, add the necessary files in this directory.
-#
-# To use the locales, use `I18n.t`:
-#
-#     I18n.t 'hello'
-#
-# In views, this is aliased to just `t`:
-#
-#     <%= t('hello') %>
-#
-# To use a different locale, set it with `I18n.locale`:
-#
-#     I18n.locale = :es
-#
-# This would use the information in config/locales/es.yml.
-#
-# The following keys must be escaped otherwise they will not be retrieved by
-# the default I18n backend:
-#
-# true, false, on, off, yes, no
-#
-# Instead, surround them with single quotes.
-#
-# en:
-#   'true': 'foo'
-#
-# To learn more, please read the Rails Internationalization guide
-# available at http://guides.rubyonrails.org/i18n.html.
-
 en:
-  hello: "Hello world"
+  key_words: "Rock Climbing,Hancor,Rock,Outdoor,Hand Made,Adventure,Environment Protection,Light,Customize"
+  index_description: "The HANCHOR brand was created in Taipei, Taiwan in 2012. We have been designing and hand making bags for outdoor adventures since 2010, and our logo symbolizes a chalked hand with a solid grip on a hold. HANCHOR = Hand+Anchor, both of which keep us on the wall when we climb, and our mission is to design innovative, simple, and high-quality bags to hold your stuff for all your adventures."
+  about_description: "The HANCHOR brand was created in Taipei, Taiwan in 2012. We have been designing and hand making bags for outdoor adventures since 2010"
+  qa_description: "(Shopping Guide)(FAQ)"
+  blog_description: "Share the experiences & How we design the product !"
+  product_description: "HANCHOR = Hand+Anchor, both of which keep us on the wall when we climb, and our mission is to design innovative, simple, and high-quality bags to hold your stuff for all your adventures."
+  aboutus: "About Us"
+  news_events: "News & Events"
+  packing: "Packing"
+  accessories: "Accessories"
+  apparel: "Apparel"
+  others: "Others"
+  customization: "Customization"
+  deals: "Deals"
+  q_and_a: "Q & A"
+  change_language: "Language"
+  shopping_cart: "Cart"
+  sign_in: "Sign In"
+  hanchor_info: "The HANCHOR brand was created in Taipei in 2012. We have been designing and  hand making bags for outdoor adventures since 2010, and our logo symbolizes a chalked hand with a solid grip on a hold.HANCHOR = Hand+Anchor, both of which keep  us on the wall when we climb, and our mission is to design innovative, simple, and..."
+  more: "Read more"
+  news_articles: "News Articles"
+  required: "<span class='red-star'>*</span>Required Fields "
+  aboutus_message: |
+    <h3><strong>
+    Light Weight, Functional, Urban Outdoor Style</strong></h3>
+    <p>
+      The HANCHOR brand was created in Taipei, Taiwan in 2012. We have been designing and hand making bags for outdoor adventures since 2010, and our logo symbolizes a chalked hand with a solid grip on a hold. HANCHOR = Hand+Anchor, both of which keep us on the wall when we climb, and our mission is to design innovative, simple, and high-quality bags to hold your stuff for all your adventures.
+    </p>
+  back: "<<Back"
+  confirm: "Confirm"
+  cancel: "Cancel"
+  my_account: "My Account"
+  logout: "Logout" 
+
+
+
+  news:
+    new_article: "Recent Posts"
+    more_article: "More"
+    category: "Categories:"
+
+  account:
+    name: "Full Name<span class='red-star'>*</span>"
+    email: "Email<span class='red-star'>*</span>"
+    phone: "Phone number<span class='red-star'>*</span>"
+    zip_code: "Zip Code<span class='red-star'>*</span>"
+    city: "City<span class='red-star'>*</span>"
+    state: "State<span class='red-star'>*</span>"
+    country:  "Country<span class='red-star'>*</span>"
+    address:  "Shipping Address"
+    password: "Password<span class='red-star'>*</span>"
+    password_confirm: "Password Confirm<span class='red-star'>*</span>"
+    my_account: "My Account"
+    info: "Personal Information"
+    order: "My Orders"
+    change_password: "Change Password"
+    message: |      
+      Here you can view your order history, check status of orders and update your personal information.Enjoy your shopping!
+    info_name: "Name:"
+    info_email: "Email:"
+    edit_address: "Edit Address"
+    register: "Register"
+    my_info: "My Information"
+    login_info: "Login Information"
+    register_messgae: "Create an account to shop with HANCHOR! You will be able to check details and status of your orders. Your personal information won’t be shared with any others."
+    add_club: "Register"
+    club_login: "Member Login"
+    forget_password: "Forgot password"
+    order_detail:
+      shipping_name: "Consignee"
+      phone: "Mobile Number"
+      country: "Country"
+      store: "Store"
+      zip_code: "Zip Code"
+      city: "City"
+      order_item_name: "Product Name"
+      order_item_quantity: "Quantity"
+      order_item_price: "Price"
+      notes: "Memo"
+
+  
+  product:
+    home: "Home"
+    product: "Product"
+    more_views: "More Views"
+    weight: "Weight:"
+    dimension: "Dimension:"
+    material: "Material:"
+    color: "Color:"
+    regular_price: "Regular Price:"
+    quantity: "Quantity:"
+    size: "Size:"
+    add_to_cart: "Add To Cart"
+    feature: "Features"
+    description: "Description"
+    out_of_stock: "Out of Stock"
+
+  shopping_cart_locale:
+    cart: "Shopping Cart"
+    empty: "Empty"
+    item: "There are %{num} items in your cart."
+    sum: "Total: NT$%{price}"
+    checkout: "Checkout"
+
+  faq:
+    guide: "Shopping Guide"
+    faq: "FAQ"
+
+  cart:
+    picture: "Picture"
+    name: "Product Name"
+    unit_price: "Unit Price"
+    size: "Size"
+    color: "Color"
+    quantity: "Quantity"
+    subtotal: "Subtotal"
+    sum: "Total"
+    continue: "Continue Shopping"
+    checkout: "Checkout"
+    info: "Shipping Information"
+    user_name: "Full Name<span class='red-star'>*</span>"
+    phone: "Phone<span class='red-star'>*</span>"
+    address: "Address<span class='red-star'>*</span>"
+    zip_code: "Zip Code<span class='red-star'>*</span>"
+    city: "City<span class='red-star'>*</span>"
+    state: "State<span class='red-star'>*</span>"
+    country: "Country<span class='red-star'>*</span>"
+    shipping: "Shipping<span class='red-star'>*</span>: "
+    payment_info: "Payment Information<span class='red-star'>*</span>"
+    credit_card: "PayPal"
+    allpay_credit_card: "Allpay"
+    pay_by_credit_card: "Pay by Credit Card"
+    comment: "Comment"
+    order: "Order Detail"
+    confirm: "Confirm"
+    confirm_message: "Have you already read shopping guide and check the order list and other information are correct?"
+    read_shopping_gudide_message: "(Please Read %{href} Before Checkout)"
+    shopping_guide: "Shopping Guide"
+    shipping_cost: "Shipping Cost"
+    items: "Total Items"
+    subtotal: "Subtotal"
+    pay_when_shipped: "Pay When Delivered"
+
+  order:
+    history: "History"
+    num: "Tracking Number"
+    date: "Order date"
+    status: "Status"
+    shpping: "Shipping Method"
+    pay: "Payment Method"
+    price: "Amount"
+    confirm: "Confirmed"
+    order_confirm: 'Order Confirmed'
+    order_cancel: 'Order Canceled'
+    pay_confirm: 'Paid'
+    shipped: "Shipped"
+    not_payed: "Remitting Notice"
+    payed: "Already Paid"
+
+  notify:
+    message: "Please provide your remitting information"
+    notify: "Notify Administrator"
+    bank_name: "Bank Name"
+    bank_number: "Last Five Numbers of Your Bank Account"
+    account_name: "Account Name"
+
+  mail:
+    register_success: "Welcome to join HANCHOR!"
+    reset_password: "Reset Password"
+
+  reset_password:
+    title: "Reset Your Password"
+    new_password: "New Password"
+    set: "Reset Password"
+    invalid_message: "Your reset password link is expired. Please try send email again!"
+
+  forget_password:
+    title: "Forgot Password?"
+    message: "We will send you an email with a link that you can use to reset your password."
+    email: "Email Address"
+    send: "Send Email"
+    send_message: "We have send an email with instruction to reset your password. Thanks!"
+
+  will_paginate:
+    previous_label: "Previous"
+    next_label: "Next"
+    page_gap: "&hellip;"
+

@@ -1,0 +1,19 @@
+= will_paginate @users
+
+%table.table
+  %tr
+    %th 編號
+    %th 名字
+    %th 聯絡電話
+    %th Email
+    %th 訂單紀錄
+  - @users.each do |user|
+    %tr
+      %td= user.id
+      %td= user.name
+      %td= user.phone
+      %td= user.email
+      %td= user.orders.showed.size
+      %td= link_to 'Show', admin_user_path(user)
+
+= will_paginate @users

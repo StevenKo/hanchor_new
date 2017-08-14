@@ -1,0 +1,86 @@
+%table.table
+  %tbody
+    %tr
+      %th{:width => "100"} 編號
+      %td= format_order_id(@order)
+    %tr
+      %th 訂單日期
+      %td= display_date(@order.created_at)
+    %tr
+      %th 名字
+      %td= link_to  @order.shipping_name, admin_user_path(@order.user_id)
+    %tr
+      %th 聯絡電話
+      %td= @order.phone
+    %tr
+      %th 運送方式
+      %td
+        = @order.shipping_cost.description
+        - if @order.shipping_cost.id == 3
+          = "(#{@order.shipping_store})"
+    %tr
+      %th 國家
+      %td= @order.country
+    %tr
+      %th 洲
+      %td= @order.state
+    %tr
+      %th 城市
+      %td= @order.city
+    %tr
+      %th 郵遞區號
+      %td= @order.zip_code
+    %tr
+      %th 收件地址
+      %td= @order.shipping_address
+    %tr
+      %th 付費方式
+      %td= @order.payment
+    %tr
+      %th 總金額
+      %td= @order.total
+    %tr
+      %th 意見
+      %td= @order.memo
+    %tr
+      %th 狀態
+      %td
+        = t("order.#{@order.status}")
+        %br
+          = link_to t("order.order_confirm"), change_status_admin_order_path(@order,value: "order_confirm"), class: "btn"
+          = link_to t("order.order_cancel"), change_status_admin_order_path(@order,value: "order_cancel"), class: "btn"
+          = link_to t("order.pay_confirm"), change_status_admin_order_path(@order,value: "pay_confirm"), class: "btn"
+          = link_to t("order.shipped"), change_status_admin_order_path(@order,value: "shipped"), class: "btn"
+    %tr
+      %th 付款資訊(銀行)
+      %td= @order.bank
+    %tr
+      %th 付款確認
+      %td
+        = (@order.is_payed) ? t("order.payed") : t("order.not_payed")
+
+訂單細節
+%table.table
+  %thead
+    %tr
+      %th 出貨編號
+      %th 品名
+      %th 尺寸
+      %th 顏色
+      %th 單價
+      %th 數量
+      %th 金額
+  %tbody
+    -@order.order_items.each_with_index do |order_item,index|
+      %tr
+        %td= @order.code + (index+1).to_s.rjust(2, '0')
+        %td= order_item.product.product_infos.first.name
+        %td= order_item.product_size.size if order_item.product_size
+        %td= order_item.product_color.color if order_item.product_color
+        %td= order_item.price
+        %td= order_item.quantity
+        %td= order_item.price * order_item.quantity
+
+= link_to "back", admin_orders_path, class: "btn"
+%br
+%br

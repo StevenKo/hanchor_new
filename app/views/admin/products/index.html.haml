@@ -1,0 +1,39 @@
+= will_paginate @products
+
+- @categories.each do |category|
+  = link_to category.cateory_name_with_parent, admin_products_path(parent_category: category.parent_id,category: category.id), class: "btn btn-info"
+
+%br
+%br
+
+%table.table
+  %tr
+    %th 產品編號
+    %th 分類
+    %th 產品名稱
+    %th 售價
+    %th 特價
+    %th 排序
+    %th 點擊次
+    %th 顯示
+    %th 庫存
+
+  - @products.each do |product|
+    %tr
+      %td= product.no
+      %td= (product.product_category.present?) ? product.product_category.name : "none"
+      %td= product.name
+      %td= product.price
+      %td= product.special_price
+      %td= product.sort
+      %td= product.views
+      %td= (product.is_visible?)? "顯示" : "不顯示"
+      %td= product.product_quantities.map{ |c|  "#{c.product_color.color}/#{c.product_size.size if c.product_size}:#{c.quantity}"}.join("  ")
+
+      %td= link_to 'Edit', edit_admin_product_path(product)
+      %td= link_to 'Destroy', admin_product_path(product), method: :delete, data: { confirm: 'Are you sure?' }
+
+
+= will_paginate @products
+
+= link_to "New", new_admin_product_path, class: "btn"
