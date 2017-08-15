@@ -1,5 +1,7 @@
 class WelcomeController < ApplicationController
 
+  add_breadcrumb "首頁", :root_path
+
   def index
     @news = News.locale(params[:locale]).select("news.id, title, release_date, pic").limit(5).order("news.release_date DESC")
     @video = Video.first
@@ -7,12 +9,18 @@ class WelcomeController < ApplicationController
     @banners = Banner.order("sort DESC")
   end
 
+  def contact
+    add_breadcrumb "聯絡我們", contact_path
+  end
+
   def faq
     @faq = Faq.find_by(country_id: @country_id, purpose: "faq")
     redirect_to :shopping_guide if @country_id == 2
+    add_breadcrumb t('faq.faq'), faq_path
   end
 
   def shopping_guide
     @guide = Faq.find_by(country_id: @country_id, purpose: "shopping_guide")
+    add_breadcrumb t('faq.guide'), shopping_guide_path
   end
 end

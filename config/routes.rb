@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   get 'aboutus' => 'welcome#aboutus'
   get 'shopping_guide' => "welcome#shopping_guide"
   get 'faq' => 'welcome#faq'
+  get 'contact' => 'welcome#contact'
 
   get '/register', to: 'users#new'
   get '/login', to: 'sessions#new'

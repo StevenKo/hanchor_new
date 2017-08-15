@@ -1,0 +1,45 @@
+/ visual
+.pages-visual
+  = image_tag "contact-visual", :class => "v-centerimg"
+/ -visual
+/ breadcrumbs
+%section.breadcrumbs
+  / rwd width limited
+  .rwd-width-limited.clearfix
+    .text-13.color-gray-666.lh-18.breadcrumb
+      = render_breadcrumbs :separator => ' / '
+  / rwd width limited
+/ breadcrumbs
+/ start main
+.wrapper
+  / full width block
+  %section.bg-w.pd-v-20.mg-t-30.sidebar-point
+    / rwd width limited
+    .rwd-width-limited
+      / sidebar and con
+      .clearfix.sidebar-con
+        = render 'contact_side'
+        / sd con
+        .clearfix.sc-con.grid-4-3
+          / 
+          .member-sec.relative.mg-b-30
+            %h2.title-line.inlineblock.mg-b-30 聯絡表單
+            %p.text-14.lh-30.color-gray-666.mg-b-30
+              如有任何問題或合作事宜，請填寫表單與我們聯絡，感謝！
+            .contact-form
+              %div
+                %input.input-text.mg-b-20{:placeholder => "輸入姓名", :type => "text", :value => ""}/
+              %div
+                %input.input-text.mg-b-20{:placeholder => "輸入 Email", :type => "text", :value => ""}/
+              .mg-b-30
+                %textarea.input-text.input-textarea.mg-b-20{:placeholder => "輸入內容"}
+              %div
+                %a.btn-l.btn-blue.inlineblock-imp{:hov => "0.75", :href => "checkout.html"}
+                  送 出
+                  %i.fa.fa-chevron-right.mg-l-20{"aria-hidden" => "true"}
+          / 
+        / sd con
+      / sidebar and con
+    / rwd width limited
+  / full width block
+/ end main
