@@ -1,98 +1,42 @@
-%nav.navbar.navbar-inverse{role: "navigation"}
-  %div
-    %ul.nav.navbar-nav.nav-head
-      %li
-        = link_to image_tag("logo.png"), root_path, :class => 'brand-logo'
-      %li.nav-func
-        %ul.nav.navbar-nav.func-nav.pull-right
-          -if logged_in?
-            %li
-              = link_to t('logout'), logout_path
-            %li
-              = link_to t('shopping_cart'), cart_index_path
-            %li
-              = link_to t('my_account'), account_path
-            %li
-              %a{href: "#"}
-                Hi,
-                = current_user.name
-                !
-          -else
-            %li
-              = link_to t('sign_in'), login_path
-        %ul.nav.navbar-nav.lang-nav.pull-left
-          %li
-            = link_to "中文", url_for(params.merge(:only_path => true, locale: "zh-TW"))
-          %li
-            = link_to "English", url_for(params.merge(:only_path => true, locale: "en"))
-  %div
-    %ul.nav.navbar-nav.main-nav
-      %li.nav-blue
-        = link_to t("aboutus"), aboutus_path
-      %li.nav-blue
-        = link_to t('news_events'), news_index_path
-      %li.nav-green
-        = link_to t('packing'), products_index_path("packing")
-      %li.nav-green
-        = link_to t('accessories'), products_index_path("accessories")
-      %li.nav-green
-        = link_to t('apparel'), products_index_path("apparel")
-      %li.nav-green
-        = link_to t('others'), products_index_path("others")
-      %li.nav-yellow
-        = link_to t('customization'), products_index_path("customization")
-      %li.nav-red
-        = link_to t('deals'), products_index_path("deal")
-      %li.nav-purple
-        = link_to t('q_and_a'), shopping_guide_path
-
-  / /.navbar-collapse
-
-
-/ %ul.nav
-/   %li
-/     = link_to image_tag("logo.png"), root_path, :class => 'brand'
-/   %li
-/     = link_to t("aboutus"), aboutus_path
-/   %li
-/     = link_to t('news_events'), news_index_path
-/   %li
-/     = link_to t('packing'), products_index_path("packing")
-/   %li
-/     = link_to t('accessories'), products_index_path("accessories")
-/   %li
-/     = link_to t('apparel'), products_index_path("apparel")
-/   %li
-/     = link_to t('others'), products_index_path("others")
-/   %li
-/     = link_to t('customization'), products_index_path("customization")
-/   %li
-/     = link_to t('deals'), products_index_path("deal")
-/   %li
-/     = link_to t('q_and_a'), shopping_guide_path
-
-/ #user_links.pull-right
-/   = link_to t('shopping_cart'), cart_index_path
-/   %ul
-/     %li.dropdown
-/       %a(href="#" id="dlabel" role="button" data-toggle="dropdown" class="dropdown-toggle" data-target="#")
-/         = t('change_language')
-/         %b.caret
-/       %ul.dropdown-menu(role="menu" aria-labelledby="dlabel")
-/         %li
-/           = link_to "中文", url_for(:only_path => true, locale: "zh-TW")
-/           = link_to "English", url_for(:only_path => true, locale: "en")
-/   -if logged_in?
-/     %ul
-/       %li.dropdown
-/         %a(href="#" id="dlabel" role="button" data-toggle="dropdown" class="dropdown-toggle" data-target="#")
-/           Hi,
-/           = current_user.name
-/           %b.caret
-/         %ul.dropdown-menu(role="menu" aria-labelledby="dlabel")
-/           %li
-/             = link_to "Account", account_path
-/             = link_to 'Logout', logout_path
-      
-/   -else
-/     = link_to t('sign_in'), login_path
+%header
+  .fixarea
+    / header msg
+    .h-msg
+      .inner.clearfix
+        %a.h-msg-l{:href => "#", :voh => "0.4"} Garnet金標限定版早鳥預購
+        .h-msg-r.clearfix
+          / 貨幣轉換
+          .currency-sel.mg-r-15
+            .currency-now
+              NTD
+              %i.fa.fa-caret-down.mg-l-10{"aria-hidden" => "true"}
+            .drop
+              %a.active{:href => "#"} NTD
+              %a{:href => "#"} USD
+              %a{:href => "#"} JPY
+          / 貨幣轉換
+          .lan-sel
+            %a.active{:href => "#"} 中文
+            \/
+            %a{:href => "#"} EN
+    / header msg
+    / 
+    .fxarea-rwd
+      %a.logo{:hov => "0.75", :href => "index.html"}
+        = image_tag("logo-h-w")
+      = render 'layouts/messages'
+      .menu-container
+        .menu
+          %ul.layer-1-ul
+            %li.layer-1-li
+              = link_to aboutus_path, {:class => "layer-1 menu-line"} do
+                %h2= t("aboutus")
+            %li.layer-1-li
+              %a.layer-1.menu-line{:href => "product.html"}
+                %h2 產品
+            %li.layer-1-li
+              %a.layer-1.menu-line{:href => "blog.html"}
+                %h2 部落格
+            %li.layer-1-li
+              = link_to shopping_guide_path, {:class => "layer-1 menu-line"} do
+                %h2= t('q_and_a')

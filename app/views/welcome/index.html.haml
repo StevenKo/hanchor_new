@@ -1,0 +1,133 @@
+= content_for :head do
+  <meta name="description" content="#{t("index_description")}">
+  <title>HANCHOR｜#{t("product.home")}</title>
+.flexslider.f_index{:style => "width:100%;overflow:hidden;margin-bottom:0;"}
+  %ul.slides
+    %li.relative
+      = image_tag("tmp/index-v-1", :class => "v-centerimg")
+    %li.relative
+      = image_tag("tmp/index-v-2", :class => "v-centerimg")
+/ -visual
+/ start main
+.wrapper
+  / full width block
+  %section
+    / rwd width limited
+    .clearfix
+      / index product classify
+      %a.one-ipc.grid-3-1{:href => "#"}
+        .pic
+          .cover
+          = image_tag("index-pcover-1", :class => "v-centerimg")
+        .info.color-1.cenmid 包款
+      / index product classify
+      / index product classify
+      %a.one-ipc.grid-3-1{:href => "#"}
+        .pic
+          .cover
+          = image_tag("index-pcover-2", :class => "v-centerimg")
+        .info.color-2.cenmid 配件
+      / index product classify
+      / index product classify
+      %a.one-ipc.grid-3-1{:href => "#"}
+        .pic
+          .cover
+          = image_tag("index-pcover-3", :class => "v-centerimg")
+        .info.color-3.cenmid 衣著
+      / index product classify
+      / index product classify
+      %a.one-ipc.grid-3-1{:href => "#"}
+        .pic
+          .cover
+          = image_tag("index-pcover-4", :class => "v-centerimg")
+        .info.color-4.cenmid 其他
+      / index product classify
+      / index product classify
+      %a.one-ipc.grid-3-1{:href => "#"}
+        .pic
+          .cover
+          = image_tag("index-pcover-5", :class => "v-centerimg")
+        .info.color-5.cenmid 客製化
+      / index product classify
+      / index product classify
+      %a.one-ipc.grid-3-1{:href => "#"}
+        .pic
+          .cover
+          = image_tag("index-pcover-6", :class => "v-centerimg")
+        .info.color-6.cenmid 限量優惠
+      / index product classify
+    / rwd width limited
+  %section.bg-w.pd-v-50
+    / rwd width limited
+    .rwd-width-limited
+      / title & tab
+      .clearfix.index-recommend-tab.index-tab.mg-b-40
+        %h2.text-24.lh-40.color-gray-333.bold.left 推薦商品
+        .tab.clearfix.right
+          %a.tab-btn.active{:href => "#"} 熱門
+          / active on this one
+          %a.tab-btn{:href => "#"} 某某某某某分類
+          %a.tab-btn{:href => "#"} 熱門
+          %a.tab-btn{:href => "#"} 某某某某某某
+      / title & tab
+      .clearfix
+        / index recommend item
+        - @products.each do |product|
+          =link_to products_show_path(product.product_category.name_en,product), { :class => "index-recommend-item grid-4-1",:hov => "0.8"} do
+            .pic
+              =(image_tag product.thumb.pic_url, :itemprop => "image", :class => "v-centerimg")
+            .info
+              %h3.name.text-14.lh-24.color-gray-333.bold= product.name
+              %p.price.text-13.lh-20.color-main-lb= product.price
+  %section.bg-gray-e9.pd-v-50
+    / rwd width limited
+    .rwd-width-limited
+      / title & tab
+      .clearfix.mg-b-40.index-tab
+        %h2.text-24.lh-40.color-gray-333.bold.left 最新文章
+        .tab.clearfix.right
+          = link_to news_index_path, { :class => "btn btn-m btn-blue",:hov => "0.75"} do
+            更多文章
+            %i.fa.fa-chevron-right.mg-l-7{"aria-hidden" => "true"}
+      / title & tab
+      .clearfix
+        - @news.each do |news|
+          = link_to news_path(news), {:class => "index-news grid-3-1",:hov => "0.8"} do
+            .pic
+              =(image_tag news.pic.url, :itemprop => "image", :class => "v-centerimg")
+            .info
+              %h3.title.text-15.color-gray-ddd.lh-25.bold.mg-b-7= news.title
+              %p.date.text-12.lh-20.color-main-lb.bold= display_date(news.release_date)
+  %section.index-video-bg
+    / rwd width limited
+    .rwd-width-limited
+      / video section top
+      .index-video-top.pd-v-50.clearfix
+        .grid-2
+          .index-video-desc
+            .mg-b-20
+              = image_tag "index-video-logo"
+            %p.text-15.lh-25.color-white.mg-b-25
+              Hanchor 在 2012 年創立於台灣台北，始於 2010 年著手設計、手工製作戶外用品。品牌圖案呈現攀岩者沾滿白色碳酸鎂粉的手緊緊抓住岩塊；
+            .mg-b-25
+              = image_tag "index-video-slogan"
+            %p.text-15.lh-25.color-white.mg-b-20
+              結合兩項攀岩者與岩牆連結的重要元素，象徵穩固及堅持的精神。由攀岩概念出發的原創設計，採用高級環保材料，並致力於輕量化兼具堅固及功能性的街頭戶外風格。產品經過反覆測試與及親身使用，在乎你每一個感受；甚至提供客製的貼心服務，讓你擁有獨一無二的 HANCHOR。
+        .grid-2
+          .yt-bg
+            .yt
+              %iframe.yt-video{:allowfullscreen => "", :frameborder => "0", :src => "#{@video.youtube_embed_link}"}
+      / video section top
+    / rwd width limited
+    / subscribe section
+    .index-subs-bg
+      / rwd width limited
+      .rwd-width-limited
+        %h2.text-20.color-white.bold.tcenter.lh-30.mg-b-30 取得 HAHCHOR 最新資訊
+        .tcenter
+          .inlineblock.subs-input-wrap
+            %input.input-text.input-text-l{:placeholder => "輸入 Email", :type => "text"}/
+          .inlineblock.subs-input-wrap
+            %button.btn-l.btn-blue{:hov => "0.75"}
+              訂 閱
+              %i.fa.fa-chevron-right.mg-l-20{"aria-hidden" => "true"}

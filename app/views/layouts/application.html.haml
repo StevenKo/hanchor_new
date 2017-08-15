@@ -3,6 +3,7 @@
   %head
     %meta{:charset => "utf-8"}
     %link{rel: "alternate", hreflang: "x-default", href: "#{request.url.split('?').first}"}
+    - params.permit!
     %link{rel: "alternate", hreflang: "en", href: url_for(params.merge(:only_path => false, locale: "en"))}
     %link{rel: "alternate", hreflang: "zh-TW", href: url_for(params.merge(:only_path => false, locale: "zh-TW"))}
     %link{rel: "canonical", href: "#{request.url.split('?').first}"}
@@ -30,14 +31,23 @@
       %iframe{:height => "0", :src => "https://www.googletagmanager.com/ns.html?id=GTM-KZB6ZTV", :style => "display:none;visibility:hidden", :width => "0"}
     / End Google Tag Manager (noscript)
     = render "shared/facebook_script"
-    %header
-      .nav-full
-        = render 'layouts/navigation'
-    #main{:role => "main"}
-      .container
-        .row.clearfix
-          #messages
-            = render 'layouts/messages'
-          = yield
+    = render 'layouts/navigation'
+    = yield
     %footer
       = render 'layouts/footer'
+:javascript
+  $(document).ready(function(){
+  
+    //flex
+    $('.flexslider').flexslider({
+      animation: "fade",
+      slideshow:true,
+      slideshowSpeed:5200,
+      animationSpeed:800,
+      controlNav:false,
+      start: function(slider){
+        $('body').removeClass('loading');
+      }
+    });
+
+  });

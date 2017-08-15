@@ -9,8 +9,14 @@
  * compiled file, but it's generally better to create a new file per style scope. require_tree .
  *
  *= require_self
- *= require fancybox
  *
  */
+@import "base";
+@import "common";
+@import "megamenu";
+@import "pages";
+@import "flexslider";
+@import "nice-select";
+@import "font-awesome";
 
-@import "bootstrap";
+// @import "bootstrap";

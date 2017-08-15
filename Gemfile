@@ -21,6 +21,8 @@ gem 'bootstrap_form'
 gem 'ckeditor'
 gem "carrierwave"
 gem "mini_magick"
+gem "jquery-rails"
+gem 'jquery-ui-rails'
 gem 'jquery-fileupload-rails'
 
 gem 'sitemap_generator'
@@ -35,6 +37,8 @@ gem 'babosa'
 # gem 'compass-rails', github: 'Compass/compass-rails'
 gem 'bootstrap'
 gem 'whenever', :require => false
+
+gem "font-awesome-rails"
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
