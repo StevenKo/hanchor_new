@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140211153646) do
+ActiveRecord::Schema.define(version: 20170815022500) do
 
   create_table "banners", id: :integer, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci" do |t|
     t.string "pic"
@@ -46,6 +46,15 @@ ActiveRecord::Schema.define(version: 20140211153646) do
     t.string "name"
     t.datetime "created_at"
     t.datetime "updated_at"
+  end
+
+  create_table "currencies", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci" do |t|
+    t.string "symbol"
+    t.float "cash_buy", limit: 24
+    t.float "cash_sell", limit: 24
+    t.float "buy", limit: 24
+    t.float "sell", limit: 24
+    t.index ["symbol"], name: "index_currencies_on_symbol"
   end
 
   create_table "faqs", id: :integer, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci" do |t|
