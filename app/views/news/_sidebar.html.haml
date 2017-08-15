@@ -1,0 +1,19 @@
+.grid-3-1.grid3-21
+  %h3.text-18.color-gray-333.lh-30.bold.mg-b-20 你可能有興趣
+  .gray-h-line.mg-b-30
+  / you may interesting
+  .mg-b-60
+    - @recent_news.each do |news|
+      = link_to news_path(news), {:class => "index-news",:hov => "0.8"} do
+        .pic
+          =(image_tag news.pic.url, :itemprop => "image", :class => "v-centerimg")
+        .info
+          %h3.title.text-15.color-gray-ddd.lh-25.bold.mg-b-7= news.title
+          %p.date.text-12.lh-20.color-main-lb.bold= display_date(news.release_date)
+  / you may interesting
+  / fb page
+  %div
+    .fb-page{"data-adapt-container-width" => "true", "data-height" => "300", "data-hide-cover" => "false", "data-href" => "https://www.facebook.com/HANCHORSTUDIO/", "data-show-facepile" => "true", "data-small-header" => "false", "data-tabs" => "timeline"}
+      %blockquote.fb-xfbml-parse-ignore{:cite => "https://www.facebook.com/HANCHORSTUDIO/"}
+        %a{:href => "https://www.facebook.com/HANCHORSTUDIO/"} HANCHOR
+  / fb page

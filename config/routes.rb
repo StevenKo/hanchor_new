@@ -17,12 +17,7 @@ Rails.application.routes.draw do
 
   resources :users, only: [:create,:update]
 
-  resources :news do
-    collection do
-      get "list"
-      post "list"
-    end
-  end
+  resources :news
 
   get 'products/quantity' => "products#quantity"
   get 'products/:category' => "products#index", as: "products_index"

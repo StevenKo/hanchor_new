@@ -1,0 +1,43 @@
+= content_for :head do
+  <meta property="og:title"  content="#{@news.title}" />
+  <meta property="og:image"  content="#{image_url(@news.pic)}" />
+  <meta property="og:url"  content="#{request.url.split('?').first}" />
+  <meta property="og:description" content="#{truncate(strip_tags(@news.content), length: 200)}" />
+  <meta property="og:type" content="website" />
+  <meta name="description" content="#{truncate(strip_tags(@news.content), length: 200)}">
+  <title> #{@news.title} </title>
+  
+/ breadcrumbs
+%section.breadcrumbs
+  / rwd width limited
+  .rwd-width-limited.clearfix
+    .text-13.color-gray-666.lh-18.breadcrumb
+      = render_breadcrumbs :separator => ' / '
+  / rwd width limited
+/ breadcrumbs
+/ start main
+.wrapper
+  / full width block
+  %section.bg-w.pd-v-50
+    / rwd width limited
+    .rwd-width-limited.clearfix
+      .grid-3-2.grid3-21
+        / blog inner top
+        .blog-inner-top.clearfix.mg-b-30
+          .left
+            %h2.title= @news.title
+            %p.date= display_date(@news.release_date)
+          .right
+            %a.share-btn.fb-xfbml-parse-ignore{:href => request.url.split('?').first, :target => "_blank"} 分享
+        / blog inner top
+        / blog inner text
+        .blog-inner-text.mg-b-50
+          = @news.content.html_safe
+        / fb
+        .blog-fb-comment.mg-b-30
+          .fb-comments{"data-href" => request.url.split('?').first.gsub("https","http"),"data-numposts" => "2", "data-width" => "100%"}
+        / fb
+      = render 'sidebar'
+    / rwd width limited
+  / full width block
+/ end main

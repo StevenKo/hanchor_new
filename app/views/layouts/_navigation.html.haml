@@ -35,8 +35,8 @@
               %a.layer-1.menu-line{:href => "product.html"}
                 %h2 產品
             %li.layer-1-li
-              %a.layer-1.menu-line{:href => "blog.html"}
-                %h2 部落格
+              = link_to news_index_path(news_tag_id: 0), {:class => "layer-1 menu-line"} do
+                %h2= t('news_events')
             %li.layer-1-li
               = link_to shopping_guide_path, {:class => "layer-1 menu-line"} do
                 %h2= t('q_and_a')

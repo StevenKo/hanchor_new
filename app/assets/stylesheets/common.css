@@ -41,6 +41,7 @@
 
 .bg-main-lb{background:#3b84fb;}
 .color-main-lb{color:#3b84fb;}
+.breadcrumb a{color:#3b84fb;font-weight: bold;}
 
 .bg-main-db{background:#1f60cb;}
 .color-main-db{color:#1f60cb;}
