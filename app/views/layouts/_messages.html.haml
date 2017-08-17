@@ -2,11 +2,11 @@
   .login-signup
     %ul.layer-1-ul
       %li.layer-1-li
-        %a.layer-1{:href => "login.html"}
-          %h2 登入
+        = link_to login_path, {class: "layer-1"} do
+          %h2= t('sign_in')
       %li.layer-1-li
-        %a.layer-1{:href => "signup.html"}
-          %h2 註冊
+        = link_to register_path, {class: "layer-1"} do
+          %h2= t('account.register')
       %li.layer-1-li
         %a.layer-1.scart{:href => "shoppingcart.html"}
           =image_tag("ico-scart")

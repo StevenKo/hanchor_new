@@ -163,7 +163,7 @@
 		right: 0px;
 		top: 0px;
 		bottom: 0px;
-		background-image:url(../images/common/login-bg.jpg);
+		background-image: image-url('login-bg.jpg');
 		background-size: cover;
 }
 .login-signup-sec{text-align:right;}
