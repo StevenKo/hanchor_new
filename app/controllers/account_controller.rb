@@ -14,5 +14,6 @@ class AccountController < ApplicationController
   end
 
   def orders
+    add_breadcrumb t('account.order'), :account_orders_path
   end
 end

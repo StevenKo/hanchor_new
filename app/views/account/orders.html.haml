@@ -1,77 +1,69 @@
-.sidebar-product.pull-left
-  = render partial: "account_sidemenu"
-  = render partial: "products/cart_sidebar"
-.main-product.pull-left
-  #account_main
-    %h2= t('account.order')
-    %p= t('account.message').html_safe
-  #last_order
-    %fieldset
-      %legend= t('order.history')
-      %br
-    %table.table.table-striped
-      %thead
-        %tr
-          %th= t('order.num')
-          %th= t('order.date')
-          %th= t('order.status')
-          %th= t('order.shpping')
-          %th= t('order.pay')
-          %th= t('order.price')
-          %th{:align => "center", :width => "70"}= t('order.confirm')
-      %tbody
-        - current_user.orders.showed.each do |order|
-          %tr.hover.order
-            %td= order.code
-            %td= display_date(order.created_at)
-            %td= t("order.#{order.status}")
-            %td= order.shipping_cost.description
-            %td= order.payment
-            %td= order.total
-            -if (order.is_payed)
-              %td= t("order.payed")
-            -elsif order.payment != "貨到付款"
-              %td= link_to t("notify.notify"),"","data-toggle" => "modal", 'data-target' => "#myModal", id: "order_modal_link", class: "btn btn-md btn-warning", data: {order_id: order.id}
-            -else
-              %td
+/ breadcrumbs
+%section.breadcrumbs
+  / rwd width limited
+  .rwd-width-limited.clearfix
+    .text-13.color-gray-666.lh-18.breadcrumb
+      = render_breadcrumbs :separator => ' / '
+  / rwd width limited
+/ breadcrumbs
 
-          %tr{:style => "display: none;"}
-            %td{:colspan => "7"}
-              %table.detail{:align => "center", :cellpadding => "6", :cellspacing => "0", :width => "100%"}
-                %tbody
-                  %tr
-                    %th{:width => "40%"} #{t('account.order_detail.shipping_name')}
-                    %th{:width => "30%"} #{t('account.order_detail.phone')}
-                    %th{:width => "30%"} #{t('account.order_detail.country')}
-                  %tr
-                    %td= order.shipping_name
-                    %td= order.phone
-                    %td= order.country
-                  %tr
-                    %th #{t('account.order_detail.store')}
-                    %th #{t('account.order_detail.zip_code')}
-                    %th #{t('account.order_detail.city')}
-                  %tr
-                    %td= order.ship_store_display
-                    %td= order.zip_code
-                    %td= order.city
-                  %tr
-                    %th #{t('account.order_detail.order_item_name')}
-                    %th #{t('account.order_detail.order_item_quantity')}
-                    %th #{t('account.order_detail.order_item_price')}
-                  -order.order_items.each do |item|
-                    %tr
-                      %td= item.display_name(@country_id,params[:locale])
-                      %td= item.quantity
-                      %td= item.price * item.quantity
-                  %tr
-                    %th{:colspan => "3"} #{t('account.address')}
-                  %tr
-                    %td{:colspan => "3"} #{order.shipping_address} 
-                  %tr
-                    %th{:colspan => "3"} #{t('account.order_detail.notes')}
-                  %tr
-                    %td{:colspan => "3"} #{order.memo}
-                  %tr
-
-= render "notify_modal"
+/ start main
+.wrapper
+  / full width block
+  %section.bg-w.pd-v-20.mg-t-30.sidebar-point
+    / rwd width limited
+    .rwd-width-limited
+      / sidebar and con
+      .clearfix.sidebar-con
+        / sd sidebar
+        = render "account_sidemenu"
+        / sd sidebar
+        / sd con
+        .clearfix.sc-con.grid-4-3
+          / 
+          .member-sec.relative.mg-b-30
+            %h2.title-line.inlineblock.mg-b-30 訂單紀錄
+            %p.text-14.lh-30.color-gray-666.mg-b-30
+              若使用ATM繳款方式訂購請於匯款後請點選該筆訂單中的
+              %span.bold 通知匯款
+              填寫您的帳戶資訊。
+              如付款方式選擇銀行匯款，HANCHOR 帳戶資訊如下：
+              %br/
+              %br/
+              = succeed "汗可股份有限公司 " do
+                %span.bold 戶名：
+              %br/
+              = succeed "台北富邦銀行（銀行代碼 012）" do
+                %span.bold 銀行：
+              %br/
+              = succeed "742120001104" do
+                %span.bold 帳號：
+              %br/
+            %table.order-table
+              %tr
+                %th 訂單號
+                %th 下單日期
+                %th 狀態
+                %th 運送方式
+                %th 付款方式
+                %th 金額
+                %th 付款確認
+              - current_user.orders.showed.each do |order|
+                %tr
+                  %td{"data-th" => "訂單號"}= order.code
+                  %td{"data-th" => "下單日期"}= display_date(order.created_at)
+                  %td{"data-th" => "狀態"}= t("order.#{order.status}")
+                  %td{"data-th" => "運送方式"}= order.shipping_cost.description
+                  %td{"data-th" => "付款方式"}= order.payment
+                  %td{"data-th" => "金額"}= order.total
+                  %td{"data-th" => "付款確認"}
+                    -if (order.is_payed)
+                      = t("order.payed")
+                    -elsif order.payment != "貨到付款"
+                      =link_to t("notify.notify"),"","data-toggle" => "modal", 'data-target' => "#myModal", id: "order_modal_link", class: "btn btn-s btn-lblue", data: {order_id: order.id}, :hov => "0.75"
+          / 
+        / sd con
+      / sidebar and con
+    / rwd width limited
+  / full width block
+/ end main
