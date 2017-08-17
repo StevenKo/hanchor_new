@@ -1,12 +1,18 @@
 .login-signup-container
   .login-signup
     %ul.layer-1-ul
-      %li.layer-1-li
-        = link_to login_path, {class: "layer-1"} do
-          %h2= t('sign_in')
-      %li.layer-1-li
-        = link_to register_path, {class: "layer-1"} do
-          %h2= t('account.register')
+      - if logged_in?
+        %li.layer-1-li
+          = link_to account_path, {class: "layer-1"} do
+            %h2= t('my_account')
+      - else
+        %li.layer-1-li
+          = link_to login_path, {class: "layer-1"} do
+            %h2= t('sign_in')
+        %li.layer-1-li
+          = link_to register_path, {class: "layer-1"} do
+            %h2= t('account.register')
+        
       %li.layer-1-li
         %a.layer-1.scart{:href => "shoppingcart.html"}
           =image_tag("ico-scart")

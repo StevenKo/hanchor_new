@@ -29,7 +29,7 @@ Rails.application.routes.draw do
 
 
   get 'account' => "account#index"
-  get 'account/info' => "account#info"
+  get 'account/edit' => "account#edit"
   get 'account/orders' => "account#orders"
 
   resources :paid_notify, only: [:create]

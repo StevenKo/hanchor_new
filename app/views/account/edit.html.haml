@@ -1,0 +1,36 @@
+/ breadcrumbs
+%section.breadcrumbs
+  / rwd width limited
+  .rwd-width-limited.clearfix
+    .text-13.color-gray-666.lh-18.breadcrumb
+      = render_breadcrumbs :separator => ' / '
+  / rwd width limited
+/ breadcrumbs
+/ start main
+.wrapper
+  / full width block
+  %section.bg-w.pd-v-20.mg-t-30.sidebar-point
+    / rwd width limited
+    .rwd-width-limited
+      / sidebar and con
+      .clearfix.sidebar-con
+        / sd sidebar
+        = render "account_sidemenu"
+        / sd sidebar
+        / sd con
+        .clearfix.sc-con.grid-4-3
+          / 
+          .member-sec.relative.mg-b-30
+            %h2.title-line.inlineblock.mg-b-30 帳戶資訊
+            %p.text-14.lh-30.color-gray-666.mg-b-15
+              %span.bold> 姓名：
+              = current_user.name
+            %p.text-14.lh-30.color-gray-666.mg-b-15
+              %span.bold> Email：
+              = current_user.email
+            %p.text-14.lh-30.color-gray-666.mg-b-15
+              %span.bold> 電話：
+              = current_user.phone
+            %p.text-14.lh-30.color-gray-666.mg-b-15
+              %span.bold> 寄送地址：
+              = current_user.shipping_address

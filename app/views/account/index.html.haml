@@ -1,0 +1,72 @@
+/ breadcrumbs
+%section.breadcrumbs
+  / rwd width limited
+  .rwd-width-limited.clearfix
+    .text-13.color-gray-666.lh-18.breadcrumb
+      = render_breadcrumbs :separator => ' / '
+  / rwd width limited
+/ breadcrumbs
+/ start main
+.wrapper
+  / full width block
+  %section.bg-w.pd-v-20.mg-t-30.sidebar-point
+    / rwd width limited
+    .rwd-width-limited
+      / sidebar and con
+      .clearfix.sidebar-con
+        / sd sidebar
+        = render "account_sidemenu"
+        / sd sidebar
+        / sd con
+        .clearfix.sc-con.grid-4-3
+          / 
+          .member-sec.relative.mg-b-30
+            %h2.title-line.inlineblock.mg-b-30 帳戶資訊
+            %p.text-14.lh-30.color-gray-666.mg-b-15
+              %span.bold> 姓名：
+              = current_user.name
+            %p.text-14.lh-30.color-gray-666.mg-b-15
+              %span.bold> Email：
+              = current_user.email
+            %p.text-14.lh-30.color-gray-666.mg-b-15
+              %span.bold> 電話：
+              = current_user.phone
+            %p.text-14.lh-30.color-gray-666.mg-b-15
+              %span.bold> 寄送地址：
+              = current_user.shipping_address
+            = link_to "修改資料", account_edit_path, class: "btn btn-m btn-blue inlineblock-imp modify-m-info", :hov => "0.75"
+          / 
+          / line
+          .gray-h-line.mg-b-40
+          / line
+          / 
+          .member-sec.relative.mg-b-30
+            %h2.title-line.inlineblock.mg-b-30 訂單紀錄
+            %table.order-table
+              %tr
+                %th 訂單號
+                %th 下單日期
+                %th 狀態
+                %th 運送方式
+                %th 付款方式
+                %th 金額
+                %th 付款確認
+              - current_user.orders.showed.each do |order|
+                %tr
+                  %td{"data-th" => "訂單號"}= order.code
+                  %td{"data-th" => "下單日期"}= display_date(order.created_at)
+                  %td{"data-th" => "狀態"}= t("order.#{order.status}")
+                  %td{"data-th" => "運送方式"}= order.shipping_cost.description
+                  %td{"data-th" => "付款方式"}= order.payment
+                  %td{"data-th" => "金額"}= order.total
+                  %td{"data-th" => "付款確認"}
+                    -if (order.is_payed)
+                      = t("order.payed")
+                    -elsif order.payment != "貨到付款"
+                      =link_to t("notify.notify"),"","data-toggle" => "modal", 'data-target' => "#myModal", id: "order_modal_link", class: "btn btn-s btn-lblue", data: {order_id: order.id}, :hov => "0.75"
+          / 
+        / sd con
+      / sidebar and con
+    / rwd width limited
+  / full width block
+/ end main
