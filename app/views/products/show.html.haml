@@ -1,0 +1,159 @@
+= content_for :head do
+  <meta property="og:title"  content="#{@product.name}" />
+  <meta property="og:image"  content="#{image_url(@product.product_pics.first.pic_url)}" />
+  <meta property="og:url"  content="#{request.url.split('?').first}" />
+  <meta property="og:description" content="#{strip_tags(@product.quick_overview)}" />
+  <meta property="og:type" content="website" />
+  <meta name="description" content="#{strip_tags(@product.quick_overview)}">
+  <title>HANCHOR｜#{@product.name}</title>
+  
+
+/ breadcrumbs
+%section.breadcrumbs
+  / rwd width limited
+  .rwd-width-limited.clearfix
+    .text-13.color-gray-666.lh-18.breadcrumb
+      = render_breadcrumbs :separator => ' / '
+  / rwd width limited
+/ breadcrumbs
+/ start main
+.wrapper
+  / full width block
+  %section.bg-w.pd-v-50
+    / rwd width limited
+    .rwd-width-limited.clearfix
+      / 
+      .grid-2
+        / gallery
+        .product-slidr.relative
+          %ul.bxslider
+            - @product.product_pics.each do |pic|
+              %li
+                = image_tag(pic.pic_url)
+          #bx-pager.clearfix
+            - @product.product_pics.each_with_index do |pic, index|
+              = link_to "", {"data-slide-index" => index} do
+                = image_tag pic.pic_url
+          / <p><span id="slider-prev"></span> | <span id="slider-next"></span></p>
+        / gallery
+      / 
+      / 
+      .grid-2.product-info
+        %h2.name.mg-b-10= @product.name
+        %p.price.mg-b-20= "NT$#{@product.price}"
+        .line.mg-b-25
+        .form-section
+          = form_for @item, url: add_item_to_cart_cart_index_path(product: @product) do |f|
+            .mg-b-30
+              / color
+              .sel-color
+                %h3 顏色
+                %label.label-radio{:for => "v1", :style => "background:#1d2d71;"}
+                  %input#v1{:checked => "checked", :name => "color", :type => "radio", :value => "1"}/
+                %label.label-radio{:for => "v2", :style => "background:#1c1c1b;"}
+                  %input#v2{:name => "color", :type => "radio", :value => "2"}/
+                %label.label-radio{:for => "v3", :style => "background:#ddc000;"}
+                  %input#v3{:name => "color", :type => "radio", :value => "3"}/
+                %label.label-radio{:for => "v4", :style => "background:#c10e1c;"}
+                  %input#v4{:name => "color", :type => "radio", :value => "4"}/
+              / color
+              / qty
+              .sel-qty
+                %h3 數量
+                / = select_tag :quantity,[], style: "display: none"
+                / %strong{id: "out_of_stock",style: "display: none"}
+                /   = t('product.out_of_stock')
+                %select.nice-sel-wrap
+                  %option{:value => "1"} 1
+                  %option{:value => "2"} 2
+                  %option{:value => "3"} 3
+                  %option{:value => "4"} 4
+                  %option{:value => "5"} 5
+                  %option{:value => "6"} 6
+                  %option{:value => "7"} 7
+                  %option{:value => "8"} 8
+                  %option{:value => "9"} 9
+                  %option{:value => "10"} 10
+              / qty
+            / btn
+            .mg-b-25
+              %button#add_cart.btn-l.btn-blue{:hov => "0.75"}
+                加入購物車
+                %i.fa.fa-chevron-right.mg-l-20{"aria-hidden" => "true"}
+            = f.submit t('product.add_to_cart'), style: "display: none"
+            / btn
+        .line.mg-b-25
+        / spec / info
+        .spec-sec
+          .tab.tab-sel.clearfix.right.mg-b-25
+            %a.tab-btn.active{"data-tab" => "tab-1"} 產品規格
+            / active on this one
+            %a.tab-btn{"data-tab" => "tab-2"} 產品說明
+          .tab-con
+            .spec.tab-inner.tab-1.active.text-14.color-gray-333.lh-25
+              - if @product.weight.present?
+                %span.bold.text-16.lh-30 #{t('product.weight')}
+                %br/
+                #{@product.weight}
+                %br/
+              - if @product.capacity.present?
+                %span.bold.text-16.lh-30 #{t('product.dimension')}
+                %br/
+                #{@product.capacity}
+                %br/
+              - if @product.material.present?
+                %span.bold.text-16.lh-30 #{t('product.material')}
+                %br/
+                #{@product.material}
+                %br/        
+            .info.tab-inner.tab-2.text-14.color-gray-333.lh-25
+              = @product.quick_overview.html_safe
+        / spec / info
+      / 
+    / rwd width limited
+  / full width block
+  / full width block
+  %section.bg-w.pd-v-50.product-mid-bg
+    / rwd width limited
+    .rwd-width-limited.clearfix
+      / spec / info
+      .spec-sec.spec-info
+        .tab.tab-sel.clearfix.tcenter.right.mg-b-25
+          %a.tab-btn.active{"data-tab" => "tab-1"} #{t('product.description')}
+          / active on this one
+          %a.tab-btn{"data-tab" => "tab-2"} Reviews
+        .tab-con
+          .product-desc.tab-inner.tab-1.active
+            = @product.feature.html_safe
+          %p.pruduct-preview.tab-inner.tab-2
+            測試測文拉拉字文字 。
+      / spec / info
+    / rwd width limited
+  / full width block
+  / full width block
+  %section.product-bottom-bg.pd-v-50
+    / rwd width limited
+    .rwd-width-limited
+      %h2.text-20.lh-30.color-white.bold.left.mg-b-30 你可能有興趣
+      .clearfix
+        - @related_products.each do |product|
+          =link_to products_show_path(product.product_category.name_en,product), { :class => "index-recommend-item grid-4-1",:hov => "0.8"} do
+            .pic
+              =(image_tag product.thumb.pic_url, :itemprop => "image", :class => "v-centerimg")
+            .info
+              %h3.name.text-14.lh-24.color-gray-333.bold= product.name
+              %p.price.text-13.lh-20.color-main-lb= product.price
+    / rwd width limited
+  / full width block
+/ end main
+
+:javascript
+  $('.bxslider').bxSlider({
+    pagerCustom: '#bx-pager',
+    mode: 'fade',
+    captions: true,
+    speed: 300,
+    controls:true
+  });
+  //nextSelector: '#slider-next',prevSelector: '#slider-prev'
+

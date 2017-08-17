@@ -90,7 +90,7 @@
 .product-bottom-bg{
     width: 100%;
     min-height: 360px;
-    background: url(../images/common/product-bottom-bg.jpg) no-repeat center center fixed;
+    background: image-url("product-bottom-bg.jpg") no-repeat center center fixed;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;

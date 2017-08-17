@@ -1,0 +1,53 @@
+= content_for :head do
+  <meta name="description" content="#{@base_category.locale(params[:locale])}|#{@sub_category.locale(params[:locale]) if @sub_category}|#{t("product_description")}">
+  <title>HANCHOR｜#{@base_category.locale(params[:locale])}</title>
+  
+/ visual
+.pages-visual
+  = image_tag "product-visual", :class => "v-centerimg"
+/ -visual
+/ breadcrumbs
+%section.breadcrumbs
+  / rwd width limited
+  .rwd-width-limited.clearfix
+    .text-13.color-gray-666.lh-18.breadcrumb
+      = render_breadcrumbs :separator => ' / '
+  / rwd width limited
+/ breadcrumbs
+/ start main
+.wrapper
+  / full width block
+  %section.bg-w.pd-v-50
+    / rwd width limited
+    .rwd-width-limited.clearfix
+      / product classify tab
+      .product-classify-tab.clearfix.mg-b-40
+        - @base_categories.each_with_index do |category,i|
+          = link_to_category products_index_path(category.name_en), category.name, i + 1
+      / product classify tab
+      .gray-h-line.mg-b-30
+      .tab.clearfix.mg-b-30
+        = link_to_contact products_index_path(@base_category.name_en), "全部"
+        - @base_category.child_categories.visible.each do |c|
+          = link_to_contact products_index_path(@base_category.name_en, sub: c.name_en), c.name
+      .gray-h-line.mg-b-40
+      .clearfix
+        / index recommend item
+        - @products.each do |product|
+          =link_to products_show_path(product.product_category.name_en,product), { :class => "product-item index-recommend-item grid-3-1",:hov => "0.8"} do
+            .pic
+              =(image_tag product.thumb.pic_url, :itemprop => "image", :class => "v-centerimg")
+            .info
+              %h3.name.text-18.lh-30.color-gray-333.bold.mg-b-5= product.name
+              %p.price.text-16.lh-20.color-main-lb.mg-b-20= product.price
+              %p.desc
+                = truncate_html(strip_tags(product.quick_overview), length: 60)
+      / page select menu
+      %nav.page-menu.relative
+        = will_paginate(@news, :renderer => 'BootstrapPaginationHelper::LinkRenderer')
+      / page select menu
+    / rwd width limited
+  / full width block
+/ end main
+
+

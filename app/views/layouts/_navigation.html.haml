@@ -32,7 +32,7 @@
               = link_to aboutus_path, {:class => "layer-1 menu-line"} do
                 %h2= t("aboutus")
             %li.layer-1-li
-              %a.layer-1.menu-line{:href => "product.html"}
+              = link_to products_index_path("Packing"), {:class => "layer-1 menu-line"} do
                 %h2 產品
             %li.layer-1-li
               = link_to news_index_path(news_tag_id: 0), {:class => "layer-1 menu-line"} do
