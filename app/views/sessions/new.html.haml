@@ -18,10 +18,10 @@
           = form_tag '/login' do
             .mg-b-30
               %h2.text-24.lh-30.color-white.bold 登 入
-            = text_field_tag :username, nil, class: 'input-text mg-b-20', placeholder: "輸入 Emal 帳號"
+            = text_field_tag :email, nil, class: 'input-text mg-b-20', placeholder: "輸入 Emal 帳號"
             = password_field_tag :password, nil, class: 'input-text mg-b-20', placeholder: "輸入密碼"
             .mg-b-20
-              = submit_tag t('sign_in'), class: 'btn-l btn-blue', hov: "0.75"
+              = submit_tag "登 入", class: 'btn-l btn-blue', hov: "0.75"
           .clearfix.mg-b-35
             .login-info-left.text-13.lh-20.color-gray-999
               還不是會員？
