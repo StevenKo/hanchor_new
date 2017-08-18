@@ -1,0 +1,58 @@
+/ breadcrumbs
+%section.breadcrumbs
+  / rwd width limited
+  .rwd-width-limited.clearfix
+    .text-13.color-gray-666.lh-18.breadcrumb
+      = render_breadcrumbs :separator => ' / '
+  / rwd width limited
+/ breadcrumbs
+/ start main
+.wrapper
+  / full width block
+  %section.bg-w.pd-v-20.mg-t-30.sidebar-point
+    / rwd width limited
+    .rwd-width-limited
+      / sidebar and con
+      .clearfix.sidebar-con
+        / sd sidebar
+        = render "account/account_sidemenu"
+        / sd sidebar
+        / sd con
+        .clearfix.sc-con.grid-4-3
+          .clearfix.mg-b-30
+            - @cart_items.each_with_index do |item, i|
+              .one-scart.clearfix
+                .pic
+                  = image_tag @cart_products[i].thumb.pic_url, :itemprop => "image", :class => "v-centerimg"
+                .os-rwd-float
+                  .info
+                    %h3.product-name= @cart_products[i].name
+                    %p.product-color
+                      黑
+                      %span.product-color-hex{:style => "background:#000;"}
+                    %p.product-price NT$#{item.price}
+                  
+                  = form_for item, url: change_cart_item_quantity_cart_path(item) do |f|
+                    .qty
+                      = f.select :quantity, get_cart_item_quantity_selector(item),{}, {selected: item.quantity, class: "nice-sel-wrap"}
+                      %p.per-price 小計：NT$#{item.price * item.quantity}
+                  .btn-sec
+                    = button_to remove_cart_item_cart_index_path(item_id: item.id), class: "btn-line btn-line-blue" do
+                      刪除
+                      %i.fa.fa-trash-o.mg-l-10{"aria-hidden" => "true"}
+            / one scart
+          .tright
+            %p.scart-total-price.mg-b-40
+              %span> 總計
+              NT$#{sum_cart_items_price @cart_items}
+            .scart-submit
+              = link_to products_index_path("packing"), class: "btn-l btn-lblue inlineblock-imp", :hov => "0.75" do
+                %i.fa.fa-chevron-left.mg-r-20{"aria-hidden" => "true"}>
+                繼續購物
+              = link_to checkout_cart_index_path, class: "btn-l btn-blue inlineblock-imp", :hov => "0.75" do
+                前往結帳
+                %i.fa.fa-chevron-right.mg-l-20{"aria-hidden" => "true"}
+        / sd con
+      / sidebar and con
+    / rwd width limited
+  / full width block

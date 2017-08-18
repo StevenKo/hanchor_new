@@ -1,0 +1,19 @@
+$("#shippig_cost_tr").remove();
+$("#subtotal_tr").remove();
+$("#order-overview tbody > tr:last").before("<%=j (render 'shipping_and_subtotal', shipping_cost: @shipping.cost, item_num: params[:item_num], sub_total: params[:sub_total])%>").slideDown();
+$("#sum").text("<%= @shipping.cost + params[:sub_total].to_i %>");
+<% if params[:shipping_cost_id] == "3" %>
+  $('#store').show();
+<% else %>
+  $('#store').hide();
+<% end %>
+<% if params[:shipping_cost_id] == "6" %>
+  $('.pay_when_shipped').show();
+  $('.tw_payment').hide();
+  $('#order_payment_').prop('checked', true);
+<% else %>
+  $('.tw_payment').show();
+  $('.pay_when_shipped').hide();
+  $('#order_payment_paypal').prop('checked', true);
+  $('#order_payment_allpay').prop('checked', true);
+<% end %>

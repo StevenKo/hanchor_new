@@ -144,7 +144,7 @@
 	clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
 	vertical-align:middle;
 	margin-left:5px;
-	background-image:url(../images/common/ico-check.png) !important;background-repeat: no-repeat !important;background-position:center center !important;
+	background-image: image-url("ico-check.png") !important;background-repeat: no-repeat !important;background-position:center center !important;
 }
 .one-scart .info .product-price{font-size:13px;color:#3b84fb;font-weight: bold;}
 .one-scart .qty{float: left;width:calc(40% - 120px);margin-right:20px;}

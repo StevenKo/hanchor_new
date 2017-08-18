@@ -1,0 +1,105 @@
+.checkout
+  .row
+    .col-md-12
+      %fieldset
+        %legend= t('cart.info')
+      = bootstrap_form_for @order, url: orders_path, role: "form" do |f|
+        = f.text_field :shipping_name, :class => "form-control", label: t('cart.user_name').html_safe, value: @current_user.name
+        = f.text_field :phone, :class => "form-control", label: t('cart.phone').html_safe, value: @current_user.phone
+        = f.text_field :shipping_address, :class => "form-control", label: t('cart.address').html_safe, value: @current_user.shipping_address
+        = f.text_field :zip_code, :class => "form-control", label: t('cart.zip_code').html_safe, value: @current_user.zip_code
+        = f.text_field :city, :class => "form-control", label: t('cart.city').html_safe, value: @current_user.city
+        = f.text_field :state, :class => "form-control", label: t('cart.state').html_safe, value: @current_user.state
+        = f.text_field :country, :class => "form-control", label: t('cart.country').html_safe, value: @current_user.country
+        = f.select  :shipping_cost_id, @shippings_selector, label: t('cart.shipping').html_safe, prompt: "Select One"
+        - if @country_id == 1
+          #store{:style => "display: none;"}
+            .check-store
+              %label= t('cart.store')
+              = link_to t('cart.search_store'),'http://map.ezship.com.tw/', class: "btn btn-sm btn-warning", target: "_blank"
+            = f.fields_for :store do |child_form|
+              = f.text_field :store_code, label: t('cart.num').html_safe, :class => "form-control"
+              = f.text_field :store_name, label: t('cart.store_name').html_safe, :class => "form-control"
+        %fieldset
+          %legend= t('cart.payment_info').html_safe
+        #payment
+          .tw_payment
+            %span
+            %br
+              - if (["zh-TW","zh"].include?( params[:locale]))
+                .row
+                  %p.col-md-6.clearfix
+                    = f.radio_button :payment, "AllPay",checked: true
+                    = f.label :payment,t('cart.allpay_credit_card')
+                    %img{:class => "pull-left", :alt => "Solution Graphics", :border => "0", :src => "https://www.allpay.com.tw/Content/Themes/WebStyle20131201/images/header_logo.png"}
+                  %p.col-md-6
+                    = f.radio_button :payment, "PayPal"
+                    = f.label :payment,t('cart.credit_card')
+                    %img{:class => "pull-left", :alt => "Solution Graphics", :border => "0", :src => "https://www.paypal.com/en_US/i/bnr/horizontal_solution_PPeCheck.gif"}
+              - else
+                = f.radio_button :payment, "PayPal",checked: true
+                = f.label :payment,t('cart.credit_card')
+                %img{:class => "pull-left", :alt => "Solution Graphics", :border => "0", :src => "https://www.paypal.com/en_US/i/bnr/horizontal_solution_PPeCheck.gif"}
+            %p
+              -if @country_id == 1
+                = f.radio_button :payment, "transfer"
+                = f.label :payment,t('cart.transfer_bank')
+          .pay_when_shipped{:style => "display: none;"}
+            %span
+            %br
+              = f.radio_button :payment, t('cart.pay_when_shipped')
+              = f.label t('cart.pay_when_shipped')
+
+        %fieldset
+          %legend= t('cart.comment')
+        %p
+          = text_area_tag :memo, nil, class: "form-control", rows: "3"
+        %br
+        %span.ui-state-default.ui-corner-all
+          = t("cart.read_shopping_gudide_message", :href => link_to(t("cart.shopping_guide"), shopping_guide_path)).html_safe
+        %fieldset
+          %legend= t('cart.order')
+        #order-overview
+          %table.table.table-striped.cart_table
+            %thead
+              %tr
+                %td= t('cart.picture')
+                %td= t('cart.name')
+                %td= t('cart.unit_price')
+                %td= t('cart.size')
+                %td= t('cart.color')
+                %td= t('cart.quantity')
+                %td= t('cart.subtotal')
+            %tbody
+              - @cart_items.each_with_index do |item, i|
+                %tr
+                  %td
+                    = link_to products_show_path(@cart_products[i].product_category.name_en, @cart_products[i]) do
+                      =image_tag @cart_products[i].thumb.pic_url, width: "90",border: 0
+                  %td
+                    = link_to @cart_products[i].name,products_show_path(@cart_products[i].product_category.name_en, @cart_products[i])
+                    = link_to remove_cart_item_cart_index_path(item_id: item.id) do
+                      = image_tag("fancy_close.png")
+                  %td
+                    NT$
+                    = item.price
+                  %td
+                    = item.product_size.locale_size(params[:locale]) if item.product_size
+                  %td
+                    = item.product_color.locale_color(params[:locale]) if item.product_color
+                  %td
+                    = item.quantity
+                  %td
+                    NT$
+                    = item.price * item.quantity
+              %tr
+                %td{:colspan => "6", :class => "total"}= t('cart.sum')
+                %td.total-price
+                  NT$
+                  %span#sum
+                    = sum_cart_items_price @cart_items
+        = f.hidden_field :sub_total, value: sum_cart_items_price(@cart_items)
+        = f.hidden_field :item_num, value: @cart_items.size
+        = hidden_field_tag :locale, params[:locale]
+        .func-btn.clearfix
+          = f.submit t('cart.confirm'), class: "btn btn-md btn-success pull-right", data: { confirm: t('cart.confirm_message') } 
