@@ -7,6 +7,7 @@ class WelcomeController < ApplicationController
     @video = Video.first
     @products = Product.includes(:thumb).joins(:product_infos).where("product_infos.country_id = #{@country_id} and is_show_at_index = true").order_by_views_and_sort.select_info
     @banners = Banner.order("sort DESC")
+    @base_categories =  ProductCategory.where('parent_id is null')
   end
 
   def contact

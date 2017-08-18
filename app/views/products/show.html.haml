@@ -78,6 +78,16 @@
                   %option{:value => "8"} 8
                   %option{:value => "9"} 9
                   %option{:value => "10"} 10
+              .sel-qty
+                %h3 尺寸
+                / = select_tag :quantity,[], style: "display: none"
+                / %strong{id: "out_of_stock",style: "display: none"}
+                /   = t('product.out_of_stock')
+                %select.nice-sel-wrap
+                  %option{:value => "1"} S
+                  %option{:value => "2"} M
+                  %option{:value => "3"} L
+                  %option{:value => "4"} XL
               / qty
             / btn
             .mg-b-25

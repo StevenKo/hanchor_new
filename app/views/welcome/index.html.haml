@@ -15,46 +15,12 @@
     / rwd width limited
     .clearfix
       / index product classify
-      %a.one-ipc.grid-3-1{:href => "#"}
-        .pic
-          .cover
-          = image_tag("index-pcover-1", :class => "v-centerimg")
-        .info.color-1.cenmid 包款
-      / index product classify
-      / index product classify
-      %a.one-ipc.grid-3-1{:href => "#"}
-        .pic
-          .cover
-          = image_tag("index-pcover-2", :class => "v-centerimg")
-        .info.color-2.cenmid 配件
-      / index product classify
-      / index product classify
-      %a.one-ipc.grid-3-1{:href => "#"}
-        .pic
-          .cover
-          = image_tag("index-pcover-3", :class => "v-centerimg")
-        .info.color-3.cenmid 衣著
-      / index product classify
-      / index product classify
-      %a.one-ipc.grid-3-1{:href => "#"}
-        .pic
-          .cover
-          = image_tag("index-pcover-4", :class => "v-centerimg")
-        .info.color-4.cenmid 其他
-      / index product classify
-      / index product classify
-      %a.one-ipc.grid-3-1{:href => "#"}
-        .pic
-          .cover
-          = image_tag("index-pcover-5", :class => "v-centerimg")
-        .info.color-5.cenmid 客製化
-      / index product classify
-      / index product classify
-      %a.one-ipc.grid-3-1{:href => "#"}
-        .pic
-          .cover
-          = image_tag("index-pcover-6", :class => "v-centerimg")
-        .info.color-6.cenmid 限量優惠
+      - @base_categories.each_with_index do |category,index|
+        = link_to products_index_path(category.name_en), class: "one-ipc grid-3-1" do
+          .pic
+            .cover
+            = image_tag("index-pcover-#{index+1}", :class => "v-centerimg")
+            %div{class: "info color-#{index+1} cenmid"}= category.name
       / index product classify
     / rwd width limited
   %section.bg-w.pd-v-50

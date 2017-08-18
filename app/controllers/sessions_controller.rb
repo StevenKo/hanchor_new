@@ -4,14 +4,14 @@ class SessionsController < ApplicationController
   end
 
   def create
-    user = User.find_by(email: params[:username])
+    user = User.find_by(email: params[:email])
     if user && user.authenticate(params[:password])
       session[:user_id] = user.id
       update_current_shopping_cart_user(user.id)
       (params[:redirect_to_cart].present?)? redirect_to(cart_index_path) : redirect_to(root_path)
     else
       flash[:error] = "Something wrong, login fail!"
-      redirect_to :back
+      redirect_back fallback_location: root_path
     end
   end
   
