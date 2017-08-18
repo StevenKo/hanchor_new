@@ -64,6 +64,7 @@ class CartController < ApplicationController
   end
 
   def checkout
+    add_breadcrumb "填寫結帳資訊", checkout_cart_index_path
     if (@cart_items.present?)
       @order = Order.new
       shipping_array = YAML::load(@cart_products[0].shipping)
