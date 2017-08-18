@@ -4,9 +4,9 @@
 .flexslider.f_index{:style => "width:100%;overflow:hidden;margin-bottom:0;"}
   %ul.slides
     %li.relative
-      = image_tag("index-v-1", :class => "v-centerimg")
+      = image_tag("index-v-1.jpg", :class => "v-centerimg")
     %li.relative
-      = image_tag("index-v-2", :class => "v-centerimg")
+      = image_tag("index-v-2.jpg", :class => "v-centerimg")
 / -visual
 / start main
 .wrapper
@@ -19,7 +19,7 @@
         = link_to products_index_path(category.name_en), class: "one-ipc grid-3-1" do
           .pic
             .cover
-            = image_tag("index-pcover-#{index+1}", :class => "v-centerimg")
+            = image_tag("index-pcover-#{index+1}.jpg", :class => "v-centerimg")
             %div{class: "info color-#{index+1} cenmid"}= category.name
       / index product classify
     / rwd width limited
