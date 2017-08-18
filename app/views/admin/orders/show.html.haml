@@ -77,9 +77,9 @@
         %td= order_item.product.product_infos.first.name
         %td= order_item.product_size.size if order_item.product_size
         %td= order_item.product_color.color if order_item.product_color
-        %td= order_item.price
+        %td= showed_price(order_item.price)
         %td= order_item.quantity
-        %td= order_item.price * order_item.quantity
+        %td= showed_price(order_item.price * order_item.quantity)
 
 = link_to "back", admin_orders_path, class: "btn"
 %br

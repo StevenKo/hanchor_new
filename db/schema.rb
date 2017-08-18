@@ -54,6 +54,7 @@ ActiveRecord::Schema.define(version: 20170817083252) do
     t.float "cash_sell", limit: 24
     t.float "buy", limit: 24
     t.float "sell", limit: 24
+    t.string "show_symbol"
     t.index ["symbol"], name: "index_currencies_on_symbol"
   end
 

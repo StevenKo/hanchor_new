@@ -2,7 +2,7 @@ class ApplicationController < ActionController::Base
   # Prevent CSRF attacks by raising an exception.
   # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :exception
-  helper_method :current_user, :logged_in?
+  helper_method :current_user, :current_currency, :logged_in?
 
   before_action :set_locale
 
@@ -12,6 +12,11 @@ class ApplicationController < ActionController::Base
 
   def current_shopping_cart
     @shopping_cart ||= Cart.find(session[:cart_id]) if session[:cart_id]
+  end
+
+  def current_currency
+    session[:currency_id] = 1 unless session[:currency_id]
+    @currency ||= Currency.find(session[:currency_id]) if session[:currency_id]
   end
 
   def update_current_shopping_cart_user user_id
@@ -54,8 +59,10 @@ private
   def set_locale
     if params[:locale] && ["en", "zh-TW","zh"].include?( params[:locale] )
       session[:locale] = params[:locale]
+    else
+      session[:locale] = extract_locale_from_accept_language_header
     end
-    I18n.locale = session[:locale] || extract_locale_from_accept_language_header
+    I18n.locale = session[:locale]
     ["zh-TW","zh"].include?( I18n.locale.to_s )? @country_id = 1 : @country_id = 2
   end
 

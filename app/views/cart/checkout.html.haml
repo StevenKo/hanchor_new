@@ -145,10 +145,10 @@
                         %p.product-color
                           黑
                           %span.product-color-hex{:style => "background:#000;"}
-                        %p.product-price NT$#{item.price}
+                        %p.product-price= showed_price(item.price)
                       .qty
                         %p.per-qty 數量：#{item.quantity}
-                        %p.per-price 小計：NT$#{item.price * item.quantity}
+                        %p.per-price 小計：#{showed_price(item.price * item.quantity)}
                       .btn-sec
                         = button_to remove_cart_item_cart_index_path(item_id: item.id), class: "btn-line btn-line-blue" do
                           刪除
@@ -156,7 +156,7 @@
               .tright
                 %p.scart-total-price.mg-b-40
                   %span> 總計
-                  NT$#{sum_cart_items_price @cart_items}
+                  #{showed_price(sum_cart_items_price @cart_items)}
                 .scart-submit
                   = f.hidden_field :sub_total, value: sum_cart_items_price(@cart_items)
                   = f.hidden_field :item_num, value: @cart_items.size

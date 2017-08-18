@@ -8,21 +8,20 @@
           / 貨幣轉換
           .currency-sel.mg-r-15
             .currency-now
-              NTD
+              #{current_currency.symbol}
               %i.fa.fa-caret-down.mg-l-10{"aria-hidden" => "true"}
             .drop
-              %a.active{:href => "#"} NTD
-              %a{:href => "#"} USD
-              %a{:href => "#"} JPY
+              - Currency.all.each do |c|
+                = link_to_currency c
           / 貨幣轉換
           .lan-sel
-            %a.active{:href => "#"} 中文
+            = link_to_language ["zh-TW","zh"], "中文"
             \/
-            %a{:href => "#"} EN
+            = link_to_language ["en"], "EN"
     / header msg
     / 
     .fxarea-rwd
-      %a.logo{:hov => "0.75", :href => "index.html"}
+      = link_to root_path, class: "logo", :hov => "0.75" do
         = image_tag("logo-h-w")
       = render 'layouts/messages'
       .menu-container

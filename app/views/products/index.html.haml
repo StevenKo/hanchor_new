@@ -39,7 +39,7 @@
               =(image_tag product.thumb.pic_url, :itemprop => "image", :class => "v-centerimg")
             .info
               %h3.name.text-18.lh-30.color-gray-333.bold.mg-b-5= product.name
-              %p.price.text-16.lh-20.color-main-lb.mg-b-20= product.price
+              %p.price.text-16.lh-20.color-main-lb.mg-b-20= showed_price(product.price)
               %p.desc
                 = truncate_html(strip_tags(product.quick_overview), length: 60)
       / page select menu

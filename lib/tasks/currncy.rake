@@ -12,12 +12,52 @@ namespace :currency do
     page_html = Nokogiri::HTML(body)
     currency_nodes = page_html.css(".container table tbody tr")
 
-    # USD
-    c = Currency.find_or_initialize_by(symbol: "USD")
-    c.cash_buy = currency_nodes[0].css("td")[1].text
-    c.cash_sell = currency_nodes[0].css("td")[2].text
-    c.buy = currency_nodes[0].css("td")[3].text
-    c.sell = currency_nodes[0].css("td")[4].text
+    # NTD
+    c = Currency.find_or_initialize_by(symbol: "NTD")
+    c.show_symbol = "NT$"
+    c.cash_buy = 1
+    c.cash_sell = 1
+    c.buy = 1
+    c.sell = 1
     c.save
+
+    # USD
+    currency_nodes.each do |node|
+      if node.css("td")[0].text.include? "USD"
+        c = Currency.find_or_initialize_by(symbol: "USD")
+        c.show_symbol = "$"
+        c.cash_buy = node.css("td")[1].text
+        c.cash_sell = node.css("td")[2].text
+        c.buy = node.css("td")[3].text
+        c.sell = node.css("td")[4].text
+        c.save
+      end
+    end
+
+    # JPY
+    currency_nodes.each do |node|
+      if node.css("td")[0].text.include? "JPY"
+        c = Currency.find_or_initialize_by(symbol: "JPY")
+        c.show_symbol = "￥"
+        c.cash_buy = node.css("td")[1].text
+        c.cash_sell = node.css("td")[2].text
+        c.buy = node.css("td")[3].text
+        c.sell = node.css("td")[4].text
+        c.save
+      end
+    end
+
+    # EUR
+    currency_nodes.each do |node|
+      if node.css("td")[0].text.include? "EUR"
+        c = Currency.find_or_initialize_by(symbol: "EUR")
+        c.show_symbol = "€"
+        c.cash_buy = node.css("td")[1].text
+        c.cash_sell = node.css("td")[2].text
+        c.buy = node.css("td")[3].text
+        c.sell = node.css("td")[4].text
+        c.save
+      end
+    end
   end
 end

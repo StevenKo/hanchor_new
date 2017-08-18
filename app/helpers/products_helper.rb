@@ -6,4 +6,12 @@ module ProductsHelper
       link_to text, path, {:class => "type-#{type_num}"}
     end
   end
+
+  def showed_price price
+    if current_currency.symbol == "NTD"
+      "#{current_currency.show_symbol}#{price}"
+    else
+      "#{current_currency.show_symbol}#{(price / current_currency.sell).round(2)}"
+    end
+  end
 end

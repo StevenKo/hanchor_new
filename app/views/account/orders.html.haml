@@ -55,7 +55,7 @@
                   %td{"data-th" => "狀態"}= t("order.#{order.status}")
                   %td{"data-th" => "運送方式"}= order.shipping_cost.description
                   %td{"data-th" => "付款方式"}= order.payment
-                  %td{"data-th" => "金額"}= order.total
+                  %td{"data-th" => "金額"}= showed_price(order.total)
                   %td{"data-th" => "付款確認"}
                     -if (order.is_payed)
                       = t("order.payed")

@@ -6,6 +6,7 @@ class CreateCurrencies < ActiveRecord::Migration[5.1]
       t.float :cash_sell
       t.float :buy
       t.float :sell
+      t.string :show_symbol
     end
     add_index :currencies, :symbol
   end

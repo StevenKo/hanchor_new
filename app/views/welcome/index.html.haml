@@ -78,7 +78,7 @@
               =(image_tag product.thumb.pic_url, :itemprop => "image", :class => "v-centerimg")
             .info
               %h3.name.text-14.lh-24.color-gray-333.bold= product.name
-              %p.price.text-13.lh-20.color-main-lb= product.price
+              %p.price.text-13.lh-20.color-main-lb= showed_price(product.price)
   %section.bg-gray-e9.pd-v-50
     / rwd width limited
     .rwd-width-limited

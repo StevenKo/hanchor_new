@@ -40,7 +40,7 @@
       / 
       .grid-2.product-info
         %h2.name.mg-b-10= @product.name
-        %p.price.mg-b-20= "NT$#{@product.price}"
+        %p.price.mg-b-20= showed_price(@product.price)
         .line.mg-b-25
         .form-section
           = form_for @item, url: add_item_to_cart_cart_index_path(product: @product) do |f|
@@ -145,7 +145,7 @@
               =(image_tag product.thumb.pic_url, :itemprop => "image", :class => "v-centerimg")
             .info
               %h3.name.text-14.lh-24.color-gray-333.bold= product.name
-              %p.price.text-13.lh-20.color-main-lb= product.price
+              %p.price.text-13.lh-20.color-main-lb= showed_price(product.price)
     / rwd width limited
   / full width block
 / end main

@@ -13,6 +13,8 @@ Rails.application.routes.draw do
   get  "/auth/:provider/callback" => "sessions#login_by_auth", as: "login_by_auth"
   post '/auth/:provider', to: lambda{|env| [404, {}, ["Not Found"]]}, as: 'auth'
 
+  get 'set_currency', to: 'sessions#set_currency'
+
   resources :payment_notifications, only: [:create] do
     collection do
       post :allpay
