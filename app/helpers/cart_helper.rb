@@ -11,4 +11,8 @@ module CartHelper
   def get_cart_item_quantity_selector(item)
     ProductQuantity.where(product_color_id: item.product_color_id, product_size_id: item.product_size_id)[0].quantity_selector
   end
+
+  def cart_item_size
+    current_shopping_cart.cart_items.size
+  end
 end

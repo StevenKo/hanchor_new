@@ -5,6 +5,9 @@
         %li.layer-1-li
           = link_to account_path, {class: "layer-1"} do
             %h2= t('my_account')
+        %li.layer-1-li
+          = link_to logout_path, {class: "layer-1"} do
+            %h2= t('logout')
       - else
         %li.layer-1-li
           = link_to login_path, {class: "layer-1"} do
@@ -14,6 +17,6 @@
             %h2= t('account.register')
         
       %li.layer-1-li
-        %a.layer-1.scart{:href => "shoppingcart.html"}
+        = link_to cart_index_path, {class: "layer-1 scart"} do
           =image_tag("ico-scart")
-          %h2 5
+          %h2= cart_item_size

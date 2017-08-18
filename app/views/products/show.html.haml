@@ -44,9 +44,10 @@
         .line.mg-b-25
         .form-section
           = form_for @item, url: add_item_to_cart_cart_index_path(product: @product) do |f|
-            = f.select :product_size_id, @product_size_selector
-            = f.select :product_color_id, @product_color_selector
-            = select_tag :quantity,[1], style: "display: none"
+            .none{style: "display: none"}
+              = f.select :product_size_id, @product_size_selector
+              = f.select :product_color_id, @product_color_selector
+              = select_tag :quantity,[1]
             .mg-b-30
               / color
               .sel-color
