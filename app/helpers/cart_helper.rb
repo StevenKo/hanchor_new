@@ -13,6 +13,6 @@ module CartHelper
   end
 
   def cart_item_size
-    current_shopping_cart.cart_items.size
+    current_shopping_cart.nil? ? 0 : current_shopping_cart.cart_items.size
   end
 end
