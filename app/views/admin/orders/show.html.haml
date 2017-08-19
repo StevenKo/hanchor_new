@@ -1,4 +1,4 @@
-%table.table
+%table.admin-table
   %tbody
     %tr
       %th{:width => "100"} 編號
@@ -47,10 +47,10 @@
       %td
         = t("order.#{@order.status}")
         %br
-          = link_to t("order.order_confirm"), change_status_admin_order_path(@order,value: "order_confirm"), class: "btn"
-          = link_to t("order.order_cancel"), change_status_admin_order_path(@order,value: "order_cancel"), class: "btn"
-          = link_to t("order.pay_confirm"), change_status_admin_order_path(@order,value: "pay_confirm"), class: "btn"
-          = link_to t("order.shipped"), change_status_admin_order_path(@order,value: "shipped"), class: "btn"
+          = link_to t("order.order_confirm"), change_status_admin_order_path(@order,value: "order_confirm"), class: "btn btn-s btn-grey inlineblock-imp"
+          = link_to t("order.order_cancel"), change_status_admin_order_path(@order,value: "order_cancel"), class: "btn btn-s btn-grey inlineblock-imp"
+          = link_to t("order.pay_confirm"), change_status_admin_order_path(@order,value: "pay_confirm"), class: "btn btn-s btn-grey inlineblock-imp"
+          = link_to t("order.shipped"), change_status_admin_order_path(@order,value: "shipped"), class: "btn btn-s btn-grey inlineblock-imp"
     %tr
       %th 付款資訊(銀行)
       %td= @order.bank
@@ -59,8 +59,8 @@
       %td
         = (@order.is_payed) ? t("order.payed") : t("order.not_payed")
 
-訂單細節
-%table.table
+%h2.title-line.inlineblock 訂單細節
+%table.admin-table
   %thead
     %tr
       %th 出貨編號
@@ -80,7 +80,6 @@
         %td= order_item.price
         %td= order_item.quantity
         %td= order_item.price * order_item.quantity
-
-= link_to "back", admin_orders_path, class: "btn"
 %br
 %br
+= link_to "back", admin_orders_path, class: "btn btn-m btn-blue"
