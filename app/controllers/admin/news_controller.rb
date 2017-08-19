@@ -48,7 +48,7 @@ private
   end
 
   def create_news_tags(news, params)
-    NewsTagsRelation.delete_all(news_id: news.id)
+    NewsTagsRelation.where(news_id: news.id).delete_all
     params[:news_tag].split(",").each do |tag_id|
       NewsTagsRelation.create(news_id: news.id, news_tag_id: tag_id)
     end
