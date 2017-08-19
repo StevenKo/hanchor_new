@@ -1,5 +1,5 @@
 .breadcrumbs
-  .form-section
+  .form-style-5
     = form_for category, url: url,:html => {multipart: true} do |f|
       %h3.text-16.lh-24.bold 上層分類
       = f.select :parent_id, category_selection,label: "上層分類"
