@@ -14,4 +14,7 @@
   %body
     %header
       = render 'layouts/admin/navigation'
-    = yield
+    .container
+      - flash.each do |key, value|
+        %div{:class => "bold", style: "color:red;"}= value
+      = yield
