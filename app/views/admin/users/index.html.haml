@@ -1,6 +1,4 @@
-= will_paginate @users
-
-%table.table
+%table.admin-table
   %tr
     %th 編號
     %th 名字
@@ -16,4 +14,5 @@
       %td= user.orders.showed.size
       %td= link_to 'Show', admin_user_path(user)
 
-= will_paginate @users
+%nav.page-menu.relative
+  = will_paginate(@users, :renderer => 'BootstrapPaginationHelper::LinkRenderer')
