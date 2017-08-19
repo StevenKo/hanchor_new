@@ -1,4 +1,6 @@
-%table.table
+= link_to "Add New Category", new_admin_category_path, class: "btn btn-s btn-blue inlineblock-imp"
+
+%table.admin-table
   %tr
     %th 產品編號
     %th 上層分類(EN)
@@ -14,5 +16,3 @@
       %td= (category.is_visible)? "顯示" : "不顯示"
       %td= link_to 'Edit', edit_admin_category_path(category)
       %td= link_to 'Destroy', admin_category_path(category), method: :delete, data: { confirm: 'Are you sure?' }
-
-= link_to "New", new_admin_category_path, class: "btn"

@@ -67,7 +67,7 @@
                 / = select_tag :quantity,[], style: "display: none"
                 / %strong{id: "out_of_stock",style: "display: none"}
                 /   = t('product.out_of_stock')
-                %select.nice-sel-wrap
+                %select.nice-sel-wrap.nice_select
                   %option{:value => "1"} 1
                   %option{:value => "2"} 2
                   %option{:value => "3"} 3
@@ -83,7 +83,7 @@
                 / = select_tag :quantity,[], style: "display: none"
                 / %strong{id: "out_of_stock",style: "display: none"}
                 /   = t('product.out_of_stock')
-                %select.nice-sel-wrap
+                %select.nice-sel-wrap.nice_select
                   %option{:value => "1"} S
                   %option{:value => "2"} M
                   %option{:value => "3"} L

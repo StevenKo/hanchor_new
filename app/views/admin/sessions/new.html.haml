@@ -1,14 +1,3 @@
-%section.sign_in.container
-  .row
-    .span10.offset1
-      = bootstrap_form_for :session, url: admin_login_path do |f|
-        %header
-          %h1 Admin Sign in
-        = f.text_field :name, label: "User Name"
-        = f.password_field :password, label: "Password"
-        %br
-        = f.submit "Sign in"
-
 %section.wrapper
   / rwd padding
   %section.full-bg

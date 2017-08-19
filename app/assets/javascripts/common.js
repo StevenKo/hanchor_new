@@ -1,7 +1,7 @@
 $(document).ready(function(){
 	
 	
-	$('select').niceSelect();
+	$('.nice_select').niceSelect();
 	
 	//hover function
 	$( "[hov]" ).hover(function(){$(this).stop().fadeTo(100,$(this).attr('hov'));},function(){$(this).stop().fadeTo(100,1)});
