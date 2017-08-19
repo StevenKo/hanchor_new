@@ -1,12 +1,15 @@
-%section.register.container
-  .row
-    .span10
-      = bootstrap_form_for shipping_cost, url: url,:html => {:class => "form-horizontal", multipart: true} do |f|
-        = f.text_field :description, label: "方式"
-        = f.text_field :cost, label: "費用"
-        = f.select :country_id, country_select, label: "地區(國家)"
-        .offset2
-          = f.secondary "確定"
-          = link_to "返回", admin_shipping_costs_path, class: "btn"
-          - unless shipping_cost.new_record?
-            = link_to "刪除", admin_shipping_cost_path(shipping_cost), method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger"
+.breadcrumbs
+  .form-section
+    = form_for shipping_cost, url: url,:html => {multipart: true} do |f|
+      %h3.text-16.lh-24.bold 方式
+      = f.text_field :description, label: "方式"
+      %h3.text-16.lh-24.bold 費用
+      = f.text_field :cost, label: "費用"
+      %h3.text-16.lh-24.bold 地區(國家)
+      = f.select :country_id, country_select, label: "地區(國家)"
+      %br
+      .offset2
+        = f.submit "確定"
+        = link_to "返回", admin_shipping_costs_path, class: "btn"
+        - unless shipping_cost.new_record?
+          = link_to "刪除", admin_shipping_cost_path(shipping_cost), method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger"
