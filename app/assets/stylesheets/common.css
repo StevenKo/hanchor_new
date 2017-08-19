@@ -41,7 +41,6 @@
 
 .bg-main-lb{background:#3b84fb;}
 .color-main-lb{color:#3b84fb;}
-.breadcrumb a{color:#3b84fb;font-weight: bold;}
 
 .bg-main-db{background:#1f60cb;}
 .color-main-db{color:#1f60cb;}
@@ -125,6 +124,7 @@ body{
 .one-ipc:hover .info.color-6{background:rgba(39,39,42,1);}
 
 .breadcrumbs{background:#f1f1f1;padding:14px 0;}
+.breadcrumb a{color:#3b84fb;font-weight: bold;}
 
 footer{overflow:hidden;}
 
@@ -170,6 +170,7 @@ Mobile style's
 	.grid3-21.grid-3-1{width:calc(33.333% - 40px);margin:0 20px;}
 	.sidebar-con .grid-4-1{width:160px;margin:0 20px;}
 	.sidebar-con .grid-4-3{width:calc(100% - 240px);margin:0 20px;}
+	.grid-800px{width:660px;margin:0 auto;}
 	
 }
 

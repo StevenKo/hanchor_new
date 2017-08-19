@@ -7,7 +7,7 @@
 	clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
 }
 .has-js label.c-on { background: url(check-on.png) no-repeat; }
-.has-js label.r-on {background-image:url(../images/common/ico-check.png) !important;background-repeat: no-repeat !important;background-position:center center !important;}
+.has-js label.r-on {background-image: image-url("ico-check.png") !important;background-repeat: no-repeat !important;background-position:center center !important;}
 .has-js .label-check input,.has-js .label-radio input { position: absolute; left: -9999px; }
 
 .index-tab .left{float:left;}
@@ -79,7 +79,7 @@
 .tab-con .tab-inner{display:none;}
 .tab-con .tab-inner.active{display:block;}
 
-.product-mid-bg{background:url(../images/common/product-mid-bg.png) repeat-x;}
+.product-mid-bg{background:image-url("product-mid-bg.png") repeat-x;}
 .pruduct-desc,.pruduct-preview{width:640px;margin:0 auto;}
 .pruduct-desc img{max-width: 100%;}
 
@@ -144,7 +144,7 @@
 	clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
 	vertical-align:middle;
 	margin-left:5px;
-	background-image: image-url("ico-check.png") !important;background-repeat: no-repeat !important;background-position:center center !important;
+	background-image:image-url("ico-check.png") !important;background-repeat: no-repeat !important;background-position:center center !important;
 }
 .one-scart .info .product-price{font-size:13px;color:#3b84fb;font-weight: bold;}
 .one-scart .qty{float: left;width:calc(40% - 120px);margin-right:20px;}
@@ -163,7 +163,7 @@
 		right: 0px;
 		top: 0px;
 		bottom: 0px;
-		background-image: image-url('login-bg.jpg');
+		background-image: image-url("login-bg.jpg");
 		background-size: cover;
 }
 .login-signup-sec{text-align:right;}
@@ -312,7 +312,8 @@
 	.member-sec .pay-radio{width:20px;}
 	.member-sec .pay-text{width:calc(100% - 40px);}
 	
-	.input-form .one-input .title{text-align:left;}
+	.input-form .one-input .title{width:100%;text-align:left;margin-right:0;}
+	.input-form .one-input .input{width:100%;}
 	.input-form .one-input .input input, .input-form .one-input .input textarea{width:100%;min-width:120px;}
 	
 	.contact-form .input-textarea{width:100%;height:164px;}
