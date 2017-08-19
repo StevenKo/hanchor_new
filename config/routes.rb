@@ -75,9 +75,6 @@ Rails.application.routes.draw do
       member do
         get 'change_status'
       end
-      collection do
-        get 'export_orders'
-      end
     end
     resources :products do
       resources :product_colors, only: [:index, :destroy] do

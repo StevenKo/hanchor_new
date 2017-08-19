@@ -198,7 +198,7 @@ Mobile style's
 
 @media screen and (min-width: 1200px) {
 	header .fixarea .fxarea-rwd{width:1160px;margin:0 auto;display:block;overflow:hidden;padding:0 20px;}
-	.layer-1-li .menu-line:after{content:"";position:absolute;background:url(../images/common/menu-line.jpg) no-repeat;display:block;width:1px;height:95px;top:0;right:0;}
+	.layer-1-li .menu-line:after{content:"";position:absolute;background:image-url("menu-line.jpg") no-repeat;display:block;width:1px;height:95px;top:0;right:0;}
 	.layer-1-li:nth-last-child(1) .menu-line:after{display:none;}
 	.menu .layer-2-adj{width:1200px;margin:0 auto;}
 	}
@@ -224,7 +224,7 @@ Mobile style's
 		width:100px;
 		height:95px;
 		content: "";
-		background:url(../images/common/menu.png) no-repeat center center;
+		background: image-url("menu.png") no-repeat center center;
 		display:block;
 		position:absolute;
 		right:0;
@@ -235,7 +235,7 @@ Mobile style's
 		width:100px;
 		height:95px;
 		content: "";
-		background:url(../images/common/menu-close.png) no-repeat center center;
+		background: image-url("menu-close.png") no-repeat center center;
 		display:block;
 		position:absolute;
 		right:0;
@@ -266,7 +266,7 @@ Mobile style's
 		font-weight:bold;
     }
 	.menu .layer-1 h2{display:inline-block;}
-	.menu .layer-1 h2:before{content:"";background:url(../images/common/menu_dot.png) no-repeat ;width:10px;height:10px;position:absolute;left:-15px;top:6px;}
+	.menu .layer-1 h2:before{content:"";background: url(../images/common/menu_dot.png) no-repeat ;width:10px;height:10px;position:absolute;left:-15px;top:6px;}
 	.menu .layer-1:hover{color:#2275d7;}
 	.menu li.layer-1-li:hover .layer-1{
 	border-bottom:none;

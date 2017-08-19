@@ -37,6 +37,6 @@
       %th 訂單紀錄
       %td 
         - @user.orders.showed.each_with_index do |order,i|
-          = link_to "order#{i.to_s}",""
+          = link_to "order#{i.to_s}", admin_order_path(order)
 
 = link_to "back", admin_users_path, class: "btn btn-m btn-blue"
