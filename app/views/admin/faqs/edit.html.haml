@@ -1,7 +1,6 @@
 = form_for @faq, url: admin_faq_path(@faq) do |f|
-  = f.label :purpose, "功用"
-  = @faq.purpose
-  = f.label "context"
+  %h3.text-16.lh-24.bold 功用 : #{@faq.purpose}
+  %h3.text-16.lh-24.bold context
   = f.cktext_area :context, :class => "someclass", :ckeditor => {:language => "en"}
   %br
   = f.submit "確定", class: 'btn'
