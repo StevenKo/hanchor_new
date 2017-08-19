@@ -2,35 +2,25 @@
   .menu
     %ul.layer-1-ul
       %li.layer-1-li
-        = link_to admin_users_path, {:class => "layer-1 menu-line"} do
-          %h2= "Members"
+        = link_to_menu admin_users_path, "Members"
       %li.layer-1-li
-        = link_to admin_orders_path, {:class => "layer-1 menu-line"} do
-          %h2= "Orders"
+        = link_to_menu admin_orders_path, "Orders"
       %li.layer-1-li
-        = link_to admin_products_path, {:class => "layer-1 menu-line"} do
-          %h2= "Products"
+        = link_to_menu admin_products_path, "Products"
       %li.layer-1-li
-        = link_to admin_categories_path, {:class => "layer-1 menu-line"} do
-          %h2= "Categories"
+        = link_to_menu admin_categories_path, "Categories"
       %li.layer-1-li
-        = link_to admin_shipping_costs_path, {:class => "layer-1 menu-line"} do
-          %h2= "Shipping"
+        = link_to_menu admin_shipping_costs_path, "Shipping"
       %li.layer-1-li
-        = link_to admin_news_index_path, {:class => "layer-1 menu-line"} do
-          %h2= "News"
+        = link_to_menu admin_news_index_path, "News"
       %li.layer-1-li
-        = link_to admin_news_tags_path, {:class => "layer-1 menu-line"} do
-          %h2= "News' Tags"
+        = link_to_menu admin_news_tags_path, "News' Tags"
       %li.layer-1-li
-        = link_to admin_faqs_path, {:class => "layer-1 menu-line"} do
-          %h2= "FAQs"
+        = link_to_menu admin_faqs_path, "FAQs"
       %li.layer-1-li
-        = link_to admin_banners_path, {:class => "layer-1 menu-line"} do
-          %h2= "Banner"
+        = link_to_menu admin_banners_path, "Banner"
       %li.layer-1-li
-        = link_to admin_videos_path, {:class => "layer-1 menu-line"} do
-          %h2= "Videos"
+        = link_to_menu admin_videos_path, "Videos"
 .login-signup-container
   .login-signup
     %ul.layer-1-ul
