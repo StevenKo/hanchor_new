@@ -8,3 +8,18 @@
         = f.password_field :password, label: "Password"
         %br
         = f.submit "Sign in"
+
+%section.wrapper
+  / rwd padding
+  %section.full-bg
+    .login-bg.ofhidden
+    / rwd width limited
+    .rwd-width-limited
+      .mg-b-30
+        = form_for :session, url: admin_login_path do |f|
+          .mg-b-30
+            %h2.text-24.lh-30.color-white.bold Admin登 入
+            = f.text_field :name, label: "User Name"
+            = f.password_field :password, label: "Password"
+            %br
+            = f.submit "Sign in"

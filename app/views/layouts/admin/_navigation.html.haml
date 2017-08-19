@@ -1,24 +1,40 @@
-%ul.nav.navbar-nav.main-nav
-  %li
-    =link_to "Members", admin_users_path
-  %li
-    =link_to "Orders", admin_orders_path
-  %li
-    =link_to "Products", admin_products_path
-  %li
-    =link_to "Categories", admin_categories_path
-  %li
-    =link_to "Shipping", admin_shipping_costs_path
-  %li
-    =link_to "News", admin_news_index_path
-  %li
-    =link_to "News' Tags", admin_news_tags_path
-  %li
-    =link_to "FAQs", admin_faqs_path
-  %li
-    =link_to "Banner", admin_banners_path
-  %li
-    =link_to "Videos", admin_videos_path
-#user_links.pull-right
-  - if current_admin && current_admin.admin?
-    = link_to 'Logout', admin_logout_path
+.menu-container
+  .menu
+    %ul.layer-1-ul
+      %li.layer-1-li
+        = link_to admin_users_path, {:class => "layer-1 menu-line"} do
+          %h2= "Members"
+      %li.layer-1-li
+        = link_to admin_users_path, {:class => "layer-1 menu-line"} do
+          %h2= "Orders"
+      %li.layer-1-li
+        = link_to admin_users_path, {:class => "layer-1 menu-line"} do
+          %h2= "Products"
+      %li.layer-1-li
+        = link_to admin_users_path, {:class => "layer-1 menu-line"} do
+          %h2= "Categories"
+      %li.layer-1-li
+        = link_to admin_users_path, {:class => "layer-1 menu-line"} do
+          %h2= "Shipping"
+      %li.layer-1-li
+        = link_to admin_users_path, {:class => "layer-1 menu-line"} do
+          %h2= "News"
+      %li.layer-1-li
+        = link_to admin_users_path, {:class => "layer-1 menu-line"} do
+          %h2= "News' Tags"
+      %li.layer-1-li
+        = link_to admin_users_path, {:class => "layer-1 menu-line"} do
+          %h2= "FAQs"
+      %li.layer-1-li
+        = link_to admin_users_path, {:class => "layer-1 menu-line"} do
+          %h2= "Banner"
+      %li.layer-1-li
+        = link_to admin_users_path, {:class => "layer-1 menu-line"} do
+          %h2= "Videos"
+.login-signup-container
+  .login-signup
+    %ul.layer-1-ul
+      - if current_admin && current_admin.admin?
+        %li.layer-1-li
+          = link_to admin_logout_path, {class: "layer-1"} do
+            %h2= 'Logout'
