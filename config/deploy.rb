@@ -1,6 +1,9 @@
 # config valid only for current version of Capistrano
 lock "3.9.0"
 
+
+set :whenever_identifier, ->{ "#{fetch(:application)}_#{fetch(:stage)}" }
+
 server '172.104.72.247', roles: [:web, :app, :db], primary: true
 
 set :repo_url,        'https://github.com/StevenKo/hanchor_new'
