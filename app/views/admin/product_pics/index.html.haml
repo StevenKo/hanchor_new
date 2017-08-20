@@ -1,15 +1,17 @@
-%h1 Pics Gallery
-%ul#paintings{"data-update-url" => sort_admin_product_product_pics_path(@product)}
-  = render @pics, {product: @product}
+.breadcrumbs
+  .form-style-5
+    %h3.text-16.lh-24.bold Pics Gallery
+    %ul#paintings{"data-update-url" => sort_admin_product_product_pics_path(@product)}
+      = render @pics, {product: @product}
+    .clearfix
+    = form_for @new_pic, url: admin_product_product_pics_path(@product),:html => {multipart: true} do |f|
+      = f.hidden_field :product_id, value: @product.id
+      %h3.text-16.lh-24.bold Upload Pics:
+      = f.file_field :pic, multiple: true, name: "product_pic[pic]"
 
-.clearfix
-
-= form_for @new_pic, url: admin_product_product_pics_path(@product) do |f|
-  = f.hidden_field :product_id, value: @product.id
-  = f.label :pic, "Upload Pics:"
-  = f.file_field :pic, multiple: true, name: "product_pic[pic]"
-%script#template-upload{:type => "text/x-tmpl"}
-  .upload
-    {%=o.name%}
-    .progress
-      .bar{:style => "width: 0%"}
+    %script#template-upload{:type => "text/x-tmpl"}
+      .upload
+        {%=o.name%}
+        .progress
+          .bar{:style => "width: 0%"}
+= link_to "返回", edit_admin_product_path(@product), class: "btn btn-m btn-blue"

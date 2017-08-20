@@ -1,7 +1,7 @@
 class ProductQuantity < ActiveRecord::Base
   belongs_to :product
-  belongs_to :product_color
-  belongs_to :product_size
+  belongs_to :product_color, optional: true
+  belongs_to :product_size, optional: true
 
 
   def self.create_quantiy product_id
@@ -11,7 +11,7 @@ class ProductQuantity < ActiveRecord::Base
       sizes.each do |size|
         quantity = ProductQuantity.where("product_color_id = #{color.id} and product_size_id = #{size.id}").first
         ProductQuantity.create(product_id: product_id, product_color_id: color.id, product_size_id: size.id) if quantity.blank?
-        ProductQuantity.delete_all("product_id = #{product_id} and (product_color_id is null or product_size_id is null) ")
+        ProductQuantity.where("product_id = #{product_id} and (product_color_id is null or product_size_id is null) ").delete_all
       end
     end
 

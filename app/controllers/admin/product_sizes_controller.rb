@@ -23,9 +23,9 @@ class Admin::ProductSizesController < Admin::AdminController
       params[:sizes][:product_size].each do |key,param|
         if ProductSize.exists?(key)
           size = ProductSize.find(key)
-          size.update(param)
+          size.update(param.permit!)
         else
-          size = ProductSize.new(param)
+          size = ProductSize.new(param.permit!)
           size.product_id = product.id
           size.save
         end

@@ -23,9 +23,9 @@ class Admin::ProductColorsController < Admin::AdminController
       params[:colors][:product_color].each do |key,param|
         if ProductColor.exists?(key)
           product_color = ProductColor.find(key)
-          product_color.update(param)
+          product_color.update(param.permit!)
         else
-          color = ProductColor.new(param)
+          color = ProductColor.new(param.permit!)
           color.product_id = product.id
           color.save
         end

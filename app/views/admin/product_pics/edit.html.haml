@@ -1,3 +1,20 @@
-%h1 Editing Pic
-
-= render 'form'
+.breadcrumbs
+  .form-style-5
+    = form_for @pic, url: admin_product_product_pic_path(@product,@pic),:html => {multipart: true} do |f|
+      %h3.text-24.lh-30.bold 修改照片
+      = image_tag(@pic.pic_url, :style => 'max-height: 400px; max-width:400px;') unless @pic.pic_url.nil?
+      - if @pic.errors.any?
+        #error_explanation
+          %h2
+            = pluralize(@pic.errors.count, "error")
+            prohibited this pic from being saved:
+          %ul
+            - @pic.errors.full_messages.each do |msg|
+              %li= msg
+      %h3.text-16.lh-24.bold 照片描述
+      = f.text_field :description
+      %h3.text-16.lh-24.bold 上傳
+      = f.file_field :pic
+      %br
+      .offset2
+        = f.submit "確定更新"

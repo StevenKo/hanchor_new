@@ -1,5 +1,5 @@
 class Admin::ProductPicsController < Admin::AdminController
-
+  skip_before_action :verify_authenticity_token, only: [:sort]
   def index
     @product = Product.find_by_slug(params[:product_id])
     @pics = @product.product_pics
@@ -39,9 +39,9 @@ class Admin::ProductPicsController < Admin::AdminController
 
   def sort
     params[:product_pic].each_with_index do |id, index|
-      ProductPic.update_all({sort: index+1}, {id: id})
+      ProductPic.where(id: id).update_all(sort: index+1)
     end
-    render nothing: true
+    render body: nil
   end
 
 end

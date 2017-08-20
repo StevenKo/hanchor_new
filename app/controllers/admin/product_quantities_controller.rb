@@ -9,7 +9,7 @@ class Admin::ProductQuantitiesController < Admin::AdminController
     params[:quantites][:product_quantity].each do |key,param|
       if ProductQuantity.exists?(key)
         quantity = ProductQuantity.find(key)
-        quantity.update(param)
+        quantity.update(param.permit!)
       end
     end
     redirect_to admin_product_product_quantities_path(params[:product_id])
