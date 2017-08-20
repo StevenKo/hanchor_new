@@ -1,11 +1,11 @@
 # config valid only for current version of Capistrano
 lock "3.9.0"
 
-server '172.104.70.254', roles: [:web, :app, :db], primary: true
+server '172.104.72.247', roles: [:web, :app, :db], primary: true
 
 set :repo_url,        'https://github.com/StevenKo/hanchor_new'
 set :application,     'hanchor_new'
-set :user,            'app'
+set :user,            'deploy'
 set :puma_threads,    [4, 16]
 set :puma_workers,    0
 
