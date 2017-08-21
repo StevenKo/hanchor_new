@@ -6,7 +6,7 @@
       %h3.text-16.lh-24.bold 發表日期
       = f.date_select :release_date, label: "發表日期", :class => "span7"
       .offset2
-        = image_tag(news.pic_url, :style => 'max-height: 400px; max-width:400px;')
+        = image_tag(news.pic_url, :style => 'max-height: 400px; max-width:400px;') unless news.pic_url.nil?
       %h3.text-16.lh-24.bold 上傳圖片(圖片建議大小:570x355)
       = f.file_field :pic, :class => "span7", label: "上傳圖片(圖片建議大小:570x355)"
       %h3.text-16.lh-24.bold 內容

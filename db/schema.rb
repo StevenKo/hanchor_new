@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170817083252) do
+ActiveRecord::Schema.define(version: 20170821063350) do
 
   create_table "banners", id: :integer, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci" do |t|
     t.string "pic"
@@ -48,7 +48,7 @@ ActiveRecord::Schema.define(version: 20170817083252) do
     t.datetime "updated_at"
   end
 
-  create_table "currencies", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci" do |t|
+  create_table "currencies", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "symbol"
     t.float "cash_buy", limit: 24
     t.float "cash_sell", limit: 24
@@ -67,6 +67,18 @@ ActiveRecord::Schema.define(version: 20170817083252) do
     t.index ["purpose"], name: "index_faqs_on_purpose"
   end
 
+  create_table "friendly_id_slugs", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string "slug", null: false
+    t.integer "sluggable_id", null: false
+    t.string "sluggable_type", limit: 50
+    t.string "scope"
+    t.datetime "created_at"
+    t.index ["slug", "sluggable_type", "scope"], name: "index_friendly_id_slugs_on_slug_and_sluggable_type_and_scope", unique: true
+    t.index ["slug", "sluggable_type"], name: "index_friendly_id_slugs_on_slug_and_sluggable_type"
+    t.index ["sluggable_id"], name: "index_friendly_id_slugs_on_sluggable_id"
+    t.index ["sluggable_type"], name: "index_friendly_id_slugs_on_sluggable_type"
+  end
+
   create_table "news", id: :integer, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci" do |t|
     t.string "title"
     t.text "content"
@@ -78,7 +90,9 @@ ActiveRecord::Schema.define(version: 20170817083252) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.datetime "release_date"
+    t.string "slug"
     t.index ["release_date"], name: "index_news_on_release_date"
+    t.index ["slug"], name: "index_news_on_slug"
   end
 
   create_table "news_tags", id: :integer, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci" do |t|

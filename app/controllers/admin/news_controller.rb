@@ -5,7 +5,7 @@ class Admin::NewsController < Admin::AdminController
   end
 
   def edit
-    @news = News.find(params[:id])
+    @news = News.friendly.find(params[:id])
     @tags = NewsTag.all
   end
 
@@ -26,7 +26,7 @@ class Admin::NewsController < Admin::AdminController
   end
 
   def update
-    @news = News.find(params[:id])
+    @news = News.friendly.find(params[:id])
     if @news.update(news_param)
       create_news_tags(@news, params)
       flash[:notice] = "Update success"
@@ -37,7 +37,8 @@ class Admin::NewsController < Admin::AdminController
   end
 
   def destroy
-    News.delete(params[:id])
+    news = News.friendly.find(params[:id])
+    news.delete
     flash[:notice] = "delete success"
     redirect_to admin_news_index_path
   end

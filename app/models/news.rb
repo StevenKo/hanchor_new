@@ -13,4 +13,19 @@ class News < ActiveRecord::Base
     end
   }
 
+  extend FriendlyId
+  friendly_id :title, use: [:slugged, :history]
+
+  def should_generate_new_friendly_id?
+    !has_friendly_id_slug? || title_changed?
+  end
+
+  def has_friendly_id_slug?
+    slugs.where(slug: slug).exists?
+  end
+
+  def normalize_friendly_id(input)
+    input.to_s.to_slug.normalize.to_s
+  end
+
 end
