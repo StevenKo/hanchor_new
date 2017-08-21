@@ -125,8 +125,11 @@
                     %label.pay-text{:for => "pay-2"}
                       %img.pay-method-pic{:alt => "", :src => "https://www.paypal.com/en_US/i/bnr/horizontal_solution_PPeCheck.gif"}/
                 .mg-b-20.clearfix
-                  = f.radio_button :payment, t('cart.pay_when_shipped'), class: "pay-3 pay-radio"
+                  = f.radio_button :payment, "transfer", class: "pay-3 pay-radio"
                   %label.pay-text{:for => "pay-3"} 銀行或 ATM 匯款（請於匯款後點選通知匯款以利盡快出貨）
+                .mg-b-20.clearfix.pay_when_shipped{:style => "display: none;"}
+                  = f.radio_button :payment, t('cart.pay_when_shipped'), class: "pay-4 pay-radio"
+                  %label.pay-text{:for => "pay-4"} #{t('cart.pay_when_shipped')}
             / 
             / line
             .gray-h-line.mg-b-40.grid-800px

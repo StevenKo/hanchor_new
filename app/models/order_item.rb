@@ -1,8 +1,8 @@
 class OrderItem < ActiveRecord::Base
   belongs_to :product
   belongs_to :order
-  belongs_to :product_size
-  belongs_to :product_color
+  belongs_to :product_size, optional: true
+  belongs_to :product_color, optional: true
 
   def display_name(country_id, locale)
     item_name = product.product_infos.where("product_infos.country_id = #{country_id}")[0].name
