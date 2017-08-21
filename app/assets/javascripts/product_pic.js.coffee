@@ -3,6 +3,10 @@ jQuery ->
     update: ->
       $.post($(this).data('update-url'), $(this).sortable('serialize'))
 
+  $('#recommends').sortable
+    update: ->
+      $.post($(this).data('update-url'), $(this).sortable('serialize'))
+
   $('#new_product_pic').fileupload
     dataType: "script"
     add: (e, data) ->

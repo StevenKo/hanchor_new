@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170821083145) do
+ActiveRecord::Schema.define(version: 20170821101924) do
 
   create_table "announcements", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.text "message"
@@ -233,10 +233,20 @@ ActiveRecord::Schema.define(version: 20170821083145) do
     t.integer "views", default: 0
     t.boolean "is_show_at_index", default: false
     t.string "slug"
+    t.boolean "is_visible", default: true
     t.index ["product_category_id"], name: "index_products_on_product_category_id"
     t.index ["slug"], name: "index_products_on_slug"
     t.index ["sort"], name: "index_products_on_sort"
     t.index ["views"], name: "index_products_on_views"
+  end
+
+  create_table "recommend_ships", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.integer "product_id"
+    t.integer "recommend_id"
+    t.integer "sort", default: 0
+    t.index ["product_id"], name: "index_recommend_ships_on_product_id"
+    t.index ["recommend_id"], name: "index_recommend_ships_on_recommend_id"
+    t.index ["sort"], name: "index_recommend_ships_on_sort"
   end
 
   create_table "shipping_costs", id: :integer, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci" do |t|

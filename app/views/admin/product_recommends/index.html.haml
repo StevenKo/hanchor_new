@@ -1,0 +1,17 @@
+.breadcrumbs
+  .form-style-5
+    %h3.text-16.lh-24.bold 推薦商品順序（拖拉)
+    .gallery
+      %ul#recommends{"data-update-url" => sort_admin_product_product_recommends_path(@product)}
+        = render :partial => "product", :collection => @recommends, :as => :recommend
+    .clearfix
+    %h3.text-16.lh-24.bold 勾選推薦商品
+    = form_tag "", url: admin_product_product_recommends_path(@product) do
+      - @all_products.each do |p|
+        .checkboxOne.inlineblock
+          = image_tag p.product_pics.first.pic_url
+          = check_box_tag "products[is_recommend][]", p.id, @product.recommends.include?(p)
+          = p.slug
+      = submit_tag "確定", class: "btn"
+
+= link_to "返回", edit_admin_product_path(@product), class: "btn btn-m btn-blue"

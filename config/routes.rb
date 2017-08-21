@@ -91,6 +91,9 @@ Rails.application.routes.draw do
       resources :product_pics do
         collection { post :sort }
       end
+      resources :product_recommends, only: [:index, :create] do
+        collection { post :sort; }
+      end
     end
     resources :news_tags, except: [:show]
     resources :categories

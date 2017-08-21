@@ -113,18 +113,18 @@
 }
 
 
-div.gallery {
+div.gallery li{
     margin: 5px;
     border: 1px solid #ccc;
     width: 180px;
     display: inline-block;
 }
 
-div.gallery:hover {
+div.gallery li:hover {
     border: 1px solid #777;
 }
 
-div.gallery img {
+div.gallery li img {
     width: 100%;
     height: auto;
 }
@@ -132,4 +132,16 @@ div.gallery img {
 div.desc {
     padding: 15px;
     text-align: center;
+}
+
+.checkboxOne {
+    width: 180px;
+    margin: 5px;
+    padding: 5px;
+    border: 1px solid #c00;
+}
+
+.checkboxOne img {
+    width: 100%;
+    height: auto;
 }

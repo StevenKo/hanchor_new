@@ -7,6 +7,10 @@ class Product < ActiveRecord::Base
   has_many :product_quantities
   has_many :product_infos
 
+  has_many :recommend_ships
+  has_many :recommends, :class_name => 'Product', :foreign_key => 'recommend_id', :through => :recommend_ships
+
+  scope :showed, -> { where(is_visible: true) }
   scope :visible, -> {where("product_infos.is_visible = true")}
 
   scope :select_info, -> { select(" product_infos.name,
@@ -79,6 +83,22 @@ class Product < ActiveRecord::Base
 
   def sum_quantities
     product_quantities.map(&:quantity).inject(:+)
+  end
+
+  def update_visible
+    infos = product_infos
+    unless infos.map{|i| i.is_visible}.any?
+      update_column(:is_visible, false)
+    else
+      update_column(:is_visible, true)
+    end
+  end
+
+  def update_slug
+    infos = product_infos
+    if infos[1].name.present?
+      update_column(:slug, infos[1].name)
+    end
   end
 
 end

@@ -22,6 +22,7 @@ class Admin::ProductsController < Admin::AdminController
     @category_selection = ProductCategory.generate_category_array
     @shipping_tw = ShippingCost.where(country_id: 1)
     @shipping_en = ShippingCost.where(country_id: 2)
+    @recommends = @product.recommends.select("products.id, slug, recommend_ships.id as r_id").order("recommend_ships.sort asc")
   end
 
   def update
