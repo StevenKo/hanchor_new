@@ -99,6 +99,7 @@ Rails.application.routes.draw do
     resources :faqs, only: [:index, :edit, :update]
     resources :banners, except: [:show]
     resources :videos, except: [:show]
+    resources :announcements, except: [:show]
   end
 
   get "/*other" => redirect("/")

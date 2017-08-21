@@ -1,0 +1,15 @@
+.breadcrumbs
+  .form-style-5
+    = form_for announcement, url: url,:html => {multipart: true} do |f|
+      %h3.text-16.lh-24.bold 訊息
+      = f.text_field :message, :class => "span7", label: "訊息"
+      %h3.text-16.lh-24.bold 連結
+      = f.text_field :link, :class => "span7", label: "連結"
+      %h3.text-16.lh-24.bold 排序(數字越大，排序越前面)
+      = f.text_field :sort, :class => "span7", label: "排序(數字越大，排序越前面)"
+      %br
+      .offset2
+        = f.submit "確定"
+        = link_to "返回", admin_announcements_path, class: "btn"
+        - unless announcement.new_record?
+          = link_to "刪除", admin_announcement_path(announcement), method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger"
