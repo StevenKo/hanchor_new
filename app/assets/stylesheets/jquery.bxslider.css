@@ -18,6 +18,10 @@
   margin: 0;
   padding: 0;
 }
+
+.bxslider img{
+  width: 100%;
+}
 ul.bxslider {
   list-style: none;
 }

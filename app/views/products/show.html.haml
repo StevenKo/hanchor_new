@@ -29,7 +29,7 @@
           %ul.bxslider
             - @product.product_pics.each do |pic|
               %li
-                =(image_tag ("cave.png"), :itemprop => "image", :class => "lazyload", "data-src" => pic.pic_url, width: "540px", height: "540px")
+                =(image_tag ("cave.png"), :itemprop => "image", :class => "lazyload", "data-src" => pic.pic_url)
           #bx-pager.clearfix
             - @product.product_pics.each_with_index do |pic, index|
               = link_to "", {"data-slide-index" => index} do
