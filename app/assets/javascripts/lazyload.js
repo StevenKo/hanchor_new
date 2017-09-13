@@ -25,10 +25,10 @@
     */
     const extend = function ()  {
 
-        let extended = {};
-        let deep = false;
-        let i = 0;
-        let length = arguments.length;
+        var extended = {};
+        var deep = false;
+        var i = 0;
+        var length = arguments.length;
 
         /* Check if a deep merge */
         if (Object.prototype.toString.call(arguments[0]) === "[object Boolean]") {
@@ -37,8 +37,8 @@
         }
 
         /* Merge the object into the extended object */
-        let merge = function (obj) {
-            for (let prop in obj) {
+        var merge = function (obj) {
+            for (var prop in obj) {
                 if (Object.prototype.hasOwnProperty.call(obj, prop)) {
                     /* If deep merge and property is an object, merge properties */
                     if (deep && Object.prototype.toString.call(obj[prop]) === "[object Object]") {
@@ -52,7 +52,7 @@
 
         /* Loop through each object and conduct a merge */
         for (; i < length; i++) {
-            let obj = arguments[i];
+            var obj = arguments[i];
             merge(obj);
         }
 
@@ -75,8 +75,8 @@
                 return;
             }
 
-            let self = this;
-            let observerConfig = {
+            var self = this;
+            var observerConfig = {
                 root: null,
                 rootMargin: "0px",
                 threshold: [0]
@@ -86,8 +86,8 @@
                 entries.forEach(function (entry) {
                     if (entry.intersectionRatio > 0) {
                         self.observer.unobserve(entry.target);
-                        let src = entry.target.getAttribute(self.settings.src);
-                        let srcset = entry.target.getAttribute(self.settings.srcset);
+                        var src = entry.target.getAttribute(self.settings.src);
+                        var srcset = entry.target.getAttribute(self.settings.srcset);
                         if ("img" === entry.target.tagName.toLowerCase()) {
                             if (src) {
                                 entry.target.src = src;
@@ -116,10 +116,10 @@
         loadImages: function () {
             if (!this.settings) { return; }
 
-            let self = this;
+            var self = this;
             this.images.forEach(function (image) {
-                let src = image.getAttribute(self.settings.src);
-                let srcset = image.getAttribute(self.settings.srcset);
+                var src = image.getAttribute(self.settings.src);
+                var srcset = image.getAttribute(self.settings.srcset);
                 if ("img" === image.tagName.toLowerCase()) {
                     if (src) {
                         image.src = src;
