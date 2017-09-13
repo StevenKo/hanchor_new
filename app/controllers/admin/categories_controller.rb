@@ -40,6 +40,19 @@ class Admin::CategoriesController < Admin::AdminController
     redirect_to admin_categories_path
   end
 
+  def product_select_form
+    @product = Product.find_by_slug(params[:product_id])
+    @product_categories = @product.product_categories
+    @categories = ProductCategory.all
+  end
+
+  def product_select
+    product = Product.find_by_slug(params[:product_id])
+    product.product_categories.delete_all
+    product.product_categories << ProductCategory.where(id: params[:categories])
+    redirect_back fallback_location: root_path
+  end
+
 private
   def category_param
     params.require(:product_category).permit(:parent_id,:name,:name_en,:sort,:is_visible)

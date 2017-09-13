@@ -51,7 +51,7 @@ class CartController < ApplicationController
 
   def remove_cart_item
     CartItem.delete(params[:item_id])
-    redirect_to :back
+    redirect_back fallback_location: root_path
   end
 
   def change_cart_item_quantity

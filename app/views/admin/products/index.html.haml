@@ -22,7 +22,7 @@
   - @products.each do |product|
     %tr
       %td= product.no
-      %td= (product.product_category.present?) ? product.product_category.name : "none"
+      %td= product.product_categories.map(&:name).join(",")
       %td= product.name
       %td= showed_price(product.price)
       %td= product.special_price

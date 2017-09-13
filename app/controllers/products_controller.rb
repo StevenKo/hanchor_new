@@ -25,16 +25,15 @@ class ProductsController < ApplicationController
 
   def show
     @base_category = ProductCategory.find_by name_en: params[:category]
-    @product = Product.includes(:product_category,:product_pics).joins(:product_infos).where("product_infos.country_id = #{@country_id}").all_info.find_by_slug(params[:id])
-    @product = Product.includes(:product_category,:product_pics).joins(:product_infos).where("product_infos.country_id = #{@country_id}").all_info.find(params[:id]) unless @product
+    @product = Product.includes(:product_pics).joins(:product_infos).where("product_infos.country_id = #{@country_id}").all_info.find_by_slug(params[:id])
+    @product = Product.includes(:product_pics).joins(:product_infos).where("product_infos.country_id = #{@country_id}").all_info.find(params[:id]) unless @product
     @product.update_attribute("views",@product.views+1)
-    @sub_category = @product.product_category
     @item = CartItem.new
     @product_size_selector = @product.size_selector(params[:locale])
     @product_color_selector = @product.color_selector(params[:locale])
     @related_products = Product.includes(:thumb).joins(:product_infos).select_info.where("product_infos.country_id = #{@country_id}").limit(4)
     add_breadcrumb "產品 - #{@base_category.locale(params[:locale])}", products_index_path(params[:category])
-    add_breadcrumb @product.name, products_show_path(@product.product_category.name_en, @product)
+    add_breadcrumb @product.name, products_show_path(@product.product_categories[0].name_en, @product)
   end
 
   def quantity

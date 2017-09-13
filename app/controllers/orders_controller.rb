@@ -21,7 +21,7 @@ class OrdersController < ApplicationController
     byebug
     if @order.dose_not_have_product_in_stock
       flash[:error] = @order.quantity_error_mesage(@country_id)
-      redirect_to :back
+      redirect_back fallback_location: root_path
     else
       if @order.save
         byebug

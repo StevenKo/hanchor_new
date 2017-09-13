@@ -1,6 +1,9 @@
 # encoding: utf-8
 class ProductCategory < ActiveRecord::Base
-  has_many :products
+  #has_many :products
+
+  has_many :product_category_ships
+  has_many :products, -> { distinct }, :through => :product_category_ships
 
   scope :visible, -> {where("is_visible = true").order(sort: :asc)}
   belongs_to :parent_category, foreign_key: 'parent_id', class_name: 'ProductCategory', optional: true

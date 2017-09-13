@@ -8,7 +8,14 @@
       = f.text_field :sort,label: "排序"
       = f.text_field :no, label: "產品編號"
       = f.check_box :is_show_at_index, :inline => true, label: "首頁是否顯示"
-      = f.select :product_category_id, category_selection,label: "分類"
+      %h3.text-16.lh-24.bold 分類
+      = f.form_group :color do
+        - if product.new_record?
+          請先新增product，再修改
+        - else
+          = product.product_categories.map(&:cateory_name_with_parent).join(",")
+          = link_to "修改類別", product_select_form_admin_categories_path(product_id: product), class: "btn-s btn-lblue inlineblock-imp"
+      
       %h3.text-16.lh-24.bold 顏色
       = f.form_group :color do
         - if product.new_record?
@@ -45,8 +52,9 @@
         推薦相關產品
       %h3.text-16.lh-24.bold 修改推薦產品
       .gallery
-        %ul#recommends{"data-update-url" => sort_admin_product_product_recommends_path(@product)}
-          = render :partial => "admin/product_recommends/product", :collection => @recommends, :as => :recommend
+        - if !product.new_record?
+          %ul#recommends{"data-update-url" => sort_admin_product_product_recommends_path(product)}
+            = render :partial => "admin/product_recommends/product", :collection => @recommends, :as => :recommend
       - if product.new_record?
         請先新增product，再修改
       - else

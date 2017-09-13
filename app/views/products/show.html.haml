@@ -151,7 +151,7 @@
       %h2.text-20.lh-30.color-white.bold.left.mg-b-30 你可能有興趣
       .clearfix
         - @related_products.each do |product|
-          =link_to products_show_path(product.product_category.name_en,product), { :class => "index-recommend-item grid-4-1",:hov => "0.8"} do
+          =link_to products_show_path(product.product_categories[0].name_en,product), { :class => "index-recommend-item grid-4-1",:hov => "0.8"} do
             .pic
               =(image_tag product.thumb.pic_url, :itemprop => "image", :class => "v-centerimg")
             .info

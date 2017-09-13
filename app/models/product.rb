@@ -1,5 +1,5 @@
 class Product < ActiveRecord::Base
-  belongs_to :product_category
+  #belongs_to :product_category
   has_many :product_colors
   has_many :product_pics, -> {order :sort}
   has_one :thumb, -> {order :sort}, :class_name => 'ProductPic', :foreign_key => "product_id"
@@ -10,6 +10,9 @@ class Product < ActiveRecord::Base
   has_many :recommend_ships
   has_many :recommends, :class_name => 'Product', :foreign_key => 'recommend_id', :through => :recommend_ships
 
+  has_many :product_category_ships
+  has_many :product_categories, -> { distinct }, :through => :product_category_ships
+  
   scope :showed, -> { where(is_visible: true) }
   scope :visible, -> {where("product_infos.is_visible = true")}
 

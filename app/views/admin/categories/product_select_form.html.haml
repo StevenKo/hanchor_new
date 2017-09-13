@@ -1,0 +1,11 @@
+.breadcrumbs
+  .form-style-5
+    = form_for :categories, url: product_select_admin_categories_path(product_id: @product),:html => {multipart: true} do |f|
+      %h3.text-16.lh-24.bold 勾選類別
+      - @categories.each do |c|
+        .checkboxOne.inlineblock
+          = check_box_tag "categories[]", c.id, @product_categories.include?(c)
+          = c.cateory_name_with_parent(str="(主類別)")
+      .offset2
+        = f.submit "確定"
+        = link_to "返回", edit_admin_product_path(@product), class: "btn"

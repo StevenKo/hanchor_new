@@ -96,7 +96,12 @@ Rails.application.routes.draw do
       end
     end
     resources :news_tags, except: [:show]
-    resources :categories
+    resources :categories do
+      collection { 
+        post :product_select
+        get :product_select_form
+      }
+    end
     resources :news
     resources :shipping_costs, except: [:show]
     resources :faqs, only: [:index, :edit, :update]
