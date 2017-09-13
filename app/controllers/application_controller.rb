@@ -39,7 +39,7 @@ class ApplicationController < ActionController::Base
       @cart_items = current_shopping_cart.cart_items.includes(:product_size, :product_color)
       return if @cart_items.blank? 
       product_ids = @cart_items.map(&:product_id)
-      products = Product.includes(:thumb,:product_category).joins(:product_infos).where("product_infos.country_id = #{@country_id} and products.id in (#{product_ids.join(",")})").cart_info
+      products = Product.includes(:thumb).joins(:product_infos).where("product_infos.country_id = #{@country_id} and products.id in (#{product_ids.join(",")})").cart_info
       product_infos = {}
       products.each {|product| product_infos[product.id] = product}
       @cart_products = []

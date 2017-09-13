@@ -36,7 +36,7 @@
         - @products.each do |product|
           =link_to products_show_path(product.product_categories[0].name_en,product), { :class => "product-item index-recommend-item grid-3-1",:hov => "0.8"} do
             .pic
-              =(image_tag product.thumb.pic_url, :itemprop => "image", :class => "v-centerimg")
+              =(image_tag ("cave.png"), :itemprop => "image", :class => "v-centerimg lazyload", "data-src" => product.thumb.pic_url)
             .info
               %h3.name.text-18.lh-30.color-gray-333.bold.mg-b-5= product.name
               %p.price.text-16.lh-20.color-main-lb.mg-b-20= showed_price(product.price)

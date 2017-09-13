@@ -34,8 +34,8 @@ class CartController < ApplicationController
       item.cart = cart
     end
     item.save
-
-    redirect_to products_show_path(product.product_category.name_en, product)
+    
+    redirect_to products_show_path(product.product_categories[0].name_en,product)
   end
 
   def set_item_by_check_item_color_size(current_shopping_cart,product,item)
