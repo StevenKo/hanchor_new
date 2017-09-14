@@ -1,6 +1,7 @@
 # encoding: utf-8
 class OrdersController < ApplicationController
   before_action :get_cart_items
+  before_action :load_base_cateogries, :only => [:result]
 
   def create
     @order = Order.new(order_params)
