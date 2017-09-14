@@ -6,7 +6,7 @@
     - @recent_news.each do |news|
       = link_to news_path(news), {:class => "index-news",:hov => "0.8"} do
         .pic
-          =(image_tag ("cave.png"), :itemprop => "image", :class => "v-centerimg lazyload","data-src" => news.pic.url)  
+          =(image_tag news.pic.url, :itemprop => "image", :class => "v-centerimg")
         .info
           %h3.title.text-15.color-gray-ddd.lh-25.bold.mg-b-7= news.title
           %p.date.text-12.lh-20.color-main-lb.bold= display_date(news.release_date)
