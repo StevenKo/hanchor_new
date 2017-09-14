@@ -3,7 +3,6 @@ class OrdersController < ApplicationController
   before_action :get_cart_items
 
   def create
-    byebug
     @order = Order.new(order_params)
     unless get_good_from_store(@order)
       @order.store_code = 0
@@ -18,35 +17,28 @@ class OrdersController < ApplicationController
     @order.memo = params[:memo]
     @order.status = "order_confirm"
     @order.shipping_store = "#{params[:order][:store_code]},#{params[:order][:store_name]}" if(params[:order][:store_code] && params[:order][:store_name])
-    byebug
     if @order.dose_not_have_product_in_stock
       flash[:error] = @order.quantity_error_mesage(@country_id)
       redirect_back fallback_location: root_path
     else
       if @order.save
-        byebug
         @order.update_attribute(:code, @order.created_at.utc.strftime("%y%m%d")+ (Order.where("created_at > ?", @order.created_at.utc.to_date).size).to_s.rjust(3, '0'))
         @order.deduct_quanitity
         if(@order.payment == "AllPay")
-          byebug
           redirect_to pay_with_credit_card_orders_path(order: @order)
         elsif(@order.payment == "PayPal")
-          byebug
           return_url = result_orders_url(order: @order)
           redirect_to current_shopping_cart.paypal_url(return_url,params[:locale],payment_notifications_url,@order.id,ShippingCost.find(params[:order][:shipping_cost_id]))
         else
-          byebug
           UserMailer.order_notification(current_user,@order).deliver
           @order.update_attribute("is_show",true)
           redirect_to result_orders_url(order: @order)
         end
       else
-        byebug
         shipping_array = YAML::load(@cart_products[0].shipping)
         @cart_products.each do |p|
           shipping_array = shipping_array & YAML::load(p.shipping)
         end
-        byebug
         @shippings = ShippingCost.where(id: shipping_array)
         @shippings_selector = @shippings.map{ |s| ["#{s.description}($NT#{s.cost})",s.id]}
         render 'cart/checkout'

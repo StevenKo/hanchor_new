@@ -2,7 +2,7 @@
 class CartController < ApplicationController
   before_action :require_user, only: [:checkout]
   before_action :get_cart_items, only: [:index,:checkout]
-
+  before_action :load_base_cateogries
   add_breadcrumb "首頁", :root_path
 
   def index
