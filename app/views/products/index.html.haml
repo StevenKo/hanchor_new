@@ -27,9 +27,18 @@
       / product classify tab
       .gray-h-line.mg-b-30
       .tab.clearfix.mg-b-30
-        = link_to_contact products_index_path(@base_category.name_en), "全部"
-        - @base_category.child_categories.visible.each do |c|
-          = link_to_contact products_index_path(@base_category.name_en, sub: c.name_en), c.name
+        .rwd-tab-cate
+          - if @sub_category.present?
+            %span.left 分類：#{@sub_category.locale(params[:locale])}
+          - else
+            %span.left 分類：全部
+          %span.right
+            %i.fa.fa-angle-down.mg-l-10{"aria-hidden" => "true"}
+        .rwd-tab-show
+          = link_to_contact products_index_path(@base_category.name_en), "全部"
+          - @base_category.child_categories.visible.each do |c|
+            = link_to_contact products_index_path(@base_category.name_en, sub: c.name_en), c.name
+          
       .gray-h-line.mg-b-40
       .clearfix
         / index recommend item

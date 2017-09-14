@@ -42,6 +42,8 @@
                       %i.fa.fa-trash-o.mg-l-10{"aria-hidden" => "true"}
             / one scart
           .tright
+            %div
+              %input.input-text.mg-b-20{:placeholder => "輸入折扣碼", :type => "text", :value => ""}/
             %p.scart-total-price.mg-b-40
               %span> 總計
               #{showed_price(sum_cart_items_price @cart_items)}
