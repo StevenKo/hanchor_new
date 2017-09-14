@@ -35,7 +35,7 @@
         - @products.each do |product|
           =link_to products_show_path(product.product_categories[0].name_en,product), { :class => "index-recommend-item grid-4-1",:hov => "0.8"} do
             .pic
-              =(image_tag ("cave.png"), :itemprop => "image", :class => "v-centerimg lazyload", "data-src" => product.thumb.pic_url)
+              =(image_tag product.thumb.pic_url, :itemprop => "image", :class => "v-centerimg")
             .info
               %h3.name.text-14.lh-24.color-gray-333.bold= product.name
               %p.price.text-13.lh-20.color-main-lb= showed_price(product.price)
@@ -54,7 +54,7 @@
         - @news.each do |news|
           = link_to news_path(news), {:class => "index-news grid-3-1",:hov => "0.8"} do
             .pic
-              =(image_tag ("cave.png"), :itemprop => "image", :class => "v-centerimg lazyload","data-src" => news.pic.url)  
+              =(image_tag news.pic.url, :itemprop => "image", :class => "v-centerimg") 
             .info
               %h3.title.text-15.color-gray-ddd.lh-25.bold.mg-b-7= news.title
               %p.date.text-12.lh-20.color-main-lb.bold= display_date(news.release_date)
