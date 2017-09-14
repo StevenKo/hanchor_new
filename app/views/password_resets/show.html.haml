@@ -1,0 +1,28 @@
+= content_for :head do
+  <meta name="description" content="Reset Password">
+  <title>HANCHOR｜#{t("reset_password.title")}</title>
+
+/ start main
+%section.wrapper
+  / rwd padding
+  %section.full-bg
+    .login-bg.ofhidden
+    / rwd width limited
+    .rwd-width-limited
+      / login / signup
+      .login-signup-sec.clearfix
+        .login-signup-sec-bg
+          .mg-b-30
+            %a.block.signup-logo{:hov => "0.75", :href => "index.html"}
+              = image_tag 'logo-h-w.png', alt: "Hanchor", class: "block"
+          = form_tag password_resets_path do
+            .mg-b-30
+              %h2.text-24.lh-30.color-white.bold #{t('reset_password.new_password')}
+            = hidden_field_tag :token, params[:id]
+            = text_field_tag :password, nil, class: 'input-text mg-b-20', placeholder: t('reset_password.new_password')
+            .mg-b-20
+              = submit_tag t('reset_password.set'), class: 'btn-l btn-blue', hov: "0.75"
+      / login / signup
+    / rwd width limited
+  / rwd padding
+/ end main

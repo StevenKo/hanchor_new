@@ -54,6 +54,10 @@ class ApplicationController < ActionController::Base
     { locale: I18n.locale }
   end
 
+  def load_base_cateogries
+    @base_categories =  ProductCategory.where('parent_id is null')
+  end
+
 private
   
   def set_locale

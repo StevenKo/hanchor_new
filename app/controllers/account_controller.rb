@@ -1,7 +1,7 @@
 class AccountController < ApplicationController
   before_action :require_user
   before_action :get_cart_items
-
+  before_action :load_base_cateogries
   add_breadcrumb "首頁", :root_path
 
   def index

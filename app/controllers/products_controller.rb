@@ -1,13 +1,13 @@
 class ProductsController < ApplicationController
   before_action :get_cart_items
+  before_action :load_base_cateogries, :only => [:index, :show]
 
   add_breadcrumb "首頁", :root_path
 
   def index
     page_size = 9
     page_size = 100 if params[:all]
-
-    @base_categories =  ProductCategory.where('parent_id is null')
+    
     @base_category = ProductCategory.find_by(name_en: params[:category])
     select_ids = @base_category.child_category_ids << [@base_category.id]
     add_breadcrumb "產品 - #{@base_category.locale(params[:locale])}", products_index_path(params[:category])

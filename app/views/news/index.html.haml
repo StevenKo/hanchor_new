@@ -17,9 +17,17 @@
     .rwd-width-limited.clearfix
       .gray-h-line.mg-b-30
       .tab.clearfix.mg-b-30
-        = link_to_news ["全部",0]
-        - @tags_selector.each do |tag|
-          = link_to_news tag
+        .rwd-tab-cate
+          - if @news_tag.present?
+            %span.left 分類：#{@news_tag.locale(params[:locale])}
+          - else
+            %span.left 分類：全部
+          %span.right
+            %i.fa.fa-angle-down.mg-l-10{"aria-hidden" => "true"}
+        .rwd-tab-show
+          = link_to_news ["全部",0]
+          - @tags_selector.each do |tag|
+            = link_to_news tag
       .gray-h-line.mg-b-40
       .clearfix
         - @news.each do |news|
