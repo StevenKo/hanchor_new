@@ -24,4 +24,8 @@ class WelcomeController < ApplicationController
     @guide = Faq.find_by(country_id: @country_id, purpose: "shopping_guide")
     add_breadcrumb t('faq.guide'), shopping_guide_path
   end
+
+  def aboutus
+    add_breadcrumb t('aboutus'), aboutus_path
+  end
 end

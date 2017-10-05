@@ -62,6 +62,15 @@ $(document).ready(function(){
 	$(".tab").click(function (e) {
         
 		$(this).find('.rwd-tab-show').fadeToggle(150);
+		e.preventDefault();
+        
+    });
+	
+	
+	$(".currency-now").click(function (e) {
+        
+		$(this).parent().find('.drop').fadeToggle(150);
+		e.preventDefault();
         
     });
 	
