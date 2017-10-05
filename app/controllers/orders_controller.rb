@@ -66,6 +66,8 @@ class OrdersController < ApplicationController
     @order = Order.find_by(id: params[:order], user_id: current_user.id)
 
     redirect_to root_path if @order.nil?
+    add_breadcrumb "首頁", :root_path
+    add_breadcrumb "訂購完成", result_orders_path(order:params[:order])
   end
 
   private

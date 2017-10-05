@@ -2,31 +2,58 @@
   <meta name="description" content="Order Success">
   <title>HANCHOR｜#{t("cart.confirm")}</title>
 
-.result{:style => "padding-left:25px;"}
-  = "Dear #{current_user.name}"
-  - if (@order.pay_by_paypal_or_allpay_or_delivery)
-    %p
-    您的訂單已完成，HANCHOR將於確認訂單後立刻處理並寄出您的商品，亦可隨時至
-    = link_to "我的訂單(My Orders)", account_orders_path
-    處查詢貨品狀況
-  - else
-    %div
-      %p 您的繳費資訊
-      %ul{:style => "list-style:none;"}
-        %li 戶名: 汗可股份有限公司
-        %li 銀行名稱:  台北富邦銀行
-        %li 轉帳帳號:  742120001104
-        %li
-          應繳金額: NT$
-          = @order.total
-          %span.total
-      %p
-        請在交易確認後3天內轉入您的帳款，如您無法在期限內轉帳，我們將取消您的訂單；如有造成您的不便，敬請見諒。
-        %br
-          當您完成轉帳程序後，請於我的帳戶點選
-          .btn.btn-md.btn-warning 通知匯款
-          HANCHOR將立即為您安排出貨事宜。
-    %p
-      您的訂單已完成，HANCHOR將於確認訂單後立刻處理並寄出您的商品，亦可隨時至
-      = link_to "我的訂單(My Orders)", account_orders_path
-      處查詢貨品狀況
+
+/ breadcrumbs
+%section.breadcrumbs
+  / rwd width limited
+  .rwd-width-limited.clearfix
+    .text-13.color-gray-666.lh-18.breadcrumb
+      = render_breadcrumbs :separator => ' / '
+
+.wrapper
+  / full width block
+  %section.bg-w.pd-v-20.mg-t-30.sidebar-point
+    / rwd width limited
+    .rwd-width-limited
+      / sidebar and con
+      .clearfix.sidebar-con
+        / sd con
+        .clearfix.sc-con
+          / 
+          .member-sec.relative.mg-b-30.grid-800px
+            %h2.title-line.inlineblock.mg-b-30 訂購完成
+            .input-form
+              %p.text-15.lh-30.color-gray-333.bold.mg-b-20
+                = "Dear #{current_user.name},"
+                %br/
+                您的繳費資訊
+                %br/
+                - if (@order.pay_by_paypal_or_allpay_or_delivery)
+                  %p.text-15.lh-30.color-gray-333.bold.mg-b-20
+                    您的訂單已完成，HANCHOR將於確認訂單後立刻處理並寄出您的商品，亦可隨時至
+                    = link_to "我的訂單(My Orders)", account_orders_path, {:class => "bold color-lb mg-b-17"}
+                    處查詢貨品狀況
+                - else
+                  .mg-b-20
+                    %p.text-14.lh-24.color-gray-666.mg-b-10
+                      %span.bold> 戶名：
+                      汗可股份有限公司
+                    %p.text-14.lh-24.color-gray-666.mg-b-10
+                      %span.bold> 銀行名稱：
+                      台北富邦銀行
+                    %p.text-14.lh-24.color-gray-666.mg-b-10
+                      %span.bold> 轉帳帳號：
+                      742120001104
+                    %p.text-14.lh-24.color-gray-666.mg-b-10
+                      %span.bold> 應繳金額：
+                      NTD #{@order.total} 元
+                    %p.text-14.lh-24.color-gray-666.mg-b-10
+                      請在交易確認後3天內轉入您的帳款，如您無法在期限內轉帳，我們將取消您的訂單；如有造成您的不便，敬請見諒。
+                    %p.text-14.lh-24.color-gray-666.mg-b-10
+                        當您完成轉帳程序後，請於我的帳戶點選
+                        .btn.btn-md.btn-warning 通知匯款
+                        HANCHOR將立即為您安排出貨事宜。
+                  %p.text-15.lh-30.color-gray-333.bold.mg-b-20
+                    您的訂單已完成，HANCHOR將於確認訂單後立刻處理並寄出您的商品，亦可隨時至
+                    = link_to "我的訂單(My Orders)", account_orders_path, {:class => "bold color-lb mg-b-17"}
+                    處查詢貨品狀況

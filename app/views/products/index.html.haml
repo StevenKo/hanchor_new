@@ -21,7 +21,7 @@
     / rwd width limited
     .rwd-width-limited.clearfix
       / product classify tab
-      .product-classify-tab.clearfix.mg-b-40
+      .product-classify-tab.product-classify-tab-fix.clearfix.mg-b-40
         - @base_categories.each_with_index do |category,i|
           = link_to_category products_index_path(category.name_en), category.name, i + 1
       / product classify tab
@@ -34,7 +34,7 @@
             %span.left 分類：全部
           %span.right
             %i.fa.fa-angle-down.mg-l-10{"aria-hidden" => "true"}
-        .rwd-tab-show
+        .rwd-tab-show.rwd-tab-show-fix
           = link_to_contact products_index_path(@base_category.name_en), "全部"
           - @base_category.child_categories.visible.each do |c|
             = link_to_contact products_index_path(@base_category.name_en, sub: c.name_en), c.name
@@ -43,14 +43,12 @@
       .clearfix
         / index recommend item
         - @products.each do |product|
-          =link_to products_show_path(product.product_categories[0].name_en,product), { :class => "product-item index-recommend-item grid-3-1",:hov => "0.8"} do
+          =link_to products_show_path(product.product_categories[0].name_en,product), { :class => "index-recommend-item grid-4-1",:hov => "0.8"} do
             .pic
               =(image_tag product.thumb.pic_url, :itemprop => "image", :class => "v-centerimg")
             .info
-              %h3.name.text-18.lh-30.color-gray-333.bold.mg-b-5= product.name
-              %p.price.text-16.lh-20.color-main-lb.mg-b-20= showed_price(product.price)
-              %p.desc
-                = truncate_html(strip_tags(product.quick_overview), length: 60)
+              %h3.name.text-14.lh-24.color-gray-333.bold= product.name
+              %p.price.text-13.lh-20.color-main-lb= showed_price(product.price)
       / page select menu
       %nav.page-menu.relative
         = will_paginate(@news, :renderer => 'BootstrapPaginationHelper::LinkRenderer')

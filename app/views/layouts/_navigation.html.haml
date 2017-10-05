@@ -29,6 +29,23 @@
       .menu-container
         .menu
           %ul.layer-1-ul
+            / 
+            .h-msg-r-mobile.clearfix
+              / 貨幣轉換
+              .currency-sel.mg-r-15
+                .currency-now
+                  #{current_currency.symbol}
+                  %i.fa.fa-caret-down.mg-l-10{"aria-hidden" => "true"}
+                .drop
+                  - Currency.all.each do |c|
+                    = link_to_currency c
+              / 貨幣轉換
+              .lan-sel
+                = link_to_language ["zh-TW","zh"], "中文"
+                \/
+                = link_to_language ["en"], "EN"
+                / 
+
             %li.layer-1-li
               = link_to aboutus_path, {:class => "layer-1 menu-line"} do
                 %h2= t("aboutus")

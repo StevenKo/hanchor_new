@@ -30,7 +30,7 @@
             %span.left 分類：全部
           %span.right
             %i.fa.fa-angle-down.mg-l-10{"aria-hidden" => "true"}
-        .rwd-tab-show
+        .rwd-tab-show.rwd-tab-show-fix
           = link_to_news ["全部",0]
           - @tags_selector.each do |tag|
             = link_to_news tag

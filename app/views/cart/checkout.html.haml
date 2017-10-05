@@ -157,6 +157,12 @@
                           刪除
                           %i.fa.fa-trash-o.mg-l-10{"aria-hidden" => "true"}
               .tright
+                %p.scart-total-price-s.mg-b-10
+                  %span> 運費
+                  NT$100
+                %p.scart-total-price-s.mg-b-10
+                  %span> 小計
+                  #{showed_price(sum_cart_items_price @cart_items)}
                 %p.scart-total-price.mg-b-40
                   %span> 總計
                   #{showed_price(sum_cart_items_price @cart_items)}
