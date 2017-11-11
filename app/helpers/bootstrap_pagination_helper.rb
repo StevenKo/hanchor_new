@@ -11,8 +11,7 @@ module BootstrapPaginationHelper
       end
       
       def gap
-        text = @template.will_paginate_translate(:page_gap) { '&hellip;' }
-        %(<li class="disabled"><a>#{text}</a></li>)
+        text = tag(:li, tag(:a, '&hellip;'),class: "inlineblock disabled")
       end
       
       def next_page

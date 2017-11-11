@@ -51,7 +51,7 @@
               %p.price.text-13.lh-20.color-main-lb= showed_price(product.price)
       / page select menu
       %nav.page-menu.relative
-        = will_paginate(@news, :renderer => 'BootstrapPaginationHelper::LinkRenderer')
+        = will_paginate(@products, :renderer => 'BootstrapPaginationHelper::LinkRenderer', :inner_window => 2, :outer_window => 0)
       / page select menu
     / rwd width limited
   / full width block

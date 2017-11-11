@@ -45,4 +45,4 @@
               %p.date.text-12.lh-20.color-main-lb.bold= display_date(news.release_date)
       / page select menu
       %nav.page-menu.relative
-        = will_paginate(@news, :renderer => 'BootstrapPaginationHelper::LinkRenderer')
+        = will_paginate(@news, :renderer => 'BootstrapPaginationHelper::LinkRenderer', :inner_window => 2, :outer_window => 0)
