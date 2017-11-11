@@ -1,14 +1,10 @@
-%tr#shippig_cost_tr{:bgcolor => "FFF9E5"}
-  %td{:align => "right", :colspan => "6"}= t('cart.shipping_cost')
-  %td{:align => "right", :style => "font-size:1.2em; font-weight:bold"}
-    NT$
-    %span#total= shipping_cost
-%tr#subtotal_tr{:bgcolor => "FFF9E5"}
-  %td{:align => "right", :colspan => "6"}
-    = t('cart.items')
-    \:
-    = succeed "," do
-      %strong= item_num
-    = t('cart.subtotal')
-  %td{:align => "right", :style => "font-size:1.2em; font-weight:bold"}
-    NT$#{sub_total}
+.price-show
+  %p.scart-total-price-s.mg-b-10
+    %span> 運費
+    #{shipping_cost}
+  %p.scart-total-price-s.mg-b-10
+    %span> 小計
+    #{sub_total}
+  %p#ssss.scart-total-price.mg-b-40
+    %span> 總計
+    #{sub_total.to_i + shipping_cost.to_i}

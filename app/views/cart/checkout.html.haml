@@ -157,15 +157,16 @@
                           刪除
                           %i.fa.fa-trash-o.mg-l-10{"aria-hidden" => "true"}
               .tright
-                %p.scart-total-price-s.mg-b-10
-                  %span> 運費
-                  NT$100
-                %p.scart-total-price-s.mg-b-10
-                  %span> 小計
-                  #{showed_price(sum_cart_items_price @cart_items)}
-                %p.scart-total-price.mg-b-40
-                  %span> 總計
-                  #{showed_price(sum_cart_items_price @cart_items)}
+                .price-show
+                  %p.scart-total-price-s.mg-b-10
+                    %span> 
+                    運費NT$0
+                  %p.scart-total-price-s.mg-b-10
+                    %span> 小計
+                    #{showed_price(sum_cart_items_price @cart_items)}
+                  %p#ssss.scart-total-price.mg-b-40
+                    %span> 總計
+                    #{showed_price(sum_cart_items_price @cart_items)}
                 .mg-b-30.text-15.lh-30.color-gray-333.bold
                   購買前請詳細閱讀
                   = link_to(t("cart.shopping_guide"), shopping_guide_path,{:class=>"bold color-lb mg-b-17",:hov => "0.75"})
