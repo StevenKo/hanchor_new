@@ -166,6 +166,9 @@
                 %p.scart-total-price.mg-b-40
                   %span> 總計
                   #{showed_price(sum_cart_items_price @cart_items)}
+                .mg-b-30.text-15.lh-30.color-gray-333.bold
+                  購買前請詳細閱讀
+                  = link_to(t("cart.shopping_guide"), shopping_guide_path,{:class=>"bold color-lb mg-b-17",:hov => "0.75"})
                 .scart-submit
                   = f.hidden_field :sub_total, value: sum_cart_items_price(@cart_items)
                   = f.hidden_field :item_num, value: @cart_items.size

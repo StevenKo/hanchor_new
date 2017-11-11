@@ -49,11 +49,11 @@
                       NTD #{@order.total} 元
                     %p.text-14.lh-24.color-gray-666.mg-b-10
                       請在交易確認後3天內轉入您的帳款，如您無法在期限內轉帳，我們將取消您的訂單；如有造成您的不便，敬請見諒。
-                    %p.text-14.lh-24.color-gray-666.mg-b-10
-                        當您完成轉帳程序後，請於我的帳戶點選
-                        .btn.btn-md.btn-warning 通知匯款
-                        HANCHOR將立即為您安排出貨事宜。
-                  %p.text-15.lh-30.color-gray-333.bold.mg-b-20
-                    您的訂單已完成，HANCHOR將於確認訂單後立刻處理並寄出您的商品，亦可隨時至
-                    = link_to "我的訂單(My Orders)", account_orders_path, {:class => "bold color-lb mg-b-17"}
-                    處查詢貨品狀況
+                    %p.text-15.lh-30.color-gray-333.bold.mg-b-20
+                      當您完成轉帳程序後，請於我的帳戶點選
+                      %button.btn.btn-s.btn-lblue.mg-b-10{:hov => "0.75"} 通知匯款
+                      Hanchor 將立即為您安排出貨事宜。
+                    %p.text-15.lh-30.color-gray-333.bold.mg-b-20
+                      您的訂單已完成，HANCHOR將於確認訂單後立刻處理並寄出您的商品，亦可隨時至
+                      = link_to "我的訂單(My Orders)", account_orders_path, {:class => "bold color-lb mg-b-17"}
+                      處查詢貨品狀況

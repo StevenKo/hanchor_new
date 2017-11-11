@@ -40,10 +40,10 @@
             = link_to_contact products_index_path(@base_category.name_en, sub: c.name_en), c.name
           
       .gray-h-line.mg-b-40
-      .clearfix
+      .clearfix.flex-sec
         / index recommend item
         - @products.each do |product|
-          =link_to products_show_path(product.product_categories[0].name_en,product), { :class => "index-recommend-item grid-4-1",:hov => "0.8"} do
+          =link_to products_show_path(product.product_categories[0].name_en,product), { :class => "index-recommend-item flex-4",:hov => "0.8"} do
             .pic
               =(image_tag product.thumb.pic_url, :itemprop => "image", :class => "v-centerimg")
             .info

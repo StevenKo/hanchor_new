@@ -14,6 +14,7 @@ class UsersController < ApplicationController
       update_current_shopping_cart_user(@user.id)      
       (params[:redirect_to_cart].present?)? redirect_to(cart_index_path) : redirect_to(root_path)
     else
+      flash[:error] = @user.errors.messages.values.join("，")
       render :new
     end
   end
@@ -27,7 +28,7 @@ class UsersController < ApplicationController
     else
       flash[:error] = "Update Fail"
     end
-    redirect_to account_info_path
+    redirect_to account_path
   end
 
   private

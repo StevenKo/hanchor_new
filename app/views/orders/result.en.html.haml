@@ -2,8 +2,27 @@
   <meta name="description" content="Order Success">
   <title>HANCHOR｜#{t("cart.confirm")}</title>
 
-.result{:style => "padding-left:25px;"}
-  = "Dear #{current_user.name}"
-  %p
-    Thank you for ordering from HANCHOR. Your order # is #{@order.code}.
-    Please sign in to view your order and check the order status. 
+
+/ breadcrumbs
+%section.breadcrumbs
+  / rwd width limited
+  .rwd-width-limited.clearfix
+    .text-13.color-gray-666.lh-18.breadcrumb
+      = render_breadcrumbs :separator => ' / '
+
+.wrapper
+  / full width block
+  %section.bg-w.pd-v-20.mg-t-30.sidebar-point
+    / rwd width limited
+    .rwd-width-limited
+      / sidebar and con
+      .clearfix.sidebar-con
+        / sd con
+        .clearfix.sc-con
+          / 
+          .member-sec.relative.mg-b-30.grid-800px
+            %h2.title-line.inlineblock.mg-b-30 Order Success
+            .input-form
+              %p.text-15.lh-30.color-gray-333.bold.mg-b-20
+                Thank you for ordering from HANCHOR. Your order # is #{@order.code}.
+                Please sign in to view your order and check the order status. 

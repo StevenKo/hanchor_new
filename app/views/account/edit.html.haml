@@ -14,23 +14,121 @@
     .rwd-width-limited
       / sidebar and con
       .clearfix.sidebar-con
-        / sd sidebar
-        = render "account_sidemenu"
-        / sd sidebar
         / sd con
-        .clearfix.sc-con.grid-4-3
+        .clearfix.sc-con
           / 
-          .member-sec.relative.mg-b-30
-            %h2.title-line.inlineblock.mg-b-30 帳戶資訊
-            %p.text-14.lh-30.color-gray-666.mg-b-15
-              %span.bold> 姓名：
-              = current_user.name
-            %p.text-14.lh-30.color-gray-666.mg-b-15
-              %span.bold> Email：
-              = current_user.email
-            %p.text-14.lh-30.color-gray-666.mg-b-15
-              %span.bold> 電話：
-              = current_user.phone
-            %p.text-14.lh-30.color-gray-666.mg-b-15
-              %span.bold> 寄送地址：
-              = current_user.shipping_address
+          = form_for current_user do |f|
+            .member-sec.relative.mg-b-30.grid-800px
+              %h2.title-line.inlineblock.mg-b-30 修改資料
+              .input-form
+                / one input
+                .one-input
+                  .title
+                    %p
+                      %span.note> ＊
+                      姓名
+                  .input
+                    = f.text_field :name, :class => "input-text mg-b-20", :placeholder => "輸入姓名"
+                    %p.note 請填寫真實姓名因超商取貨需核對證件
+                / one input
+                / one input
+                .one-input
+                  .title
+                    %p
+                      %span.note> ＊
+                      Email
+                  .input
+                    = f.text_field :email, :class => "input-text mg-b-20", :placeholder => "輸入 Email"
+                / one input
+                / one input
+                .one-input
+                  .title
+                    %p
+                      %span.note> ＊
+                      電話
+                  .input
+                    = f.text_field :phone, :class => "input-text mg-b-20", :placeholder => "輸入電話"
+                / one input
+                / one input
+                .one-input
+                  .title
+                    %p
+                      %span.note> ＊
+                      地址
+                  .input
+                    = f.text_field :shipping_address, :class => "input-text mg-b-20", :placeholder => "輸入地址"
+                / one input
+                / one input
+                .one-input
+                  .title
+                    %p
+                      %span.note> ＊
+                      郵遞區號
+                  .input
+                    = f.text_field :zip_code, :class => "input-text mg-b-20", :placeholder => "輸入郵遞區號"
+                / one input
+                / one input
+                .one-input
+                  .title
+                    %p
+                      %span.note> ＊
+                      城市
+                  .input
+                    = f.text_field :city, :class => "input-text mg-b-20", :placeholder => "輸入城市"
+                / one input
+                / one input
+                .one-input
+                  .title
+                    %p
+                      %span.note> ＊
+                      州
+                  .input
+                    = f.text_field :state, :class => "input-text mg-b-20", :placeholder => "輸入州名"
+                    %p.note 若無則填城市
+                / one input
+                / one input
+                .one-input
+                  .title
+                    %p
+                      %span.note> ＊
+                      國家
+                  .input
+                    = f.text_field :country, :class => "input-text mg-b-20", :placeholder => "輸入國家"
+                / one input
+            / 
+            / line
+            .gray-h-line.mg-b-40
+            / line
+            / 
+            .member-sec.relative.mg-b-30.grid-800px
+              %h2.title-line.inlineblock.mg-b-30 修改密碼
+              .input-form
+                / one input
+                .one-input
+                  .title
+                    %p
+                      %span.note> ＊
+                      密碼
+                  .input
+                    = f.password_field :password, :class => "input-text mg-b-20", :placeholder => "輸入密碼"
+                / one input
+                / one input
+                .one-input
+                  .title
+                    %p
+                      %span.note> ＊
+                      密碼確認
+                  .input
+                    = f.password_field :password_confirmation, :class => "input-text mg-b-20", :placeholder => "密碼確認"
+                / one input
+              .tright.mg-t-60
+                .scart-submit
+                  = button_tag(type: 'submit', class: "btn btn-l btn-blue inlineblock-imp", :hov => "0.75") do
+                    確認修改
+                    %i.fa.fa-chevron-right.mg-l-20{"aria-hidden" => "true"}
+          / 
+        / sd con
+      / sidebar and con
+    / rwd width limited
+  / full width block
+/ end main

@@ -18,9 +18,11 @@
           .mg-b-30
             %h2.text-24.lh-30.color-white.bold 註 冊
           = form_for @user do |f|
-            = f.text_field :email, class: 'input-text mg-b-20', placeholder: "輸入 Emal 帳號"
+            = f.text_field :email, class: 'input-text mg-b-20', placeholder: "輸入 Email 帳號"
             = f.password_field :password, class: 'input-text mg-b-20', placeholder: "輸入密碼"
             = f.password_field :password_confirmation, class: 'input-text mg-b-20', placeholder: "密碼確認"
+            - flash.each do |key,value|
+              %p.text-13.color-red.lh-20.mg-b-30 #{value}
             .mg-b-20
               = f.submit "註 冊", class: 'btn-l btn-blue', hov: "0.75"
           .clearfix.mg-b-35

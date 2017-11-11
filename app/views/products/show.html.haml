@@ -52,14 +52,18 @@
               / color
               .sel-color
                 %h3 顏色
-                %label.label-radio{:for => "v1", :style => "background:#1d2d71;"}
+                %label.label-radio{:for => "v1", :style => "background:url(#{image_url('111111.jpg')}) !important;", :title => "迷彩"}
                   %input#v1{:checked => "checked", :name => "color", :type => "radio", :value => "1"}/
-                %label.label-radio{:for => "v2", :style => "background:#1c1c1b;"}
+                  %p.sel-color-text 迷彩
+                %label.label-radio{:for => "v2", :style => "background:#1c1c1b;", :title => "黑"}
                   %input#v2{:name => "color", :type => "radio", :value => "2"}/
-                %label.label-radio{:for => "v3", :style => "background:#ddc000;"}
+                  %p.sel-color-text 黑
+                %label.label-radio{:for => "v3", :style => "background:#d6b103;", :title => "黃"}
                   %input#v3{:name => "color", :type => "radio", :value => "3"}/
-                %label.label-radio{:for => "v4", :style => "background:#c10e1c;"}
+                  %p.sel-color-text 黃
+                %label.label-radio{:for => "v4", :style => "background:#e60419;", :title => "紅"}
                   %input#v4{:name => "color", :type => "radio", :value => "4"}/
+                  %p.sel-color-text 紅
               / color
               / qty
               .sel-qty
@@ -137,7 +141,7 @@
           / active on this one
           %a.tab-btn{"data-tab" => "tab-2"} Reviews
         .tab-con
-          .product-desc.tab-inner.tab-1.active
+          .product-desc.tab-inner.tab-inner-article.tab-1.active
             = @product.feature.html_safe
           %p.pruduct-preview.tab-inner.tab-2
             測試測文拉拉字文字 。
@@ -149,9 +153,9 @@
     / rwd width limited
     .rwd-width-limited
       %h2.text-20.lh-30.color-white.bold.left.mg-b-30 你可能有興趣
-      .clearfix
+      .clearfix.flex-sec
         - @related_products.each do |product|
-          =link_to products_show_path(product.product_categories[0].name_en,product), { :class => "index-recommend-item grid-4-1",:hov => "0.8"} do
+          =link_to products_show_path(product.product_categories[0].name_en,product), { :class => "index-recommend-item flex-4",:hov => "0.8"} do
             .pic
               =(image_tag product.thumb.pic_url, :itemprop => "image", :class => "v-centerimg")
             .info

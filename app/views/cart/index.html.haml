@@ -43,7 +43,12 @@
             / one scart
           .tright
             %div
-              %input.input-text.mg-b-20{:placeholder => "輸入折扣碼", :type => "text", :value => ""}/
+              %input.input-text.mg-b-20.mg-r-5{:placeholder => "輸入折扣碼", :style => "width:180px", :type => "text", :value => ""}/
+              %button.btn-m.btn-lblue.inlineblock-imp{:hov => "0.75"} 確認
+            / 折扣碼訊息 把hide拿掉
+            %p.text-13.color-red.lh-20.mg-b-30 折扣碼訊息吧啦吧啦八八吧八八八八
+            / 折扣碼訊息 把hide拿掉
+
             %p.scart-total-price.mg-b-40
               %span> 總計
               #{showed_price(sum_cart_items_price @cart_items)}

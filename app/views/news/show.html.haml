@@ -28,10 +28,13 @@
             %h2.title= @news.title
             %p.date= display_date(@news.release_date)
           .right
-            %a.share-btn.fb-xfbml-parse-ignore{:href => request.url.split('?').first, :target => "_blank"} 分享
+            .fb-share-button{"data-href" => request.url.split('?').first, "data-layout" => "button", "data-mobile-iframe" => "true", "data-size" => "large"}
+              %a.fb-xfbml-parse-ignore{:href => request.url.split('?').first, :target => "_blank"} 分享
+
         / blog inner top
         / blog inner text
         .blog-inner-text.mg-b-50
+          = image_tag @news.pic
           = @news.content.html_safe
         / fb
         .blog-fb-comment.mg-b-30

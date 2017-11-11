@@ -398,9 +398,27 @@ zh:
   activemodel:
     errors:
       <<: *errors
+      
   activerecord:
+    attributes:
+      user:
+        name: "帳號"
+        password: "密碼"
+   
     errors:
-      <<: *errors
+      models:
+        user:
+          attributes:
+            name:
+              blank: "名稱不能為空"
+              taken: "名稱已被註冊"
+            password:
+              blank: "密碼不能為空"
+              too_short: "密碼最短%{count}個字符"
+              too_long: "密碼最長%{count}個字符"
+            password_confirmation:
+              blank: "重置密碼不能為空"
+              confirmation: "兩次密碼輸入不一致，請重新輸入"
 
   will_paginate:
     previous_label: "上一頁"
