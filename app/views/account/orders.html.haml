@@ -48,22 +48,86 @@
                 %th 付款方式
                 %th 金額
                 %th 付款確認
-              - current_user.orders.showed.each do |order|
-                %tr
-                  %td{"data-th" => "訂單號"}= order.code
-                  %td{"data-th" => "下單日期"}= display_date(order.created_at)
-                  %td{"data-th" => "狀態"}= t("order.#{order.status}")
-                  %td{"data-th" => "運送方式"}= order.shipping_cost.description
-                  %td{"data-th" => "付款方式"}= order.payment
-                  %td{"data-th" => "金額"}= showed_price(order.total)
+              - current_user.orders.showed.each_with_index do |order,i|
+                %tr.open-popup-link-tr
+                  %td.open-popup-link{"data-th" => "訂單號", :href => "#trpop-#{i}"}= order.code
+                  %td.open-popup-link{"data-th" => "下單日期", :href => "#trpop-#{i}"}= display_date(order.created_at)
+                  %td.open-popup-link{"data-th" => "狀態", :href => "#trpop-#{i}"}= t("order.#{order.status}")
+                  %td.open-popup-link{"data-th" => "運送方式", :href => "#trpop-#{i}"}= order.shipping_cost.description
+                  %td.open-popup-link{"data-th" => "付款方式", :href => "#trpop-#{i}"}= order.payment
+                  %td.open-popup-link{"data-th" => "金額", :href => "#trpop-#{i}"}= showed_price(order.total)
                   %td{"data-th" => "付款確認"}
                     -if (order.is_payed)
                       = t("order.payed")
                     -elsif order.payment != "貨到付款"
-                      =link_to t("notify.notify"),"","data-toggle" => "modal", 'data-target' => "#myModal", id: "order_modal_link", class: "btn btn-s btn-lblue", data: {order_id: order.id}, :hov => "0.75"
+                      %button.btn.btn-s.btn-lblue.open-popup-link{:hov => "0.75", :href => "#trpop-#{i}-form"} 通知匯款
+                      / payment notify popup
+                      .white-popup.mfp-hide{id: "trpop-#{i}-form"}
+                        %h3.text-24.lh-40.color-gray-333.bold.mg-b-20 #{t('notify.notify')}
+                        %p.text-14.lh-24.bold.color-gray-999.mg-b-20 #{t('notify.message')}
+                        = form_tag paid_notify_index_path do
+                          .order-confirmbtn-sec
+                            = text_field_tag :bank_name, nil, class: 'input-text mg-b-20', :placeholder => t('notify.bank_name')
+                          .order-confirmbtn-sec
+                            = text_field_tag :bank_account_num, nil, class: 'input-text mg-b-20', :placeholder => t('notify.bank_number')
+                          .order-confirmbtn-sec
+                            = text_field_tag :accunt_name, nil, class: 'input-text mg-b-20', :placeholder => t('notify.account_name')
+                          = hidden_field_tag :order_id, order.id
+                          .scart-submit
+                            .btn-s.btn-lblue.inlineblock-imp.mg-r-10.m-close{:hov => "0.75"} 取消
+                            = submit_tag t('confirm'), class: "btn-s btn-blue inlineblock-imp m-close",:hov => "0.75"
+                    / order detail notify popup
+                    .white-popup.mfp-hide{id: "trpop-#{i}"}
+                      %h3.text-24.lh-40.color-gray-333.bold.mg-b-20 訂單明細
+                      %div
+                        %p.text-14.lh-24.color-gray-666.mg-b-10
+                          %span.bold> #{t('account.order_detail.shipping_name')}：
+                          = order.shipping_name
+                        %p.text-14.lh-24.color-gray-666.mg-b-10
+                          %span.bold> #{t('account.order_detail.phone')}：
+                          = order.phone
+                        %p.text-14.lh-24.color-gray-666.mg-b-10
+                          %span.bold> #{t('account.address')}：
+                          = order.shipping_address
+                        %p.text-14.lh-24.color-gray-666.mg-b-10
+                          %span.bold> #{t('account.order_detail.country')}：
+                          = order.country
+                        %p.text-14.lh-24.color-gray-666.mg-b-10
+                          %span.bold> #{t('account.order_detail.store')}：
+                          = order.ship_store_display
+                        %p.text-14.lh-24.color-gray-666.mg-b-10
+                          %span.bold> #{t('account.order_detail.zip_code')}：
+                          = order.zip_code
+                        %p.text-14.lh-24.color-gray-666.mg-b-10
+                          %span.bold> #{t('account.order_detail.city')}：
+                          = order.city
+                        %p.text-14.lh-24.color-gray-666.mg-b-10
+                          %span.bold> #{t('account.order_detail.notes')}：
+                          = order.memo
+                        %table.admin-table
+                          %tr
+                            %th #{t('account.order_detail.order_item_name')}
+                            %th #{t('account.order_detail.order_item_quantity')}
+                            %th #{t('account.order_detail.order_item_price')}
+                          -order.order_items.each do |item|
+                            %tr
+                              %td= item.display_name(@country_id,params[:locale])
+                              %td= item.quantity
+                              %td= item.price * item.quantity
+                      / order detail notify popup
           / 
         / sd con
       / sidebar and con
     / rwd width limited
   / full width block
 / end main
+
+:javascript
+  $('.open-popup-link').magnificPopup({
+    type:'inline',
+    midClick: true // allow opening popup on middle mouse click. Always set it to true if you don't provide alternative source.
+  });
+    
+  $('.m-close').on( "click", function() {
+    $.magnificPopup.close();
+  });
