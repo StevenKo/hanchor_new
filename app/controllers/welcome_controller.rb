@@ -10,10 +10,6 @@ class WelcomeController < ApplicationController
     @banners = Banner.order("sort DESC")
   end
 
-  def contact
-    add_breadcrumb "聯絡我們", contact_path
-  end
-
   def faq
     @faq = Faq.find_by(country_id: @country_id, purpose: "faq")
     redirect_to :shopping_guide if @country_id == 2

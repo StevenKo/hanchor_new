@@ -120,8 +120,8 @@ zh-TW:
     checkout: "前往結帳"
 
   faq:
-    guide: "購物說明(Shopping Guide)"
-    faq: "常見問題(FAQ)"
+    guide: "購物說明"
+    faq: "常見問題"
 
   cart:
     picture: "商品圖片"
