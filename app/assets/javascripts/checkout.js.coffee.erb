@@ -13,4 +13,5 @@ $ ->
         item_num: item_num
         locale: locale
 
-  $("#order_shipping_cost_id").change()
+  $('#new_order').submit ->
+    $(".loader").fadeIn();
