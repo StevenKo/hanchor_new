@@ -7,11 +7,6 @@ class CartController < ApplicationController
 
   def index
     add_breadcrumb "購物車", cart_index_path
-
-    unless logged_in?
-      flash[:error] = "Must logged_in"
-      redirect_to login_path(cart: "index")
-    end
   end
 
   def add_item_to_cart
