@@ -30,7 +30,7 @@
                       %span.note> ＊
                       姓名
                   .input
-                    = f.text_field :name, class: 'input-text mg-b-20', placeholder: "輸入姓名", value: @current_user.name
+                    = f.text_field :shipping_name, class: 'input-text mg-b-20', placeholder: "輸入姓名", value: @current_user.name
                     %p.note 請填寫真實姓名因超商取貨需核對證件
                 / one input
                 / one input
@@ -96,6 +96,30 @@
                       運送方式
                   .input
                     = f.select  :shipping_cost_id, @shippings_selector,{prompt: "選擇運送方式"}, {class: "nice-sel-wrap nice_select"}
+                - if @country_id == 1
+                  #store{:style => "display: none;"}
+                    .one-input
+                      .title
+                        %p
+                        %span.note> ＊
+                        #{t('cart.store')}
+                      .input  
+                        = link_to t('cart.search_store'),'http://map.ezship.com.tw/', class: "btn-s btn-blue inlineblock-imp", target: "_blank"
+                    = f.fields_for :store do |child_form|
+                      .one-input
+                        .title
+                          %p
+                          %span.note> ＊
+                          #{t('cart.num').html_safe}
+                        .input 
+                          = f.text_field :store_code, :class => "input-text mg-b-20"
+                      .one-input
+                        .title
+                          %p
+                          %span.note> ＊
+                          #{t('cart.store_name').html_safe}
+                        .input
+                          = f.text_field :store_name, :class => "input-text mg-b-20"
                 / one input
                 / one input
                 .one-input

@@ -28,8 +28,7 @@ gem 'jquery-fileupload-rails'
 gem 'sitemap_generator'
 gem 'actionview-encoded_mail_to'
 
-gem 'activemerchant'
-gem 'active_merchant_allpay'
+gem 'allpay_client'
 
 gem 'will_paginate'
 gem 'babosa'

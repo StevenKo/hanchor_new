@@ -1,8 +1,8 @@
 # encoding: utf-8
 class OrdersController < ApplicationController
   before_action :get_cart_items
-  before_action :load_base_cateogries, :only => [:result]
-
+  before_action :load_base_cateogries, :only => [:result,:pay_with_credit_card]
+  
   def create
     @order = Order.new(order_params)
     unless get_good_from_store(@order)
@@ -19,9 +19,11 @@ class OrdersController < ApplicationController
     @order.status = "order_confirm"
     @order.shipping_store = "#{params[:order][:store_code]},#{params[:order][:store_name]}" if(params[:order][:store_code] && params[:order][:store_name])
     if @order.dose_not_have_product_in_stock
+
       flash[:error] = @order.quantity_error_mesage(@country_id)
       redirect_back fallback_location: root_path
     else
+
       if @order.save
         @order.update_attribute(:code, @order.created_at.utc.strftime("%y%m%d")+ (Order.where("created_at > ?", @order.created_at.utc.to_date).size).to_s.rjust(3, '0'))
         @order.deduct_quanitity
@@ -36,13 +38,8 @@ class OrdersController < ApplicationController
           redirect_to result_orders_url(order: @order)
         end
       else
-        shipping_array = YAML::load(@cart_products[0].shipping)
-        @cart_products.each do |p|
-          shipping_array = shipping_array & YAML::load(p.shipping)
-        end
-        @shippings = ShippingCost.where(id: shipping_array)
-        @shippings_selector = @shippings.map{ |s| ["#{s.description}($NT#{s.cost})",s.id]}
-        render 'cart/checkout'
+  
+        redirect_to checkout_cart_index_path
       end
     end
 
@@ -53,11 +50,24 @@ class OrdersController < ApplicationController
   def pay_with_credit_card
     @order = Order.find(params[:order])
     product_ids = @order.order_items.map(&:product_id)
-    products = Product.includes(:thumb,:product_category).joins(:product_infos).where("product_infos.country_id = #{@country_id} and products.id in (#{product_ids.join(",")})").cart_info
+    products = Product.includes(:thumb).joins(:product_infos).where("product_infos.country_id = #{@country_id} and products.id in (#{product_ids.join(",")})").cart_info
     product_infos = {}
     products.each {|product| product_infos[product.id] = product}
     @order_products = []
     product_ids.each { |id| @order_products << product_infos[id] }
+    client = Allpay::Client.new(mode: :test)
+    # production_client = Allpay::Client.new({
+    #   merchant_id: ENV['ALLPAY_ID'],
+    #   hash_key: ENV['ALLPAY_HASH_KEY'],
+    #   hash_iv: ENV['ALLPAY_HASH_IV']
+    # })
+    @params = client.generate_checkout_params(MerchantTradeNo: @order.code.to_i+100,
+                                            TotalAmount: @order.total,
+                                            TradeDesc: "HANCHOR CO., LTD",
+                                            ItemName: @order_products.map(&:name).join(","),
+                                            ReturnURL: allpay_payment_notifications_url,
+                                            ClientBackURL: result_orders_url(order: @order),
+                                            ChoosePayment: 'Credit')
   end
 
   def result
