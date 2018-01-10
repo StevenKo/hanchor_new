@@ -29,7 +29,7 @@
             %p.date= display_date(@news.release_date)
           .right
             .fb-share-button{"data-href" => request.url.split('?').first, "data-layout" => "button", "data-mobile-iframe" => "true", "data-size" => "large"}
-              %a.fb-xfbml-parse-ignore{:href => request.url.split('?').first, :target => "_blank"} 分享
+              %a.fb-xfbml-parse-ignore{:href => request.url.split('?').first, :target => "_blank"} #{t("news.share")}
 
         / blog inner top
         / blog inner text

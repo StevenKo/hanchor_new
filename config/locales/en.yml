@@ -51,6 +51,7 @@ en:
     new_article: "Recent Posts"
     more_article: "More"
     category: "Categories:"
+    share: "Share"
 
   account:
     name: "Full Name<span class='red-star'>*</span>"
