@@ -16,7 +16,7 @@ zh:
   q_and_a: "問與答"
   change_language: "切換語言"
   shopping_cart: "購物車"
-  sign_in: "登入"
+  sign_in: "登 入"
   hanchor_info: "Hanchor在2012年創立於台灣台北，始於2010年著手設計、手工製作戶外用品。品牌圖案呈現攀岩者沾滿白色碳酸鎂粉的手緊緊抓住岩塊；HANCHOR= Hand+ Anchor，結合兩項攀岩者與岩牆連結的重要元素，象徵穩固及堅持的精神。由攀岩概念出發的原創設計，採用高級環保材料，並致力於輕量化兼具堅固及功能性的街頭戶外風格。產品經過反覆測試與及親身使用，在乎你每一個感受；甚至提供客製的貼心服務，讓你擁有獨一無二的HANCHOR。"
   more: "更多資訊"
   news_articles: "部落格文章"
@@ -36,6 +36,10 @@ zh:
   my_account: "我的帳號"
   logout: "登出"
   recommend_products: "推薦商品"
+  istant_register: "立即註冊"
+  istant_login: "立即登入"
+  not_member: "還不是會員？"
+  already_member: "已經有會員了！"
 
   category:
     category: "分類："
@@ -53,6 +57,8 @@ zh:
     country: "輸入國家"
     select_shipping: "選擇運送方式"
     note: "附註說明"
+    password: "輸入密碼"
+    password_confirm: "密碼確認"
 
   subscribe:
     subscribe: "訂 閱"
@@ -94,7 +100,7 @@ zh:
     info_name: "姓名:"
     info_email: "Email:"
     edit_address: "編輯地址"
-    register: "註冊"
+    register: "註 冊"
     my_info: "我的資料"
     login_info: "登入資料"
     register_messgae: "加入本網站會員立即進行購物並可追蹤訂單，HANCHOR不會洩漏任何資料給第三方，除HANCHOR外，會員不會收到來自第三人之電子郵件。"

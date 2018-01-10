@@ -16,23 +16,23 @@
             = link_to root_path, {class: "block signup-logo", hov: "0.75"} do
               = image_tag 'logo-h-w.png', alt: "Hanchor", class: "block"
           .mg-b-30
-            %h2.text-24.lh-30.color-white.bold 註 冊
+            %h2.text-24.lh-30.color-white.bold #{t('account.register')}
           = form_for @user do |f|
-            = f.text_field :email, class: 'input-text mg-b-20', placeholder: "輸入 Email 帳號"
-            = f.password_field :password, class: 'input-text mg-b-20', placeholder: "輸入密碼"
-            = f.password_field :password_confirmation, class: 'input-text mg-b-20', placeholder: "密碼確認"
+            = f.text_field :email, class: 'input-text mg-b-20', placeholder: t("placeholder.email")
+            = f.password_field :password, class: 'input-text mg-b-20', placeholder: t("placeholder.password")
+            = f.password_field :password_confirmation, class: 'input-text mg-b-20', placeholder: t("placeholder.password_confirm")
             - flash.each do |key,value|
               %p.text-13.color-red.lh-20.mg-b-30 #{value}
             .mg-b-20
-              = f.submit "註 冊", class: 'btn-l btn-blue', hov: "0.75"
+              = f.submit t('account.register'), class: 'btn-l btn-blue', hov: "0.75"
           .clearfix.mg-b-35
             .login-info-left.text-13.lh-20.color-gray-999
-              已經有會員了！
-              = link_to "立即登入", login_path, class: 'color-blue bold', :hov => "0.7"
+              #{t("already_member")}
+              = link_to t('istant_login'), login_path, class: 'color-blue bold', :hov => "0.7"
           .mg-b-20
             = button_to auth_path('facebook'), {class: "btn-l btn-blue btn-fb", hov: "0.75"} do
               %i.fa.fa-facebook-square{"aria-hidden" => "true"}>
-              Facebook 登入
+              Facebook #{t('sign_in')}
       / login / signup
     / rwd width limited
   / rwd padding

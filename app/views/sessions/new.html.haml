@@ -17,21 +17,21 @@
               = image_tag 'logo-h-w.png', alt: "Hanchor", class: "block"
           = form_tag '/login' do
             .mg-b-30
-              %h2.text-24.lh-30.color-white.bold 登 入
-            = text_field_tag :email, nil, class: 'input-text mg-b-20', placeholder: "輸入 Email 帳號"
-            = password_field_tag :password, nil, class: 'input-text mg-b-20', placeholder: "輸入密碼"
+              %h2.text-24.lh-30.color-white.bold #{t('sign_in')}
+            = text_field_tag :email, nil, class: 'input-text mg-b-20', placeholder: t("placeholder.email")
+            = password_field_tag :password, nil, class: 'input-text mg-b-20', placeholder: t("placeholder.password")
             .mg-b-20
-              = submit_tag "登 入", class: 'btn-l btn-blue', hov: "0.75"
+              = submit_tag t('sign_in'), class: 'btn-l btn-blue', hov: "0.75"
           .clearfix.mg-b-35
             .login-info-left.text-13.lh-20.color-gray-999
-              還不是會員？
-              = link_to "立即註冊",register_path, {class: "color-blue bold", :hov => "0.7"}
+              #{t('not_member')}
+              = link_to t("istant_register"),register_path, {class: "color-blue bold", :hov => "0.7"}
             .login-info-right.text-13.lh-20.color-gray-999
               = link_to t('account.forget_password'),forget_password_path, class: 'text-1 color-grey-1', :hov => "0.7"
           .mg-b-20
             = button_to auth_path('facebook'), {class: "btn-l btn-blue btn-fb", hov: "0.75"} do
               %i.fa.fa-facebook-square{"aria-hidden" => "true"}>
-              Facebook 登入
+              Facebook #{t('sign_in')}
       / login / signup
     / rwd width limited
   / rwd padding

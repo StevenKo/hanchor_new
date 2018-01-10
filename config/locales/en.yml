@@ -33,6 +33,10 @@ en:
   my_account: "My Account"
   logout: "Logout"
   recommend_products: "Recommend"
+  istant_register: "Sign up now"
+  istant_login: "Login now"
+  not_member: "Not HANCHOR member?"
+  already_member: "Already Registered?"
 
   category:
     category: "Category："
@@ -50,6 +54,8 @@ en:
     country: "Country Name"
     select_shipping: "Select Shipping"
     note: "Futher note for seller"
+    password: "Password"
+    password_confirm: "Password Confirm"
 
   subscribe:
     subscribe: "Subscribe"
