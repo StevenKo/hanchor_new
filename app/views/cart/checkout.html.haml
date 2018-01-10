@@ -21,81 +21,73 @@
           / 
           = form_for @order, url: orders_path do |f|
             .member-sec.relative.mg-b-30.grid-800px
-              %h2.title-line.inlineblock.mg-b-30 填寫寄送資訊
+              %h2.title-line.inlineblock.mg-b-30 #{t("shopping_cart_locale.checkout_breadcrumb")}
               .input-form
                 / one input
                 .one-input
                   .title
                     %p
-                      %span.note> ＊
-                      姓名
+                      #{t("account.name_html")}
                   .input
-                    = f.text_field :shipping_name, class: 'input-text mg-b-20', placeholder: "輸入姓名", value: @current_user.name
-                    %p.note 請填寫真實姓名因超商取貨需核對證件
+                    = f.text_field :shipping_name, class: 'input-text mg-b-20', placeholder: t("placeholder.name"), value: @current_user.name
+                    %p.note #{t("cart.user_name_note")}
                 / one input
                 / one input
                 .one-input
                   .title
                     %p
-                      %span.note> ＊
-                      電話
+                      #{t("account.phone_html")}
                   .input
-                    = f.text_field :phone, class: 'input-text mg-b-20', placeholder: "輸入電話", value: @current_user.phone
+                    = f.text_field :phone, class: 'input-text mg-b-20', placeholder: t("placeholder.phone"), value: @current_user.phone
                 / one input
                 / one input
                 .one-input
                   .title
                     %p
-                      %span.note> ＊
-                      地址
+                      #{t("account.address_html")}
                   .input
-                    = f.text_field :shipping_address, class: 'input-text mg-b-20', placeholder: "輸入地址", value: @current_user.shipping_address
+                    = f.text_field :shipping_address, class: 'input-text mg-b-20', placeholder: t("placeholder.address"), value: @current_user.shipping_address
                 / one input
                 / one input
                 .one-input
                   .title
                     %p
-                      %span.note> ＊
-                      郵遞區號
+                      #{t("account.zip_code_html")}
                   .input
-                    = f.text_field :zip_code, class: 'input-text mg-b-20', placeholder: "輸入郵遞區號", value: @current_user.zip_code
+                    = f.text_field :zip_code, class: 'input-text mg-b-20', placeholder: t("placeholder.zip"), value: @current_user.zip_code
                 / one input
                 / one input
                 .one-input
                   .title
                     %p
-                      %span.note> ＊
-                      城市
+                      #{t("account.city_html")}
                   .input
-                    = f.text_field :city, class: 'input-text mg-b-20', placeholder: "輸入城市", value: @current_user.city
+                    = f.text_field :city, class: 'input-text mg-b-20', placeholder: t("placeholder.city"), value: @current_user.city
                 / one input
                 / one input
                 .one-input
                   .title
                     %p
-                      %span.note> ＊
-                      州
+                      #{t("account.state_html")}
                   .input
-                    = f.text_field :state, class: 'input-text mg-b-20', placeholder: "輸入州名", value: @current_user.state
-                    %p.note 若無則填城市
+                    = f.text_field :state, class: 'input-text mg-b-20', placeholder: t("placeholder.state"), value: @current_user.state
+                    %p.note #{t("cart.state_note")}
                 / one input
                 / one input
                 .one-input
                   .title
                     %p
-                      %span.note> ＊
-                      國家
+                      #{t("account.country_html")}
                   .input
-                    = f.text_field :country, class: 'input-text mg-b-20', placeholder: "輸入國家", value: @current_user.country
+                    = f.text_field :country, class: 'input-text mg-b-20', placeholder: t("placeholder.country"), value: @current_user.country
                 / one input
                 / one input
                 .one-input
                   .title
                     %p
-                      %span.note> ＊
-                      運送方式
+                      #{t("account.shipping_html")}
                   .input
-                    = f.select  :shipping_cost_id, @shippings_selector,{prompt: "選擇運送方式"}, {class: "nice-sel-wrap nice_select"}
+                    = f.select  :shipping_cost_id, @shippings_selector,{prompt: t("placeholder.select_shipping")}, {class: "nice-sel-wrap nice_select"}
                 - if @country_id == 1
                   #store{:style => "display: none;"}
                     .one-input
@@ -124,9 +116,9 @@
                 / one input
                 .one-input
                   .title
-                    %p 意見
+                    %p #{t("cart.comment")}
                   .input
-                    = text_area_tag :memo, nil,class: "input-text input-textarea mg-b-20", :placeholder => "附註說明"
+                    = text_area_tag :memo, nil,class: "input-text input-textarea mg-b-20", :placeholder => t("placeholder.note")
                 / one input
             / 
             / line
@@ -134,7 +126,7 @@
             / line
             / 
             .member-sec.grid-800px.relative.mg-b-30
-              %h2.title-line.inlineblock.mg-b-30 付款方式
+              %h2.title-line.inlineblock.mg-b-30 #{t("order.pay")}
               .clearfix.mg-b-30
                 - if (["zh-TW","zh"].include?( params[:locale]))
                   .mg-b-20.clearfix
@@ -145,14 +137,14 @@
                     = f.radio_button :payment, "PayPal", class: "pay-2 pay-radio"
                     %label.pay-text{:for => "pay-2"}
                       %img.pay-method-pic{:alt => "", :src => "https://www.paypal.com/en_US/i/bnr/horizontal_solution_PPeCheck.gif"}/
+                  .mg-b-20.clearfix
+                    = f.radio_button :payment, "transfer", class: "pay-3 pay-radio"
+                    %label.pay-text{:for => "pay-3"} #{t("cart.transfer_bank")}
                 -else
                   .mg-b-20.clearfix
                     = f.radio_button :payment, "PayPal",checked: true, class: "pay-2 pay-radio"
                     %label.pay-text{:for => "pay-2"}
                       %img.pay-method-pic{:alt => "", :src => "https://www.paypal.com/en_US/i/bnr/horizontal_solution_PPeCheck.gif"}/
-                .mg-b-20.clearfix
-                  = f.radio_button :payment, "transfer", class: "pay-3 pay-radio"
-                  %label.pay-text{:for => "pay-3"} 銀行或 ATM 匯款（請於匯款後點選通知匯款以利盡快出貨）
                 .mg-b-20.clearfix.pay_when_shipped{:style => "display: none;"}
                   = f.radio_button :payment, t('cart.pay_when_shipped'), class: "pay-4 pay-radio"
                   %label.pay-text{:for => "pay-4"} #{t('cart.pay_when_shipped')}
@@ -162,7 +154,7 @@
             / line
             / 
             .member-sec.grid-800px.relative.mg-b-30
-              %h2.title-line.inlineblock.mg-b-30 訂單明細
+              %h2.title-line.inlineblock.mg-b-30 #{t("cart.order")}
               .clearfix.mg-b-30
                 - @cart_items.each_with_index do |item, i|
                   .one-scart.clearfix
@@ -176,8 +168,8 @@
                           %span.product-color-hex{:style => "background:#000;"}
                         %p.product-price= showed_price(item.price)
                       .qty
-                        %p.per-qty 數量：#{item.quantity}
-                        %p.per-price 小計：#{showed_price(item.price * item.quantity)}
+                        %p.per-qty #{t("cart.quantity")}：#{item.quantity}
+                        %p.per-price #{t("cart.subtotal")}：#{showed_price(item.price * item.quantity)}
                       .btn-sec
                         = button_to remove_cart_item_cart_index_path(item_id: item.id), class: "btn-line btn-line-blue" do
                           #{t("cancel")}
@@ -186,22 +178,22 @@
                 .price-show
                   %p.scart-total-price-s.mg-b-10
                     %span> 
-                    運費NT$0
+                    #{t("cart.shipping_cost")}NT$0
                   %p.scart-total-price-s.mg-b-10
-                    %span> 小計
+                    %span> #{t("cart.subtotal")}
                     #{showed_price(sum_cart_items_price @cart_items)}
                   %p#ssss.scart-total-price.mg-b-40
-                    %span> 總計
+                    %span> #{t("cart.sum")}
                     #{showed_price(sum_cart_items_price @cart_items)}
                 .mg-b-30.text-15.lh-30.color-gray-333.bold
-                  購買前請詳細閱讀
+                  #{t("cart.read_shopping_gudide_message")}
                   = link_to(t("cart.shopping_guide"), shopping_guide_path,{:class=>"bold color-lb mg-b-17",:hov => "0.75"})
                 .scart-submit
                   = f.hidden_field :sub_total, value: sum_cart_items_price(@cart_items)
                   = f.hidden_field :item_num, value: @cart_items.size
                   = hidden_field_tag :locale, params[:locale]
                   = button_tag(type: 'submit', class: "btn-l btn-blue inlineblock-imp", data: { confirm: t('cart.confirm_message')}, :hov => "0.75") do
-                    確認訂購
+                    #{t("cart.confirm")}
                     %i.fa.fa-chevron-right.mg-l-20{"aria-hidden" => "true"}
           / 
         / sd con
