@@ -62,7 +62,6 @@ $(window).load(function() {
 	$(".tab").click(function (e) {
         
 		$(this).find('.rwd-tab-show').fadeToggle(150);
-		e.preventDefault();
         
     });
 	

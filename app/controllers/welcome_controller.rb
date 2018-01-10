@@ -1,7 +1,7 @@
 class WelcomeController < ApplicationController
   before_action :load_base_cateogries
   
-  add_breadcrumb "首頁", :root_path
+  add_breadcrumb I18n.t("product.home"), :root_path
 
   def index
     @news = News.locale(params[:locale]).select("news.id, title, release_date, pic, slug").limit(5).order("news.release_date DESC")

@@ -34,6 +34,10 @@ en:
   logout: "Logout"
   recommend_products: "Recommend"
 
+  category:
+    category: "Category："
+    all: "All"
+
   placeholder:
     email: "Email"
 

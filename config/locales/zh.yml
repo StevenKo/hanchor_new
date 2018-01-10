@@ -37,6 +37,10 @@ zh:
   logout: "登出"
   recommend_products: "推薦商品"
 
+  category:
+    category: "分類："
+    all: "全部"
+
   placeholder:
     email: "輸入 Email"
 
