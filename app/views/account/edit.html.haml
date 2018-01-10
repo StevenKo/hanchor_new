@@ -19,81 +19,73 @@
           / 
           = form_for current_user do |f|
             .member-sec.relative.mg-b-30.grid-800px
-              %h2.title-line.inlineblock.mg-b-30 修改資料
+              %h2.title-line.inlineblock.mg-b-30 #{t('account.edit')}
               .input-form
                 / one input
                 .one-input
                   .title
                     %p
-                      %span.note> ＊
-                      姓名
+                      #{t('account.name_html')}
                   .input
-                    = f.text_field :name, :class => "input-text mg-b-20", :placeholder => "輸入姓名"
-                    %p.note 請填寫真實姓名因超商取貨需核對證件
+                    = f.text_field :name, :class => "input-text mg-b-20", :placeholder => t('placeholder.name')
+                    %p.note #{t("cart.user_name_note")}
                 / one input
                 / one input
                 .one-input
                   .title
                     %p
-                      %span.note> ＊
-                      Email
+                      #{t('account.email_html')}
                   .input
-                    = f.text_field :email, :class => "input-text mg-b-20", :placeholder => "輸入 Email"
+                    = f.text_field :email, :class => "input-text mg-b-20", :placeholder => t('placeholder.email')
                 / one input
                 / one input
                 .one-input
                   .title
                     %p
-                      %span.note> ＊
-                      電話
+                      #{t('account.phone_html')}
                   .input
-                    = f.text_field :phone, :class => "input-text mg-b-20", :placeholder => "輸入電話"
+                    = f.text_field :phone, :class => "input-text mg-b-20", :placeholder => t('placeholder.phone')
                 / one input
                 / one input
                 .one-input
                   .title
                     %p
-                      %span.note> ＊
-                      地址
+                      #{t('account.address_html')}
                   .input
-                    = f.text_field :shipping_address, :class => "input-text mg-b-20", :placeholder => "輸入地址"
+                    = f.text_field :shipping_address, :class => "input-text mg-b-20", :placeholder => t('placeholder.address')
                 / one input
                 / one input
                 .one-input
                   .title
                     %p
-                      %span.note> ＊
-                      郵遞區號
+                      #{t('account.zip_code_html')}
                   .input
-                    = f.text_field :zip_code, :class => "input-text mg-b-20", :placeholder => "輸入郵遞區號"
+                    = f.text_field :zip_code, :class => "input-text mg-b-20", :placeholder => t('placeholder.zip')
                 / one input
                 / one input
                 .one-input
                   .title
                     %p
-                      %span.note> ＊
-                      城市
+                      #{t('account.city_html')}
                   .input
-                    = f.text_field :city, :class => "input-text mg-b-20", :placeholder => "輸入城市"
+                    = f.text_field :city, :class => "input-text mg-b-20", :placeholder => t('placeholder.city')
                 / one input
                 / one input
                 .one-input
                   .title
                     %p
-                      %span.note> ＊
-                      州
+                      #{t('account.state_html')}
                   .input
-                    = f.text_field :state, :class => "input-text mg-b-20", :placeholder => "輸入州名"
-                    %p.note 若無則填城市
+                    = f.text_field :state, :class => "input-text mg-b-20", :placeholder => t('placeholder.state')
+                    %p.note #{t("cart.state_note")}
                 / one input
                 / one input
                 .one-input
                   .title
                     %p
-                      %span.note> ＊
-                      國家
+                      #{t('account.country_html')}
                   .input
-                    = f.text_field :country, :class => "input-text mg-b-20", :placeholder => "輸入國家"
+                    = f.text_field :country, :class => "input-text mg-b-20", :placeholder => t('placeholder.country')
                 / one input
             / 
             / line
@@ -101,30 +93,29 @@
             / line
             / 
             .member-sec.relative.mg-b-30.grid-800px
-              %h2.title-line.inlineblock.mg-b-30 修改密碼
+              %h2.title-line.inlineblock.mg-b-30 #{t('account.change_password')}
               .input-form
                 / one input
                 .one-input
                   .title
                     %p
-                      %span.note> ＊
-                      密碼
+                      #{t('account.password_html')}
                   .input
-                    = f.password_field :password, :class => "input-text mg-b-20", :placeholder => "輸入密碼"
+                    = f.password_field :password, :class => "input-text mg-b-20", :placeholder => t('placeholder.password')
                 / one input
                 / one input
                 .one-input
                   .title
                     %p
-                      %span.note> ＊
-                      密碼確認
+                      #{t('account.password_confirm_html')}
                   .input
-                    = f.password_field :password_confirmation, :class => "input-text mg-b-20", :placeholder => "密碼確認"
+                    = f.password_field :password_confirmation, :class => "input-text mg-b-20", :placeholder => t('placeholder.password_confirm')
+                / one input
                 / one input
               .tright.mg-t-60
                 .scart-submit
                   = button_tag(type: 'submit', class: "btn btn-l btn-blue inlineblock-imp", :hov => "0.75") do
-                    確認修改
+                    #{t('account.confirm_edit')}
                     %i.fa.fa-chevron-right.mg-l-20{"aria-hidden" => "true"}
           / 
         / sd con

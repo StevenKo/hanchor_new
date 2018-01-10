@@ -72,6 +72,7 @@ en:
   account:
     overview: "Overview"
     edit: "Edit Info"
+    confirm_edit: "Edit Confirm"
     name_html: "<span class='note'>＊</span>Full Name"
     email_html: "<span class='note'>＊</span>Email"
     phone_html: "<span class='note'>＊</span>Phone"
@@ -81,13 +82,13 @@ en:
     country_html:  "<span class='note'>＊</span>Country"
     address_html:  "<span class='note'>＊</span>Address"
     shipping_html: "<span class='note'>＊</span>Shipping"
-    password_html: "Password<span class='red-star'>*</span>"
-    password_confirm_html: "Password Confirm<span class='red-star'>*</span>"
+    password_html: "<span class='note'>＊</span>Password"
+    password_confirm_html: "<span class='note'>＊</span>Password Confirm"
     my_account: "My Account"
     info: "Personal Information"
     order: "My Orders"
     change_password: "Change Password"
-    message: |
+    message_html: |
       Here you can view your order history, check status of orders.Enjoy your shopping!
     info_name: "Name:"
     info_email: "Email:"

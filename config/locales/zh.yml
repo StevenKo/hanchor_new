@@ -75,8 +75,9 @@ zh:
   account:
     overview: "帳號總覽"
     edit: "修改資料"
+    confirm_edit: "確認修改"
     name_html: "<span class='note'>＊</span>姓名"
-    email_html: "電子郵件<span class='red-star'>*</span>"
+    email_html: "<span class='note'>＊</span>Email"
     phone_html: "<span class='note'>＊</span>電話"
     zip_code_html: "<span class='note'>＊</span>郵遞區號"
     city_html: "<span class='note'>＊</span>城市"
@@ -84,13 +85,13 @@ zh:
     country_html:  "<span class='note'>＊</span>國家"
     address_html:  "<span class='note'>＊</span>寄送地址"
     shipping_html: "<span class='note'>＊</span>運送方式"
-    password_html: "密碼<span class='red-star'>*</span>"
-    password_confirm_html: "密碼確認<span class='red-star'>*</span>"
+    password_html: "<span class='note'>＊</span>密碼"
+    password_confirm_html: "<span class='note'>＊</span>密碼確認"
     my_account: "我的帳號"
     info: "我的資料"
     order: "我的訂單"
     change_password: "修改密碼"
-    message: |
+    message_html: |
       若使用ATM繳款方式訂購請於匯款後請點選該筆訂單中的 <span class="bold">通知匯款</span> 填寫您的帳戶資訊。
       如付款方式選擇銀行匯款，HANCHOR 帳戶資訊如下：<br /><br />
         <span class="bold">戶名：</span>汗可股份有限公司 <br />
