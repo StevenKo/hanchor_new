@@ -107,6 +107,9 @@ en:
     feature: "Features"
     description: "Description"
     out_of_stock: "Out of Stock"
+    interested: "You may feel interested in these"
+    spec: "Spec"
+    info: "Info"
 
   shopping_cart_locale:
     cart: "Shopping Cart"

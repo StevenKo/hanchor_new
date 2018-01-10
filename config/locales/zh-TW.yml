@@ -120,10 +120,13 @@ zh-TW:
     regular_price: "價格:"
     quantity: "數量:"
     size: "Size:"
-    add_to_cart: "放進購物車"
+    add_to_cart: "加入購物車"
     feature: "產品說明"
     description: "描述與使用"
     out_of_stock: "Out of Stock"
+    interested: "你可能有興趣"
+    spec: "產品規格"
+    info: "產品說明"
 
   shopping_cart_locale:
     cart: "購物車"

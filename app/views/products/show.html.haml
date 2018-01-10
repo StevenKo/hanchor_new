@@ -51,7 +51,7 @@
             .mg-b-30
               / color
               .sel-color
-                %h3 顏色
+                %h3 #{t("product.color")}
                 %label.label-radio{:for => "v1", :style => "background:url(#{image_url('111111.jpg')}) !important;", :title => "迷彩"}
                   %input#v1{:checked => "checked", :name => "color", :type => "radio", :value => "1"}/
                   %p.sel-color-text 迷彩
@@ -66,7 +66,7 @@
                   %p.sel-color-text 紅
               / color
               .sel-qty
-                %h3 尺寸
+                %h3 #{t("product.dimension")}
                 / = select_tag :quantity,[], style: "display: none"
                 / %strong{id: "out_of_stock",style: "display: none"}
                 /   = t('product.out_of_stock')
@@ -78,7 +78,7 @@
               / qty
               / qty
               .sel-qty
-                %h3 數量
+                %h3 #{t("product.quantity")}
                 / = select_tag :quantity,[], style: "display: none"
                 / %strong{id: "out_of_stock",style: "display: none"}
                 /   = t('product.out_of_stock')
@@ -96,7 +96,7 @@
             / btn
             .mg-b-25
               %button#add_cart.btn-l.btn-blue{:hov => "0.75"}
-                加入購物車
+                #{t("product.add_to_cart")}
                 %i.fa.fa-chevron-right.mg-l-20{"aria-hidden" => "true"}
             = f.submit t('product.add_to_cart'), style: "display: none"
             / btn
@@ -104,9 +104,9 @@
         / spec / info
         .spec-sec
           .tab.tab-sel.clearfix.right.mg-b-25
-            %a.tab-btn.active{"data-tab" => "tab-1"} 產品規格
+            %a.tab-btn.active{"data-tab" => "tab-1"}= t("product.spec")
             / active on this one
-            %a.tab-btn{"data-tab" => "tab-2"} 產品說明
+            %a.tab-btn{"data-tab" => "tab-2"}= t("product.info")
           .tab-con
             .spec.tab-inner.tab-1.active.text-14.color-gray-333.lh-25
               - if @product.weight.present?
@@ -152,7 +152,7 @@
   %section.product-bottom-bg.pd-v-50
     / rwd width limited
     .rwd-width-limited
-      %h2.text-20.lh-30.color-white.bold.left.mg-b-30 你可能有興趣
+      %h2.text-20.lh-30.color-white.bold.left.mg-b-30= t("product.interested")
       .clearfix.flex-sec
         - @related_products.each do |product|
           =link_to products_show_path(product.product_categories[0].name_en,product), { :class => "index-recommend-item flex-4",:hov => "0.8"} do
