@@ -21,36 +21,36 @@
         .clearfix.sc-con.grid-4-3
           / 
           .member-sec.relative.mg-b-30
-            %h2.title-line.inlineblock.mg-b-30 帳戶資訊
+            %h2.title-line.inlineblock.mg-b-30 #{t("account.account_info")}
             %p.text-14.lh-30.color-gray-666.mg-b-15
-              %span.bold> 姓名：
+              %span.bold> #{t("account.info_name")}
               = current_user.name
             %p.text-14.lh-30.color-gray-666.mg-b-15
-              %span.bold> Email：
+              %span.bold> #{t("account.info_email")}
               = current_user.email
             %p.text-14.lh-30.color-gray-666.mg-b-15
-              %span.bold> 電話：
+              %span.bold> #{t("order_detail.phone")}:
               = current_user.phone
             %p.text-14.lh-30.color-gray-666.mg-b-15
-              %span.bold> 寄送地址：
+              %span.bold> #{t("account.address")}:
               = current_user.shipping_address
-            = link_to "修改資料", account_edit_path, class: "btn btn-m btn-blue inlineblock-imp modify-m-info", :hov => "0.75"
+            = link_to t("account.edit"), account_edit_path, class: "btn btn-m btn-blue inlineblock-imp modify-m-info", :hov => "0.75"
           / 
           / line
           .gray-h-line.mg-b-40
           / line
           / 
           .member-sec.relative.mg-b-30
-            %h2.title-line.inlineblock.mg-b-30 訂單紀錄
+            %h2.title-line.inlineblock.mg-b-30 #{t("order.history")}
             %table.order-table
               %tr
-                %th 訂單號
-                %th 下單日期
-                %th 狀態
-                %th 運送方式
-                %th 付款方式
-                %th 金額
-                %th 付款確認
+                %th #{t("order.num")}
+                %th #{t("order.date")}
+                %th #{t("order.status")}
+                %th #{t("order.shpping")}
+                %th #{t("order.pay")}
+                %th #{t("order.price")}
+                %th #{t("order.confirm")}
               - current_user.orders.showed.each_with_index do |order,i|
                 %tr.open-popup-link-tr
                   %td.open-popup-link{"data-th" => "訂單號", :href => "#trpop-#{i}"}= order.code
@@ -63,7 +63,7 @@
                     -if (order.is_payed)
                       = t("order.payed")
                     -elsif order.payment != "貨到付款"
-                      %button.btn.btn-s.btn-lblue.open-popup-link{:hov => "0.75", :href => "#trpop-#{i}-form"} 通知匯款
+                      %button.btn.btn-s.btn-lblue.open-popup-link{:hov => "0.75", :href => "#trpop-#{i}-form"} #{t("notify.notify")}
                       / payment notify popup
                       .white-popup.mfp-hide{id: "trpop-#{i}-form"}
                         %h3.text-24.lh-40.color-gray-333.bold.mg-b-20 #{t('notify.notify')}
@@ -77,11 +77,11 @@
                             = text_field_tag :accunt_name, nil, class: 'input-text mg-b-20', :placeholder => t('notify.account_name')
                           = hidden_field_tag :order_id, order.id
                           .scart-submit
-                            .btn-s.btn-lblue.inlineblock-imp.mg-r-10.m-close{:hov => "0.75"} 取消
+                            .btn-s.btn-lblue.inlineblock-imp.mg-r-10.m-close{:hov => "0.75"} #{t("cancel")}
                             = submit_tag t('confirm'), class: "btn-s btn-blue inlineblock-imp m-close",:hov => "0.75"
                     / order detail notify popup
                     .white-popup.mfp-hide{id: "trpop-#{i}"}
-                      %h3.text-24.lh-40.color-gray-333.bold.mg-b-20 訂單明細
+                      %h3.text-24.lh-40.color-gray-333.bold.mg-b-20 #{t("cart.order")}
                       %div
                         %p.text-14.lh-24.color-gray-666.mg-b-10
                           %span.bold> #{t('account.order_detail.shipping_name')}：

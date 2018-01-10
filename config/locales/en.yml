@@ -54,6 +54,8 @@ en:
     share: "Share"
 
   account:
+    overview: "Overview"
+    edit: "Edit Info"
     name: "Full Name<span class='red-star'>*</span>"
     email: "Email<span class='red-star'>*</span>"
     phone: "Phone number<span class='red-star'>*</span>"
@@ -68,8 +70,8 @@ en:
     info: "Personal Information"
     order: "My Orders"
     change_password: "Change Password"
-    message: |      
-      Here you can view your order history, check status of orders and update your personal information.Enjoy your shopping!
+    message: |
+      Here you can view your order history, check status of orders.Enjoy your shopping!
     info_name: "Name:"
     info_email: "Email:"
     edit_address: "Edit Address"

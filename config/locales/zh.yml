@@ -57,6 +57,8 @@ zh:
     share: "分享"
 
   account:
+    overview: "帳號總覽"
+    edit: "修改資料"
     name: "姓名<span class='red-star'>*</span>"
     email: "電子郵件<span class='red-star'>*</span>"
     phone: "電話<span class='red-star'>*</span>"
@@ -72,21 +74,11 @@ zh:
     order: "我的訂單"
     change_password: "修改密碼"
     message: |
-      此處可修改個人資料及追蹤訂單狀態，若使用ATM繳款方式訂購請於匯款後請點選該筆訂單中的
-      <span class="ui-button ui-state-hover">
-        通知匯款
-      </span>
-      填寫您的帳戶資訊。
-      <br />
-      Here you can view your order history, check status of orders and update your personal information.Enjoy your shopping!
-      <br />
-      如付款方式選擇銀行匯款，HANCHOR帳戶資訊如下
-      <br />
-      戶名:汗可股份有限公司
-      <br />
-      台北富邦銀行(銀行代碼012)
-      <br />
-      帳號: 742120001104
+      若使用ATM繳款方式訂購請於匯款後請點選該筆訂單中的 <span class="bold">通知匯款</span> 填寫您的帳戶資訊。
+      如付款方式選擇銀行匯款，HANCHOR 帳戶資訊如下：<br /><br />
+        <span class="bold">戶名：</span>汗可股份有限公司 <br />
+        <span class="bold">銀行：</span>台北富邦銀行（銀行代碼 012）<br />
+        <span class="bold">帳號：</span>742120001104<br />
     account_info: "帳戶資訊"
     info_name: "姓名:"
     info_email: "Email:"
