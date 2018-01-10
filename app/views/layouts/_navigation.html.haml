@@ -52,17 +52,17 @@
             %li.layer-1-li
               .layer-1.menu-line
                 %h2
-                  產品
+                  #{t("product.product")}
                   %i.fa.fa-angle-down.mg-l-10{"aria-hidden" => "true"}
               / Product dropdown
               %ul.layer-2-ul
                 - @base_categories.each_with_index do |category,index|
                   %li.layer-2-li
                     = link_to products_index_path(category.name_en), class: "layer-3" do
-                      %h4 #{category.name}
+                      %h4 #{category.locale(params[:locale])}
             %li.layer-1-li
               = link_to news_index_path(news_tag_id: 0), {:class => "layer-1 menu-line"} do
                 %h2= t('news_events')
             %li.layer-1-li
               = link_to faq_path, {:class => "layer-1 menu-line"} do
-                %h2 常見問題
+                %h2= t("faq.faq")

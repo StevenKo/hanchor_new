@@ -34,8 +34,17 @@ zh-TW:
   confirm: "確定"
   cancel: "取消"
   my_account: "我的帳號"
-  logout: "登出" 
+  logout: "登出"
+  recommend_products: "推薦商品"
 
+  placeholder:
+    email: "輸入 Email"
+
+  subscribe:
+    subscribe: "訂 閱"
+    success: "恭喜你，已訂閱完成！"
+    fail: "訂閱失敗，請再輸入一次Email！"
+    info: "取得 HAHCHOR 最新資訊"
 
   news:
     new_article: "最新文章"

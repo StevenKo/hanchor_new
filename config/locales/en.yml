@@ -31,9 +31,17 @@ en:
   confirm: "Confirm"
   cancel: "Cancel"
   my_account: "My Account"
-  logout: "Logout" 
+  logout: "Logout"
+  recommend_products: "Recommend"
 
+  placeholder:
+    email: "Email"
 
+  subscribe:
+    subscribe: "Subscribe"
+    success: "Congrations, already subscribed!"
+    fail: "Failed，please input your Email again!"
+    info: "Get HAHCHOR's newest informaiton"
 
   news:
     new_article: "Recent Posts"
@@ -168,6 +176,7 @@ en:
   mail:
     register_success: "Welcome to join HANCHOR!"
     reset_password: "Reset Password"
+    order: "Thanks for ordering with HANCHOR! Your Order #%{order_code}"
 
   reset_password:
     title: "Reset Your Password"
