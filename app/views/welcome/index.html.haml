@@ -85,9 +85,15 @@
       .rwd-width-limited
         %h2.text-20.color-white.bold.tcenter.lh-30.mg-b-30 取得 HAHCHOR 最新資訊
         .tcenter
-          .inlineblock.subs-input-wrap
-            %input.input-text.input-text-l{:placeholder => "輸入 Email", :type => "text"}/
-          .inlineblock.subs-input-wrap
-            %button.btn-l.btn-blue{:hov => "0.75"}
-              訂 閱
-              %i.fa.fa-chevron-right.mg-l-20{"aria-hidden" => "true"}
+          = form_tag subscribe_path, remote: true do
+            .inlineblock.subs-input-wrap
+              = text_field_tag :email, nil, class: 'input-text-l input-text', :placeholder => "輸入 Email"
+            .inlineblock.subs-input-wrap
+              %button.btn-l.btn-blue{:hov => "0.75"}
+                訂 閱
+                %i.fa.fa-chevron-right.mg-l-20{"aria-hidden" => "true"}
+
+.white-popup.mfp-hide{id: "subscribe-success"}
+  %h3.text-24.lh-40.color-gray-333.bold.mg-b-20 恭喜你，已訂閱完成！
+.white-popup.mfp-hide{id: "subscribe-fail"}
+  %h3.text-24.lh-40.color-gray-333.bold.mg-b-20 訂閱失敗，請再輸入一次Email！

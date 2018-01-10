@@ -24,4 +24,16 @@ class WelcomeController < ApplicationController
   def aboutus
     add_breadcrumb t('aboutus'), aboutus_path
   end
+
+  def subscribe
+    s = Subscription.new
+    s.email = params[:email]
+    s.is_registered = true if User.where(email: params[:email]).exists?
+    
+    if s.save
+      @success = true
+    else
+      @success = false
+    end
+  end
 end

@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   get 'shopping_guide' => "welcome#shopping_guide"
   get 'faq' => 'welcome#faq'
   get 'contact' => 'welcome#contact'
+  post 'subscribe' => 'welcome#subscribe'
 
   get '/register', to: 'users#new'
   get '/login', to: 'sessions#new'
@@ -70,6 +71,7 @@ Rails.application.routes.draw do
     post '/login', to: 'sessions#create'
     get '/logout', to: 'sessions#destroy'
 
+    resources :subscriptions
     resources :users
     resources :orders do
       member do

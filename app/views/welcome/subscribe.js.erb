@@ -1,0 +1,15 @@
+<% if @success %>
+  $.magnificPopup.open({
+	  items: {
+	    src: '#subscribe-success'
+	  },
+	  type: 'inline'
+	});
+<% else %>
+  $.magnificPopup.open({
+	  items: {
+	    src: '#subscribe-fail'
+	  },
+	  type: 'inline'
+	});
+<% end %>

@@ -1,0 +1,15 @@
+= link_to "Member列表", admin_users_path
+%table.admin-table
+  %tr
+    %th 編號
+    %th Email
+    %th 是否註冊了
+
+  - @subscriptions.each do |s|
+    %tr
+      %td= s.id
+      %td= s.email
+      %td= s.is_registered
+
+%nav.page-menu.relative
+  = will_paginate(@subscriptions, :renderer => 'BootstrapPaginationHelper::LinkRenderer')
