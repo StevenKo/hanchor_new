@@ -40,6 +40,7 @@ en:
 
   placeholder:
     email: "Email"
+    discount: "Discount Code"
 
   subscribe:
     subscribe: "Subscribe"
@@ -120,6 +121,7 @@ en:
     item: "There are %{num} items in your cart."
     sum: "Total: NT$%{price}"
     checkout: "Checkout"
+    checkout_breadcrumb: "Fill Checkout Infomation"
 
   faq:
     guide: "Shopping Guide"

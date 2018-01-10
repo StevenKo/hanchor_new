@@ -43,6 +43,7 @@ zh:
 
   placeholder:
     email: "輸入 Email"
+    discount: "輸入折扣碼"
 
   subscribe:
     subscribe: "訂 閱"
@@ -127,6 +128,7 @@ zh:
     item: "%{num}個商品"
     sum: "總共: NT$%{price}"
     checkout: "前往結帳"
+    checkout_breadcrumb: "填寫結帳資訊"
 
   faq:
     guide: "購物說明"

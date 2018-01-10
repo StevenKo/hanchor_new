@@ -180,7 +180,7 @@
                         %p.per-price 小計：#{showed_price(item.price * item.quantity)}
                       .btn-sec
                         = button_to remove_cart_item_cart_index_path(item_id: item.id), class: "btn-line btn-line-blue" do
-                          刪除
+                          #{t("cancel")}
                           %i.fa.fa-trash-o.mg-l-10{"aria-hidden" => "true"}
               .tright
                 .price-show

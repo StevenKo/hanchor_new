@@ -3,10 +3,10 @@ class CartController < ApplicationController
   before_action :require_user, only: [:checkout]
   before_action :get_cart_items, only: [:index,:checkout]
   before_action :load_base_cateogries
-  add_breadcrumb "首頁", :root_path
+  add_breadcrumb I18n.t("product.home"), :root_path
 
   def index
-    add_breadcrumb "購物車", cart_index_path
+    add_breadcrumb t("shopping_cart"), cart_index_path
   end
 
   def add_item_to_cart
@@ -59,7 +59,7 @@ class CartController < ApplicationController
   end
 
   def checkout
-    add_breadcrumb "填寫結帳資訊", checkout_cart_index_path
+    add_breadcrumb t("shopping_cart_locale.checkout_breadcrumb"), checkout_cart_index_path
     if (@cart_items.present?)
       @order = Order.new
       shipping_array = YAML::load(@cart_products[0].shipping)
