@@ -1,8 +1,8 @@
 class NewsController < ApplicationController
   before_action :load_base_cateogries
-  
-  add_breadcrumb "首頁", :root_path
 
+  add_breadcrumb I18n.t("product.home"), :root_path
+  
   def index
     @tags_selector = NewsTag.all.map{ |tag| [tag.locale(params[:locale]),tag.id]}
     if params[:news_tag_id].present? && params[:news_tag_id] != "0"
@@ -11,13 +11,13 @@ class NewsController < ApplicationController
     else
       @news = News.locale(params[:locale]).select("id, title, release_date, pic, slug").paginate(:page => params[:page], :per_page => 15).order("news.release_date DESC")
     end
-    add_breadcrumb "部落格", news_index_path(news_tag_id: params[:news_tag_id])
+    add_breadcrumb t('news_events'), news_index_path(news_tag_id: params[:news_tag_id])
   end
 
   def show
     @recent_news = News.locale(params[:locale]).select("news.id, title, release_date, pic, slug").limit(5).order("release_date DESC")
     @news = News.friendly.find(params[:id])
-    add_breadcrumb "部落格", news_index_path
+    add_breadcrumb t('news_events'), news_index_path
     add_breadcrumb @news.title, news_path(@news)
     respond_with_article_or_redirect
   end
