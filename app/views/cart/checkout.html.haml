@@ -164,8 +164,8 @@
                       .info
                         %h3.product-name= @cart_products[i].name
                         %p.product-color
-                          黑
-                          %span.product-color-hex{:style => "background:#000;"}
+                          #{item.product_color.color}
+                          %span.product-color-hex{:style => "background:#{item.product_color.rgb};"}
                         %p.product-price= showed_price(item.price)
                       .qty
                         %p.per-qty #{t("cart.quantity")}：#{item.quantity}

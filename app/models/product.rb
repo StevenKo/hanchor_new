@@ -84,6 +84,14 @@ class Product < ActiveRecord::Base
     end
   end
 
+  def colors locale
+    if ["zh-TW","zh"].include?( locale )
+      product_colors.not_deleted
+    else
+      product_colors.not_deleted
+    end
+  end
+
   def sum_quantities
     product_quantities.map(&:quantity).inject(:+)
   end

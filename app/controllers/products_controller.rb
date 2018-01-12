@@ -31,6 +31,7 @@ class ProductsController < ApplicationController
     @item = CartItem.new
     @product_size_selector = @product.size_selector(params[:locale])
     @product_color_selector = @product.color_selector(params[:locale])
+    @colors = @product.colors(params[:locale])
     @related_products = Product.includes(:thumb).joins(:product_infos).select_info.where("product_infos.country_id = #{@country_id}").limit(4)
     add_breadcrumb "#{t("product.product")} - #{@base_category.locale(params[:locale])}", products_index_path(params[:category])
     add_breadcrumb @product.name, products_show_path(@product.product_categories[0].name_en, @product)

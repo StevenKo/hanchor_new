@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180110025846) do
+ActiveRecord::Schema.define(version: 20180111045127) do
 
   create_table "announcements", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.text "message"
@@ -176,6 +176,8 @@ ActiveRecord::Schema.define(version: 20180110025846) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.boolean "is_delete", default: false
+    t.string "rgb", default: "#1c1c1b"
+    t.string "pic"
     t.index ["product_id"], name: "index_product_colors_on_product_id"
   end
 

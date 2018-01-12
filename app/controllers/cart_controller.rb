@@ -16,7 +16,6 @@ class CartController < ApplicationController
     item.product = product
     info = product.product_infos.where("country_id = #{@country_id}").select("special_price,price")[0]
     (info.special_price.present?) ?  item.price = info.special_price : item.price = info.price
-    
     if current_shopping_cart
       if current_shopping_cart.cart_items.select("product_id").map{|c| c.product_id}.include?(product.id)
         item = set_item_by_check_item_color_size(current_shopping_cart,product,item)
@@ -34,8 +33,8 @@ class CartController < ApplicationController
   end
 
   def set_item_by_check_item_color_size(current_shopping_cart,product,item)
-    cart_item = current_shopping_cart.cart_items.find_by(product_id: product.id)
-    if (cart_item.product_color_id == item.product_color_id && cart_item.product_size_id == item.product_size_id)
+    cart_item = current_shopping_cart.cart_items.find_by(product_id: product.id, product_color_id: params["cart_item"]["product_color_id"], product_size_id: params["cart_item"]["product_size_id"])
+    if cart_item
       item = cart_item
       item.quantity = params[:quantity]
     else
