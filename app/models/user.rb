@@ -8,6 +8,7 @@ class User < ActiveRecord::Base
   validates :password, on: :update, length: {minimum: 5}, allow_blank: true
   validates_confirmation_of :password
   validates_uniqueness_of :email, :case_sensitive => false
+  validates_format_of :email, :with => /@/
 
   def admin?
     self.role == "admin"

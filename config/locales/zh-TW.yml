@@ -64,6 +64,7 @@ zh-TW:
     subscribe: "訂 閱"
     success: "恭喜你，已訂閱完成！"
     fail: "訂閱失敗，請再輸入一次Email！"
+    subscribed: "已經訂閱過了喔!"
     info: "取得 HAHCHOR 最新資訊"
 
   news:

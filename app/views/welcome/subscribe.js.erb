@@ -1,10 +1,19 @@
 <% if @success %>
-  $.magnificPopup.open({
-	  items: {
-	    src: '#subscribe-success'
-	  },
-	  type: 'inline'
-	});
+  <% if @old %>
+	  $.magnificPopup.open({
+		  items: {
+		    src: '#subscribed'
+		  },
+		  type: 'inline'
+		});
+	<% else %>
+		$.magnificPopup.open({
+		  items: {
+		    src: '#subscribe-success'
+		  },
+		  type: 'inline'
+		});
+	<% end %>
 <% else %>
   $.magnificPopup.open({
 	  items: {

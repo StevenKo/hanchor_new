@@ -26,11 +26,11 @@ class WelcomeController < ApplicationController
   end
 
   def subscribe
-    s = Subscription.new
-    s.email = params[:email]
-    s.is_registered = true if User.where(email: params[:email]).exists?
-    
-    if s.save
+
+    subscription = Subscription.find_or_initialize_by(email: params[:email])
+    subscription.is_registered = true if User.where(email: params[:email]).exists?
+    (subscription.new_record?)? @old = false : @old = true 
+    if subscription.save
       @success = true
     else
       @success = false

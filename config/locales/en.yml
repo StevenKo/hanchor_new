@@ -59,9 +59,10 @@ en:
 
   subscribe:
     subscribe: "Subscribe"
-    success: "Congrations, already subscribed!"
-    fail: "Failed，please input your Email again!"
-    info: "Get HAHCHOR's newest informaiton"
+    success: "Successfully Subscribed!"
+    fail: "Incorrect Email Address!"
+    subscribed: "Already Subscribed!"
+    info: "Get Latest News"
 
   news:
     new_article: "Recent Posts"
