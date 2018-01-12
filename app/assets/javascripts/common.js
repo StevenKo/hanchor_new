@@ -5,7 +5,7 @@ $(document).ready(function(){
 
 $(window).load(function() {
 	
-	$('select').niceSelect();
+	$('#cart_item_quantity').niceSelect();
 	
 	//hover function
 	$( "[hov]" ).hover(function(){$(this).stop().fadeTo(100,$(this).attr('hov'));},function(){$(this).stop().fadeTo(100,1)});
