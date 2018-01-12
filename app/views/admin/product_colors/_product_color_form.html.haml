@@ -1,7 +1,11 @@
 顏色
 = builder.text_field :color, placeholder: "中文"
 = builder.text_field :color_en, placeholder: "EN"
+= builder.text_field :rgb, placeholder: "#1c1c1b"
 
 - if defined?(color)
+  = image_tag(color.pic_url(:thumb)) unless color.pic.blank?
   = link_to "刪除", admin_product_product_color_path(product, color), method: :delete, data: { confirm: 'Are you sure?' }
+
+= builder.file_field :pic
 %br

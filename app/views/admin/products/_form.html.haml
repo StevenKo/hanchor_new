@@ -21,7 +21,10 @@
         - if product.new_record?
           請先新增product，再修改
         - else
-          = product.product_colors.not_deleted.map{ |c|  "#{c.color}/#{c.color_en}"}.join(" ")
+          - product.product_colors.not_deleted.each do |color|
+            = "#{color.color}/#{color.color_en}"
+            = image_tag(color.pic_url(:thumb)) unless color.pic.blank?
+            %br
           = link_to "修改or增加顏色", admin_product_product_colors_path(product), class: "btn-s btn-lblue inlineblock-imp"
       %h3.text-16.lh-24.bold 尺寸
       = f.form_group :size do

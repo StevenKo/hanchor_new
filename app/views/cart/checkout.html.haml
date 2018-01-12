@@ -165,7 +165,10 @@
                         %h3.product-name= @cart_products[i].name
                         %p.product-color
                           #{item.product_color.color}
-                          %span.product-color-hex{:style => "background:#{item.product_color.rgb};"}
+                          - if item.product_color.pic.blank?
+                            %span.product-color-hex{:style => "background:#{item.product_color.rgb};"}
+                          - else
+                            %span.product-color-hex{:style => "background:url(#{item.product_color.pic_url(:thumb)}) !important;"}
                         %p.product-price= showed_price(item.price)
                       .qty
                         %p.per-qty #{t("cart.quantity")}：#{item.quantity}

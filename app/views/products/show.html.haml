@@ -51,13 +51,21 @@
               .sel-color
                 %h3 #{t("product.color")}
                 - @colors.each_with_index do |color,index|
-                  %label.label-radio{value: "#{index}",:for => "v#{index}", :style => "background:#{color.rgb};", :title => color.color}
-                    - if index == 0
-                      %input{:checked => "checked", :name => "color", :type => "radio", :value => "#{index}", id: "v#{index}"  }/
-                      %p.sel-color-text #{color.color}
-                    - else
-                      %input{:name => "color", :type => "radio", :value => "#{index}", id: "v#{index}"  }/
-                      %p.sel-color-text #{color.color}
+                  - if color.pic.blank?
+                    %label.label-radio{value: "#{index}",:for => "v#{index}", :style => "background:#{color.rgb};", :title => color.color}
+                      - if index == 0
+                        %input{:checked => "checked", :name => "color", :type => "radio", :value => "#{index}", id: "v#{index}"  }/
+                        %p.sel-color-text #{color.color}
+                      - else
+                        %input{:name => "color", :type => "radio", :value => "#{index}", id: "v#{index}"  }/
+                        %p.sel-color-text #{color.color}
+                  -else
+                    %label.label-radio{value: "#{index}",:for => "v#{index}", :style => "background:url(#{color.pic_url(:thumb)}) !important;", :title => color.color}
+                      - if index == 0
+                        %input{:checked => "checked", :name => "color", :type => "radio", :value => "#{index}", id: "v#{index}"  }/
+                        %p.sel-color-text #{color.color}
+                      - else
+                        %input{:name => "color", :type => "radio", :value => "#{index}", id: "v#{index}"  }/
                 / %label.label-radio{:for => "v1", :style => "background:url(#{image_url('111111.jpg')}) !important;", :title => "迷彩"}
                 /   %input#v1{:checked => "checked", :name => "color", :type => "radio", :value => "1"}/
                 /   %p.sel-color-text 迷彩
