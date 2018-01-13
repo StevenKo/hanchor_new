@@ -145,3 +145,16 @@ div.desc {
     width: 100%;
     height: auto;
 }
+
+
+.tab-con .tab-inner.admin{display:none;}
+.tab-con .tab-inner.admin.active{display:block;}
+
+@media screen and (min-width: 1200px){
+  .tab-con .tab-inner.admin{display:none;max-height:none;}
+}
+
+@media screen and (min-width: 768px) and (max-width: 1199px) {
+  .tab-con .tab-inner.admin{display:none;max-height:none;}
+}
+

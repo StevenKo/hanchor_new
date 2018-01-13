@@ -74,7 +74,7 @@
         / active on this one
         %a.tab-btn{"data-tab" => "tab-2"} EN產品描述
       .tab-con
-        .spec.tab-inner.tab-1.active.text-14.color-gray-333.lh-25
+        .spec.tab-inner.admin.tab-1.active.text-14.color-gray-333.lh-25
           = f.fields_for product.product_infos[0], :index => 0 do |builder|
             = builder.text_field :name
             = builder.text_field :weight
@@ -98,7 +98,7 @@
                   = check_box_tag "shipping[tw][]", shipping.id, false
                 = shipping.description
             = builder.hidden_field :country_id, value: 1
-        .info.tab-inner.tab-2.text-14.color-gray-333.lh-25
+        .info.tab-inner.admin.tab-2.text-14.color-gray-333.lh-25
           = f.fields_for product.product_infos[1], :index => 1 do |builder|
             = builder.text_field :name
             = builder.text_field :weight
@@ -122,10 +122,6 @@
                   = check_box_tag "shipping[en][]", shipping.id, false
                 = shipping.description
             = builder.hidden_field :country_id, value: 2
-        .tab.tab-sel.clearfix.right.mg-b-25
-          %a.tab-btn.active{"data-tab" => "tab-1"} TW產品描述
-          / active on this one
-          %a.tab-btn{"data-tab" => "tab-2"} EN產品描述
         = f.submit "確定"
         = link_to "返回", admin_products_path, class: "btn"
         = link_to "預覽", admin_products_path, class: "btn btn-info"
