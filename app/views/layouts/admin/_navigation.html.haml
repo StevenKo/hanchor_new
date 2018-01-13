@@ -10,19 +10,27 @@
       %li.layer-1-li
         = link_to_menu admin_categories_path, "Categories"
       %li.layer-1-li
-        = link_to_menu admin_shipping_costs_path, "Shipping"
-      %li.layer-1-li
         = link_to_menu admin_news_index_path, "News"
+
       %li.layer-1-li
-        = link_to_menu admin_news_tags_path, "News' Tags"
-      %li.layer-1-li
-        = link_to_menu admin_faqs_path, "FAQs"
-      %li.layer-1-li
-        = link_to_menu admin_banners_path, "Banner"
-      %li.layer-1-li
-        = link_to_menu admin_videos_path, "Videos"
-      %li.layer-1-li
-        = link_to_menu admin_announcements_path, "訊息"
+        .layer-1.menu-line
+          %h2
+            Others
+            %i.fa.fa-angle-down.mg-l-10{"aria-hidden" => "true"}
+        / Product dropdown
+        %ul.layer-2-ul
+          %li.layer-2-li
+            = link_to_menu admin_shipping_costs_path, "Shipping"
+          %li.layer-2-li
+            = link_to_menu admin_news_tags_path, "Tags"
+          %li.layer-2-li
+            = link_to_menu admin_faqs_path, "FAQs"
+          %li.layer-2-li
+            = link_to_menu admin_banners_path, "Banner"
+          %li.layer-2-li
+            = link_to_menu admin_videos_path, "Videos"
+          %li.layer-2-li
+            = link_to_menu admin_announcements_path, "訊息"
 .login-signup-container
   .login-signup
     %ul.layer-1-ul
