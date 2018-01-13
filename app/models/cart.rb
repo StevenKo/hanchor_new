@@ -1,5 +1,5 @@
 class Cart < ActiveRecord::Base
-  belongs_to :user
+  belongs_to :user, optional: true
   has_many :cart_items
 
   def paypal_url(return_url,locale,notify_url,order_id,shipping_cost)
