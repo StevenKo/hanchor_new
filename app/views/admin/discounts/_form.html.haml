@@ -1,0 +1,27 @@
+.breadcrumbs
+  .form-style-5
+    = form_for discount_rule, url: url do |f|
+      %h3.text-16.lh-24.bold 標題
+      = f.text_field :title, label: "標題",:class => "span7"
+      %h3.text-16.lh-24.bold 折扣碼
+      = f.text_field :code, label: "折扣碼",:class => "span7"
+      %h3.text-16.lh-24.bold 折扣種類
+      = f.select :discount_type, DiscountRule::DISCOUNT_TYPE,label: "折扣種類", :class => "span7"
+      %h3.text-16.lh-24.bold 折扣金額
+      = f.text_field :discount_money, label: "折扣金額",:class => "span7"
+      %h3.text-16.lh-24.bold 折扣比例
+      = f.text_field :discount_percentage, label: "折扣比例",:class => "span7"
+      %h3.text-16.lh-24.bold 超過金額才有
+      = f.text_field :threshold, label: "超過金額才有",:class => "span7"
+      %h3.text-16.lh-24.bold 起始日
+      = f.datetime_field :start_date, label: "起始日",:class => "span7"
+      %h3.text-16.lh-24.bold 截止日
+      = f.datetime_field :end_date, label: "截止日",:class => "span7"
+      %h3.text-16.lh-24.bold 選擇商品
+      = link_to "全選", "",{id: "select_all"}
+      = link_to "全取消", "",{id: "unselect_all"}
+      .gallery
+        = render partial: "admin/discounts/product", :collection => Product.includes(:thumb).joins(:product_infos).where("product_infos.country_id = 1").visible.admin_index_info, :as => :product , locals: {discount_rule: discount_rule}
+      .offset2
+        = f.submit "確定"
+        = link_to "返回", admin_discounts_path, class: "btn"

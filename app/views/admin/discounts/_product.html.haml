@@ -1,0 +1,10 @@
+%li
+  %div
+    = check_box_tag "products[is_select][]", product.id, (discount_rule.discount_products.collect{|d| d.product_id}.include?(product.id))
+    = image_tag(product.thumb.pic_url) if product.thumb.present?
+    %p.text-14.lh-24.color-gray-666.mg-b-10
+      %span.bold> 編號:
+      = product.no
+    %p.text-14.lh-24.color-gray-666.mg-b-10
+      %span.bold> 名稱:
+      = product.name

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180111045127) do
+ActiveRecord::Schema.define(version: 20180113064810) do
 
   create_table "announcements", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.text "message"
@@ -64,6 +64,36 @@ ActiveRecord::Schema.define(version: 20180111045127) do
     t.float "sell", limit: 24
     t.string "show_symbol"
     t.index ["symbol"], name: "index_currencies_on_symbol"
+  end
+
+  create_table "discount_products", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.integer "discount_rule_id"
+    t.bigint "product_id"
+    t.index ["discount_rule_id"], name: "index_discount_products_on_discount_rule_id"
+    t.index ["product_id"], name: "index_discount_products_on_product_id"
+  end
+
+  create_table "discount_records", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.integer "discount_rule_id"
+    t.bigint "product_id"
+    t.datetime "created_at"
+    t.index ["discount_rule_id"], name: "index_discount_records_on_discount_rule_id"
+    t.index ["product_id"], name: "index_discount_records_on_product_id"
+  end
+
+  create_table "discount_rules", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string "title"
+    t.string "discount_type"
+    t.float "discount_percentage", limit: 24
+    t.integer "discount_money"
+    t.integer "threshold"
+    t.datetime "end_date"
+    t.datetime "start_date"
+    t.boolean "is_valid", default: true
+    t.string "code"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["code"], name: "index_discount_rules_on_code"
   end
 
   create_table "faqs", id: :integer, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci" do |t|
