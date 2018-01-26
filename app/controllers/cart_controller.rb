@@ -82,8 +82,10 @@ class CartController < ApplicationController
       end
       @shippings = ShippingCost.where(id: shipping_array)
       @shippings_selector = @shippings.map{ |s| ["#{s.description}($NT#{s.cost})",s.id]}
-      @coupon = DiscountRule.find_by(code: params[:code]) if params[:code]
-      @is_useable = current_shopping_cart.calculate_coupon(@coupon.id)
+      if params[:code]
+        @coupon = DiscountRule.find_by(code: params[:code])
+        @is_useable = current_shopping_cart.calculate_coupon(@coupon.id)
+      end
     else
       flash[:error] = "There is nothing in shopping cart!"
       redirect_to root_path
@@ -91,8 +93,10 @@ class CartController < ApplicationController
   end
 
   def check_out_shipping
-    @coupon = DiscountRule.find_by(code: params[:code]) if params[:code]
-    @is_useable = current_shopping_cart.calculate_coupon(@coupon.id)
+    if params[:code]
+      @coupon = DiscountRule.find_by(code: params[:code])
+      @is_useable = current_shopping_cart.calculate_coupon(@coupon.id)
+    end
     @shipping = ShippingCost.find(params[:shipping_cost_id])
   end
 end

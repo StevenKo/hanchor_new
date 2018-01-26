@@ -24,6 +24,6 @@
 
 /config/database.yml
 /public/uploads
-/config/local_env.yml
+/config/application.yml
 
 .DS_Store
