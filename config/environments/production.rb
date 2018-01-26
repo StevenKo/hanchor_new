@@ -105,8 +105,4 @@ Rails.application.configure do
   
   ActionMailer::Base.delivery_method = :smtp
   config.action_mailer.default_url_options = { host: 'www.hanchor.com' }
-
-  config.after_initialize do
-    ActiveMerchant::Billing::Base.integration_mode = :production
-  end
 end
