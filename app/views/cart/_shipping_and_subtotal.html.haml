@@ -1,10 +1,41 @@
-.price-show
-  %p.scart-total-price-s.mg-b-10
-    %span> #{t("cart.shipping_cost")}
-    NT$#{shipping_cost}
-  %p.scart-total-price-s.mg-b-10
-    %span> #{t("cart.subtotal")}
-    NT$#{sub_total}
-  %p#ssss.scart-total-price.mg-b-40
-    %span> #{t("cart.sum")}
-    NT$#{sub_total.to_i + shipping_cost.to_i}
+- if @coupon && @is_useable[0] && @coupon.discount_type == "free_shipping"
+  .price-show
+    %p.scart-total-price-s.mg-b-10
+      %span> #{t("cart.coupon_code")}
+      ="  #{params[:code]}"
+    %p.scart-total-price-s.mg-b-10
+      %span> #{t("cart.shipping_cost")}
+      ="  NT$0"
+    %p.scart-total-price-s.mg-b-10
+      %span> #{t("cart.subtotal")}
+      ="  NT$#{sub_total}"
+    %p#ssss.scart-total-price.mg-b-40
+      %span> #{t("cart.sum")}
+      NT$#{sub_total.to_i}
+      = @coupon.discount_text
+- elsif @coupon && @is_useable[0]
+  .price-show
+    %p.scart-total-price-s.mg-b-10
+      %span> #{t("cart.coupon_code")}
+      ="  #{params[:code]}"
+    %p.scart-total-price-s.mg-b-10
+      %span> #{t("cart.shipping_cost")}
+      ="  NT$#{shipping_cost}"
+    %p.scart-total-price-s.mg-b-10
+      %span> #{t("cart.subtotal")}
+      ="  NT$#{sub_total}"
+    %p#ssss.scart-total-price.mg-b-40
+      %span> #{t("cart.sum")}
+      NT$#{sub_total.to_i + shipping_cost.to_i}
+      = @coupon.discount_text
+- else
+  .price-show
+    %p.scart-total-price-s.mg-b-10
+      %span> #{t("cart.shipping_cost")}
+      ="  NT$#{shipping_cost}"
+    %p.scart-total-price-s.mg-b-10
+      %span> #{t("cart.subtotal")}
+      ="  NT$#{sub_total}"
+    %p#ssss.scart-total-price.mg-b-40
+      %span> #{t("cart.sum")}
+      NT$#{sub_total.to_i + shipping_cost.to_i}

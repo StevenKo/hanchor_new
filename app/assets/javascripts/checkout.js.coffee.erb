@@ -4,6 +4,7 @@ $ ->
     sub_total = $("#order_sub_total").val()
     item_num = $("#order_item_num").val()
     locale = $("#locale").val()
+    code = $("#code").val()
     $.ajax
       url: "/cart/check_out_shipping"
       type: "get"
@@ -12,6 +13,7 @@ $ ->
         sub_total: sub_total
         item_num: item_num
         locale: locale
+        code: code
 
   $('#new_order').submit ->
     $(".loader").fadeIn();

@@ -179,15 +179,21 @@
                           %i.fa.fa-trash-o.mg-l-10{"aria-hidden" => "true"}
               .tright
                 .price-show
+                  - if @coupon && @is_useable[0]
+                    %p.scart-total-price-s.mg-b-10
+                      %span> #{t("cart.coupon_code")}
+                      ="  #{params[:code]}"
                   %p.scart-total-price-s.mg-b-10
-                    %span> 
-                    #{t("cart.shipping_cost")}NT$0
+                    %span> #{t("cart.shipping_cost")}
+                    ="  NT$0"
                   %p.scart-total-price-s.mg-b-10
                     %span> #{t("cart.subtotal")}
-                    #{showed_price(sum_cart_items_price @cart_items)}
+                    ="  #{showed_price(sum_cart_items_price @cart_items)}"
                   %p#ssss.scart-total-price.mg-b-40
                     %span> #{t("cart.sum")}
                     #{showed_price(sum_cart_items_price @cart_items)}
+                    - if @coupon && @is_useable
+                      = @coupon.discount_text
                 .mg-b-30.text-15.lh-30.color-gray-333.bold
                   #{t("cart.read_shopping_gudide_message")}
                   = link_to(t("cart.shopping_guide"), shopping_guide_path,{:class=>"bold color-lb mg-b-17",:hov => "0.75"})
@@ -195,6 +201,7 @@
                   = f.hidden_field :sub_total, value: sum_cart_items_price(@cart_items)
                   = f.hidden_field :item_num, value: @cart_items.size
                   = hidden_field_tag :locale, params[:locale]
+                  = hidden_field_tag :code, params[:code]
                   = button_tag(type: 'submit', class: "btn-l btn-blue inlineblock-imp", data: { confirm: t('cart.confirm_message')}, :hov => "0.75") do
                     #{t("cart.confirm")}
                     %i.fa.fa-chevron-right.mg-l-20{"aria-hidden" => "true"}

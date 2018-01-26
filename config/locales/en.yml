@@ -112,6 +112,7 @@ en:
       order_item_quantity: "Quantity"
       order_item_price: "Price"
       notes: "Memo"
+      apply_code: "Apply Discount Code"
 
   
   product:
@@ -179,6 +180,10 @@ en:
     items: "Total Items"
     subtotal: "Subtotal"
     pay_when_shipped: "Pay When Delivered"
+    applied_code: "Applied Code"
+    code_threshold: "Consumption is not over $%{threshold}"
+    not_suitable_code: " can not use this code"
+    coupon_code: "Coupon Code"
 
   order:
     history: "History"

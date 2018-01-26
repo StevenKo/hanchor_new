@@ -16,6 +16,8 @@ Rails.application.routes.draw do
 
   get 'set_currency', to: 'sessions#set_currency'
 
+  post 'apply_discount', to: 'discount#apply'
+
   resources :payment_notifications, only: [:create] do
     collection do
       post :allpay

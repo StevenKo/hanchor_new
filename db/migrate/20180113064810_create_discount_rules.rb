@@ -1,9 +1,8 @@
 class CreateDiscountRules < ActiveRecord::Migration[5.1]
   def change
     create_table :discount_rules do |t|
-      t.string :title
+      t.text :title
       t.string :discount_type
-      t.float :discount_percentage
       t.integer :discount_money
       t.integer :threshold
       t.datetime :end_date
@@ -23,7 +22,7 @@ class CreateDiscountRules < ActiveRecord::Migration[5.1]
 
     create_table :discount_records do |t|
       t.integer :discount_rule_id, index: true
-      t.references :product, index: true
+      t.references :order, index: true
       t.datetime :created_at
     end
 

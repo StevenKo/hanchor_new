@@ -120,6 +120,7 @@ zh:
       order_item_quantity: "數量"
       order_item_price: "價格"
       notes: "備註"
+      apply_code: "使用折扣碼"
 
   product:
     home: "首頁"
@@ -192,6 +193,10 @@ zh:
     items: "商品總數"
     subtotal: "小計"
     pay_when_shipped: "貨到付款"
+    applied_code: "已使用折扣碼"
+    code_threshold: "消費未滿%{threshold}元"
+    not_suitable_code: "不符使用折扣碼"
+    coupon_code: "折扣碼"
 
   order:
     history: "訂單紀錄"

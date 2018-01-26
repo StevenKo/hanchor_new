@@ -8,8 +8,8 @@
     %th 折扣種類
     %th 折扣金額(比例)
     %th 超過金額才有
-    %th 起始日
-    %th 截止日
+    %th 起始日(UTC)
+    %th 截止日(UTC)
     %th 已停止
 
   - @discount_rules.each do |dr|
@@ -21,8 +21,6 @@
       %td
         - if dr.discount_money
           NT$#{dr.discount_money}
-        - elsif dr.discount_percentage
-          #{dr.discount_percentage}%
       %td= dr.threshold
       %td= display_date(dr.start_date) if dr.start_date
       %td= display_date(dr.end_date) if dr.end_date

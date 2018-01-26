@@ -4,6 +4,7 @@ class Order < ActiveRecord::Base
   belongs_to :shipping_cost
   has_many :order_items
   validates_presence_of :shipping_cost_id
+  has_one :discount_record
 
   attr_accessor :store_code, :store_name
   validates_presence_of :store_code, :store_name
@@ -56,6 +57,17 @@ class Order < ActiveRecord::Base
       sum += (item.price * item.quantity)
     end
     sum
+  end
+
+  def apply_dicount code
+    coupon = DiscountRule.find_by(code: code)
+    record = DiscountRecord.create(order_id: id, discount_rule_id: coupon.id)
+    if coupon.discount_type == "free_shipping"
+      self.total = self.total - shipping_cost.cost
+    else
+      self.total = self.total - coupon.discount_money
+    end
+    self.save
   end
 
 end

@@ -107,6 +107,10 @@
                         %p.text-14.lh-24.color-gray-666.mg-b-10
                           %span.bold> #{t('account.order_detail.notes')}：
                           = order.memo
+                        - if order.discount_record.present?
+                          %p.text-14.lh-24.color-gray-666.mg-b-10
+                            %span.bold> #{t('account.order_detail.apply_code')}：
+                            = order.discount_record.discount_rule.code + "(#{order.discount_record.discount_rule.title})"
                         %table.admin-table
                           %tr
                             %th #{t('account.order_detail.order_item_name')}

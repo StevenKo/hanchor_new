@@ -43,6 +43,12 @@
       %th 意見
       %td= @order.memo
     %tr
+      %th 使用折扣碼
+      - if @order.discount_record.present?
+        %td= @order.discount_record.discount_rule.code + "(#{@order.discount_record.discount_rule.title})"
+      - else
+        %td
+    %tr
       %th 狀態
       %td
         = t("order.#{@order.status}")

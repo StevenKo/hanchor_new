@@ -38,7 +38,7 @@ class Admin::DiscountsController < Admin::AdminController
 
 private
   def discount_param
-    params.require(:discount_rule).permit(:title,:code,:discount_type,:discount_money, :discount_percentage,:threshold,:start_date, :end_date)
+    params.require(:discount_rule).permit(:title,:title_en,:code,:discount_type,:discount_money, :discount_percentage,:threshold,:start_date, :end_date)
   end
 
 end

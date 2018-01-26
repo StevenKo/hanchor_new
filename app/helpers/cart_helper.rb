@@ -15,4 +15,12 @@ module CartHelper
   def cart_item_size
     current_shopping_cart.nil? ? 0 : current_shopping_cart.cart_items.size
   end
+
+  def showed_title coupon
+    if ["zh-TW","zh"].include?( params[:locale] )
+      coupon.title
+    else
+      coupon.title_en
+    end
+  end
 end

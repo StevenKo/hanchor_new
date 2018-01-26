@@ -29,4 +29,25 @@ class Cart < ActiveRecord::Base
     "https://www.paypal.com/cgi-bin/webscr?" + values.to_query
   end
 
+
+  def calculate_coupon discount_rule_id
+    coupon = DiscountRule.find(discount_rule_id)
+    discount_products_ids = coupon.discount_products.map{|p| p.product_id}
+    un_suitable_products = []
+    sum = 0
+    cart_items.each do |item|
+      sum += (item.price * item.quantity)
+      un_suitable_products << item.product_id unless discount_products_ids.include? item.product_id
+    end
+    if un_suitable_products.blank?
+      if sum >=  coupon.threshold
+        return true,[]
+      else
+        return false,[]
+      end
+    else
+      return false, un_suitable_products
+    end
+  end
+
 end

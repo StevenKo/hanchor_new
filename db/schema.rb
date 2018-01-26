@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180113064810) do
+ActiveRecord::Schema.define(version: 20180126062752) do
 
   create_table "announcements", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.text "message"
@@ -75,16 +75,15 @@ ActiveRecord::Schema.define(version: 20180113064810) do
 
   create_table "discount_records", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer "discount_rule_id"
-    t.bigint "product_id"
+    t.bigint "order_id"
     t.datetime "created_at"
     t.index ["discount_rule_id"], name: "index_discount_records_on_discount_rule_id"
-    t.index ["product_id"], name: "index_discount_records_on_product_id"
+    t.index ["order_id"], name: "index_discount_records_on_order_id"
   end
 
   create_table "discount_rules", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.string "title"
+    t.text "title"
     t.string "discount_type"
-    t.float "discount_percentage", limit: 24
     t.integer "discount_money"
     t.integer "threshold"
     t.datetime "end_date"
@@ -93,6 +92,7 @@ ActiveRecord::Schema.define(version: 20180113064810) do
     t.string "code"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "title_en"
     t.index ["code"], name: "index_discount_rules_on_code"
   end
 
