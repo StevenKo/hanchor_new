@@ -113,7 +113,9 @@
             / active on this one
             %a.tab-btn{"data-tab" => "tab-2"}= t("product.info")
           .tab-con
-            .spec.tab-inner.tab-1.active.text-14.color-gray-333.lh-25
+            .info.tab-inner.tab-1.active.text-14.color-gray-333.lh-25
+              = @product.quick_overview.html_safe
+            .spec.tab-inner.tab-2.text-14.color-gray-333.lh-25
               - if @product.weight.present?
                 %span.bold.text-16.lh-30 #{t('product.weight')}
                 %br/
@@ -129,8 +131,6 @@
                 %br/
                 #{@product.material}
                 %br/        
-            .info.tab-inner.tab-2.text-14.color-gray-333.lh-25
-              = @product.quick_overview.html_safe
         / spec / info
       / 
     / rwd width limited
