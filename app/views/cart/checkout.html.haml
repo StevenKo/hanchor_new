@@ -129,15 +129,15 @@
               %h2.title-line.inlineblock.mg-b-30 #{t("order.pay")}
               .clearfix.mg-b-30
                 - if (["zh-TW","zh"].include?( params[:locale]))
-                  .mg-b-20.clearfix
+                  .mg-b-20.clearfix.tw_payment
                     = f.radio_button :payment, "AllPay",checked: true, class: "pay-1 pay-radio"
                     %label.pay-text{:for => "pay-1"}
                       %img.pay-method-pic{:alt => "", :src => "https://www.allpay.com.tw/Content/Themes/WebStyle20131201/images/header_logo.png"}/
-                  .mg-b-20.clearfix
+                  .mg-b-20.clearfix.tw_payment
                     = f.radio_button :payment, "PayPal", class: "pay-2 pay-radio"
                     %label.pay-text{:for => "pay-2"}
                       %img.pay-method-pic{:alt => "", :src => "https://www.paypal.com/en_US/i/bnr/horizontal_solution_PPeCheck.gif"}/
-                  .mg-b-20.clearfix
+                  .mg-b-20.clearfix.tw_payment
                     = f.radio_button :payment, "transfer", class: "pay-3 pay-radio"
                     %label.pay-text{:for => "pay-3"} #{t("cart.transfer_bank")}
                 -else

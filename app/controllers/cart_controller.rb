@@ -7,7 +7,7 @@ class CartController < ApplicationController
 
   def index
     add_breadcrumb t("shopping_cart"), cart_index_path
-    if params[:code]
+    if params[:code].present?
       @coupon = DiscountRule.find_by(code: params[:code])
       @is_useable = current_shopping_cart.calculate_coupon(@coupon.id)
       if @is_useable[0]
@@ -82,7 +82,7 @@ class CartController < ApplicationController
       end
       @shippings = ShippingCost.where(id: shipping_array)
       @shippings_selector = @shippings.map{ |s| ["#{s.description}($NT#{s.cost})",s.id]}
-      if params[:code]
+      if params[:code].present?
         @coupon = DiscountRule.find_by(code: params[:code])
         @is_useable = current_shopping_cart.calculate_coupon(@coupon.id)
       end
@@ -93,7 +93,7 @@ class CartController < ApplicationController
   end
 
   def check_out_shipping
-    if params[:code]
+    if params[:code].present?
       @coupon = DiscountRule.find_by(code: params[:code])
       @is_useable = current_shopping_cart.calculate_coupon(@coupon.id)
     end
