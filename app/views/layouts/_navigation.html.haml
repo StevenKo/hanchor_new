@@ -5,7 +5,7 @@
       .inner.clearfix
         - announcements = Announcement.order("sort desc").limit(1)
         - if announcements.present?
-          = link_to announcements[0].message, announcements[0].link, {class: "h-msg-l", :voh => "0.4"}
+          = link_to showed_announcement(announcements[0]), announcements[0].link, {class: "h-msg-l", :voh => "0.4"}
         .h-msg-r.clearfix
           / 貨幣轉換
           .currency-sel.mg-r-15

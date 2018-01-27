@@ -18,4 +18,12 @@ module ApplicationHelper
       link_to link_text, url_for(params.merge(:only_path => true, locale: codes[0]))
     end
   end
+
+  def showed_announcement announcement
+    if ["zh-TW","zh"].include?( params[:locale] )
+      announcement.message
+    else
+      announcement.message_en
+    end
+  end
 end
