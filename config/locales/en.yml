@@ -224,7 +224,7 @@ en:
     message: "We will send you an email with a link that you can use to reset your password."
     email: "Email Address"
     send: "Send Email"
-    send_message: "We have send an email with instruction to reset your password. Thanks!"
+    send_message: "We have sent you an email with a link that you can use to reset your password. Thanks!"
 
   will_paginate:
     previous_label: "Previous"

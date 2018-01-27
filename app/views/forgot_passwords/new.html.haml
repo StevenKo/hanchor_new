@@ -13,14 +13,14 @@
               = image_tag 'logo-h-w.png', alt: "Hanchor", class: "block"
           = form_tag forgot_passwords_path do
             .mg-b-30
-              %h2.text-24.lh-30.color-white.bold 忘記密碼
-            = text_field_tag :email, nil, class: 'input-text mg-b-20', placeholder: "輸入 Email 帳號"
+              %h2.text-24.lh-30.color-white.bold= t('forget_password.title')
+            = text_field_tag :email, nil, class: 'input-text mg-b-20', placeholder: t("placeholder.email")
             .mg-b-20
-              = submit_tag "送 出", class: 'btn-l btn-blue', hov: "0.75"
+              = submit_tag t('forget_password.send'), class: 'btn-l btn-blue', hov: "0.75"
             .clearfix.mg-b-35
               .login-info-left.text-13.lh-20.color-gray-999
-                還不是會員？
-                = link_to "立即註冊",register_path, {class: "color-blue bold", :hov => "0.7"}
+                #{t('not_member')}
+                = link_to t("istant_register"),register_path, {class: "color-blue bold", :hov => "0.7"}
       / login / signup
     / rwd width limited
   / rwd padding
