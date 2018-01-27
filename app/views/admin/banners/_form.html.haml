@@ -2,8 +2,8 @@
   .form-style-5
     = form_for banner, url: url,:html => {multipart: true} do |f|
       = image_tag(banner.pic_url, :style => 'max-height: 400px; max-width:400px;') unless banner.pic_url.nil?
-      %h3.text-16.lh-24.bold 上傳圖片(圖片建議比例:8:3, size 小一點 )
-      = f.file_field :pic, :class => "span7", label: "上傳圖片(圖片建議比例:8:3, size 小一點 )"
+      %h3.text-16.lh-24.bold 上傳圖片
+      = f.file_field :pic, :class => "span7", label: "上傳圖片"
       %h3.text-16.lh-24.bold 連結
       = f.text_field :link, :class => "span7", label: "連結"
       %h3.text-16.lh-24.bold 排序(數字越大，排序越前面)

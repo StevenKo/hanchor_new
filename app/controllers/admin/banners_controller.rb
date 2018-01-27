@@ -1,7 +1,7 @@
 class Admin::BannersController < Admin::AdminController
 
   def index
-    @banners = Banner.paginate(:page => params[:page], :per_page => 20)
+    @banners = Banner.paginate(:page => params[:page], :per_page => 20).order("sort DESC")
   end
 
   def edit

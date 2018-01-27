@@ -4,7 +4,7 @@
 
 / visual
 .pages-visual
-  = image_tag "blog-visual.jpg", :class => "v-centerimg"
+  = image_tag Banner.find(Banner::BLOG_BANNER_ID).pic_url, :class => "v-centerimg"
 / -visual
 
 
