@@ -4,7 +4,7 @@
   
 / visual
 .pages-visual
-  = image_tag "contact-visual.jpg", :class => "v-centerimg"
+  = image_tag Banner.find(Banner::FAQ_BANNER_ID).pic_url, :class => "v-centerimg"
 / -visual
 / breadcrumbs
 %section.breadcrumbs
