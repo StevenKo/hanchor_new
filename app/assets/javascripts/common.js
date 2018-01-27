@@ -13,7 +13,7 @@ $(window).load(function() {
 	$( "[hov]" ).hover(function(){$(this).stop().fadeTo(100,$(this).attr('hov'));},function(){$(this).stop().fadeTo(100,1)});
 	$( "[voh]" ).each(function(){
 		voh = $(this).attr('voh');
-		$(this).css('opacity',voh);
+		$(this).animate({opacity: voh}, 2000);
 		})
 	$( "[voh]" ).hover(function(){$(this).stop().fadeTo(100,1)},function(){$(this).stop().fadeTo(100,$(this).attr('voh'));});
 	
