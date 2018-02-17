@@ -44,26 +44,24 @@
         .line.mg-b-25
         .form-section
           = form_for @item, url: add_item_to_cart_cart_index_path(product: @product) do |f|
+            = hidden_field_tag :locale, params[:locale]
             .none{style: "display: none"}
               = f.select :product_color_id, @product_color_selector
             .mg-b-30
               / color
               .sel-color
-                %h3 #{t("product.color")}
+                %h3= "#{t("product.color")} #{showed_color(@colors[0])}"
                 - @colors.each_with_index do |color,index|
                   - if color.pic.blank?
-                    %label.label-radio{value: "#{index}",:for => "v#{index}", :style => "background:#{color.rgb};", :title => color.color}
+                    %label.label-radio{value: "#{index}",:for => "v#{index}", :style => "background:#{color.rgb};", :title => color.color_en}
                       - if index == 0
                         %input{:checked => "checked", :name => "color", :type => "radio", :value => "#{index}", id: "v#{index}"  }/
-                        %p.sel-color-text #{color.color}
                       - else
                         %input{:name => "color", :type => "radio", :value => "#{index}", id: "v#{index}"  }/
-                        %p.sel-color-text #{color.color}
                   -else
-                    %label.label-radio{value: "#{index}",:for => "v#{index}", :style => "background:url(#{color.pic_url(:thumb)}) !important;", :title => color.color}
+                    %label.label-radio{value: "#{index}",:for => "v#{index}", :style => "background:url(#{color.pic_url(:thumb)}) !important;", :title => color.color_en}
                       - if index == 0
                         %input{:checked => "checked", :name => "color", :type => "radio", :value => "#{index}", id: "v#{index}"  }/
-                        %p.sel-color-text #{color.color}
                       - else
                         %input{:name => "color", :type => "radio", :value => "#{index}", id: "v#{index}"  }/
                 / %label.label-radio{:for => "v1", :style => "background:url(#{image_url('111111.jpg')}) !important;", :title => "迷彩"}
@@ -80,7 +78,7 @@
                 /   %p.sel-color-text 紅
               / color
               - if @product_size_selector.present?
-                .sel-qty
+                .sel-size
                   %h3 #{t("product.size")}
                   = f.select :product_size_id, @product_size_selector, {}, { :class => 'nice-sel-wrap nice_select' }
                 / = select_tag :quantity,[], style: "display: none"
@@ -94,7 +92,6 @@
                 / %strong{id: "out_of_stock",style: "display: none"}
                 /   = t('product.out_of_stock')
                 / = select_tag :quantity,[1,2,3], { :class => 'nice-sel-wrap nice_select' }
-                = select_tag :quantity,[], style: "display: none", :class => 'nice-sel-wrap nice_select'
                 %h4.text-15.color-red.lh-25.bold.mg-b-7{id: "out_of_stock",style: "display: none"}
                   = t('product.out_of_stock')
 

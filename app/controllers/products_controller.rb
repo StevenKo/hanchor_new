@@ -39,6 +39,7 @@ class ProductsController < ApplicationController
 
   def quantity
     @quantity = ProductQuantity.where(product_color_id: params[:color_id], product_size_id: params[:size_id])[0]
+    @color = ProductColor.find(params[:color_id]) if params[:color_id].present?
     @quantity_selector = @quantity.quantity_selector
   end
 

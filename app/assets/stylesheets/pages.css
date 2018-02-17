@@ -98,6 +98,8 @@
 .product-info .form-section .sel-color h3{font-size:15px;color:#333;font-weight:bold;margin-bottom:12px;}
 .product-info .form-section .sel-qty h3{font-size:15px;color:#333;font-weight:bold;margin-bottom:12px;}
 .product-info .form-section .sel-qty{display:inline-block;vertical-align:top;}
+.product-info .form-section .sel-size h3{font-size:15px;color:#333;font-weight:bold;margin-bottom:12px;}
+.product-info .form-section .sel-size{display:inline-block;vertical-align:top;}
 
 .tab-con .tab-inner{display:none;}
 .tab-con .tab-inner.active{display:block;}

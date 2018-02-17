@@ -1,9 +1,14 @@
+<% if @color.present? %>
+  $(".sel-color h3").text('<%= t("product.color") + showed_color(@color)%>');
+<% end %>
+
+$('#quantity').niceSelect('destroy');
+$("#quantity").remove();
+
 <% if @quantity.quantity > 0 %>
-  $("#quantity").html("<%=j options_for_select(@quantity_selector)%>");
-  $('#quantity').niceSelect('update');
+  $(".sel-qty").append("<%=j select_tag :quantity,options_for_select(@quantity_selector), style: 'display: none', :class => 'nice-sel-wrap nice_select' %>");
+  $('#quantity').niceSelect();
   $("#out_of_stock").hide();
 <% else %>
   $("#out_of_stock").show();
-  $('#quantity').niceSelect('destroy');
-  $("#quantity").hide();
 <% end %>

@@ -14,4 +14,12 @@ module ProductsHelper
       "#{current_currency.show_symbol}#{(price / current_currency.sell).round(2)}"
     end
   end
+
+  def showed_color color
+    if ["zh-TW","zh"].include?( params[:locale] )
+      color.color
+    else
+      color.color_en
+    end
+  end
 end
