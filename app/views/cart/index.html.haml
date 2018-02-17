@@ -37,7 +37,7 @@
                   
                   = form_for item, url: change_cart_item_quantity_cart_path(item) do |f|
                     .qty
-                      = f.select :quantity, get_cart_item_quantity_selector(item),{}, {selected: item.quantity, class: "nice-sel-wrap nice_select", :onchange => "this.form.submit()"}
+                      = f.select :quantity, get_cart_item_quantity_selector(item),{}, {selected: item.quantity, class: "nice-sel-wrap nice_select cart_item_quantity", :onchange => "this.form.submit()"}
                       %p.per-price #{t("cart.subtotal")}：#{showed_price(item.price * item.quantity)}
                   .btn-sec
                     = button_to remove_cart_item_cart_index_path(item_id: item.id), class: "btn-line btn-line-blue" do
