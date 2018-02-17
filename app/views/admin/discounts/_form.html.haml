@@ -16,9 +16,18 @@
       %h3.text-16.lh-24.bold 超過金額才有
       = f.text_field :threshold, label: "超過金額才有",:class => "span7"
       %h3.text-16.lh-24.bold 起始日(UTC)
-      = f.datetime_field :start_date, label: "起始日",:class => "span7"
+      = f.text_field :start_date, label: "起始日",:class => "span7"
+      :javascript
+        $(function(){
+          $('#discount_rule_start_date').appendDtpicker({"inline": true});
+        });
       %h3.text-16.lh-24.bold 截止日(UTC)
-      = f.datetime_field :end_date, label: "截止日",:class => "span7"
+      = f.text_field :end_date, label: "截止日",:class => "span7"
+      :javascript
+        $(function(){
+          $('#discount_rule_end_date').appendDtpicker({"inline": true});
+        });
+
       %h3.text-16.lh-24.bold 選擇商品
       = link_to "全選", "",{id: "select_all"}
       = link_to "全取消", "",{id: "unselect_all"}
