@@ -193,7 +193,7 @@
                     %span> #{t("cart.sum")}
                     #{showed_price(sum_cart_items_price @cart_items)}
                     - if @coupon && @is_useable
-                      = @coupon.discount_text
+                      = discount_text(@coupon,sum_cart_items_price(@cart_items))
                 .mg-b-30.text-15.lh-30.color-gray-333.bold
                   #{t("cart.read_shopping_gudide_message")}
                   = link_to(t("cart.shopping_guide"), shopping_guide_path,{:class=>"bold color-lb mg-b-17",:hov => "0.75"})

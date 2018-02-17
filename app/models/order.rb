@@ -59,13 +59,15 @@ class Order < ActiveRecord::Base
     sum
   end
 
-  def apply_dicount code
+  def apply_discount code
     coupon = DiscountRule.find_by(code: code)
     record = DiscountRecord.create(order_id: id, discount_rule_id: coupon.id)
-    if coupon.discount_type == "free_shipping"
+    if coupon.discount_type == DiscountRule::DISCOUNT_TYPE[2]
       self.total = self.total - shipping_cost.cost
-    else
+    elsif coupon.discount_type == DiscountRule::DISCOUNT_TYPE[0]
       self.total = self.total - coupon.discount_money
+    elsif coupon.discount_type == DiscountRule::DISCOUNT_TYPE[1]
+      self.total = (self.total * coupon.discount_percentage / 100).round
     end
     self.save
   end

@@ -61,7 +61,7 @@
               %span> #{t("cart.sum")}
               #{showed_price(sum_cart_items_price @cart_items)}
               - if @coupon && @is_useable[0]
-                = @coupon.discount_text
+                = discount_text(@coupon,sum_cart_items_price(@cart_items))
             .scart-submit
               = link_to products_index_path("Packing"), class: "btn-l btn-lblue inlineblock-imp", :hov => "0.75" do
                 %i.fa.fa-chevron-left.mg-r-20{"aria-hidden" => "true"}>

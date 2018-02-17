@@ -12,7 +12,7 @@
     %p#ssss.scart-total-price.mg-b-40
       %span> #{t("cart.sum")}
       NT$#{sub_total.to_i}
-      = @coupon.discount_text
+      = discount_text(@coupon,sub_total.to_i)
 - elsif @coupon && @is_useable[0]
   .price-show
     %p.scart-total-price-s.mg-b-10
@@ -27,7 +27,7 @@
     %p#ssss.scart-total-price.mg-b-40
       %span> #{t("cart.sum")}
       NT$#{sub_total.to_i + shipping_cost.to_i}
-      = @coupon.discount_text
+      = discount_text(@coupon,sub_total.to_i)
 - else
   .price-show
     %p.scart-total-price-s.mg-b-10

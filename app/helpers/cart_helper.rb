@@ -23,4 +23,22 @@ module CartHelper
       coupon.title_en
     end
   end
+
+  def discount_text coupon, total
+    if coupon.discount_type == DiscountRule::DISCOUNT_TYPE[2]
+      " + Free Shipping"
+    elsif coupon.discount_type == DiscountRule::DISCOUNT_TYPE[0]
+      if current_currency.symbol == "NTD"
+        " - #{coupon.discount_money}"
+      else
+        " - #{(coupon.discount_money/current_currency.sell).round(2)}"
+      end
+    elsif coupon.discount_type == DiscountRule::DISCOUNT_TYPE[1]
+      if current_currency.symbol == "NTD"
+        " - #{(total*(100-coupon.discount_percentage)/100).round}"
+      else
+        " - #{(total*(100-coupon.discount_percentage)/100/current_currency.sell).round(2)}"
+      end
+    end
+  end
 end
