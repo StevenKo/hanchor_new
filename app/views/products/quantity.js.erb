@@ -1,6 +1,5 @@
 <% if @quantity.quantity > 0 %>
   $("#quantity").html("<%=j options_for_select(@quantity_selector)%>");
-  $('#quantity').niceSelect();
   $('#quantity').niceSelect('update');
   $("#out_of_stock").hide();
 <% else %>

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180217021146) do
+ActiveRecord::Schema.define(version: 20180217044125) do
 
   create_table "announcements", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.text "message"
@@ -86,7 +86,7 @@ ActiveRecord::Schema.define(version: 20180217021146) do
     t.text "title"
     t.string "discount_type"
     t.integer "discount_money"
-    t.integer "threshold"
+    t.integer "threshold", default: 0
     t.datetime "end_date"
     t.datetime "start_date"
     t.boolean "is_valid", default: true
