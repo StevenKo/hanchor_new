@@ -9,6 +9,7 @@ Bundler.require(*Rails.groups)
 module HanchorNew
   class Application < Rails::Application
     # Initialize configuration defaults for originally generated Rails version.
+    config.time_zone = 'Taipei'
     config.load_defaults 5.1
     config.assets.precompile += %w( ckeditor/* )
     # Settings in config/environments/* take precedence over those specified here.

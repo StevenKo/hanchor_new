@@ -22,7 +22,7 @@ class DiscountRule < ActiveRecord::Base
         end
       end
 
-      if DateTime.now < start_date
+      if Time.now < start_date
         self.update_column(:is_valid, false)
         start_job_id = StartCouponWorker.perform_at(start_date, id)
         self.update_column(:start_date_job_id, start_job_id)
@@ -40,7 +40,7 @@ class DiscountRule < ActiveRecord::Base
           end
         end
       end
-      if DateTime.now > end_date
+      if Time.now > end_date
         self.update_column(:is_valid, false)
       else
         end_job_id = StopCouponWorker.perform_at(end_date, id)

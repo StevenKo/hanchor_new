@@ -26,7 +26,7 @@ class OrdersController < ApplicationController
 
       if @order.save
         @order.apply_discount(params[:code]) if params[:code].present?
-        @order.update_attribute(:code, @order.created_at.utc.strftime("%y%m%d")+ (Order.where("created_at > ?", @order.created_at.utc.to_date).size).to_s.rjust(3, '0'))
+        @order.update_attribute(:code, @order.created_at.strftime("%y%m%d")+ (Order.where("created_at > ?", @order.created_at.to_date).size).to_s.rjust(3, '0'))
         @order.deduct_quanitity
         if(@order.payment == "AllPay")
           redirect_to pay_with_credit_card_orders_path(order: @order)
