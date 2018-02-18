@@ -1,4 +1,10 @@
+require 'sidekiq/web'
+
 Rails.application.routes.draw do
+  Sidekiq::Web.use(Rack::Auth::Basic) do |user, password|
+    [user, password] == [ENV["SIDEKIQ_USERNAME"], ENV["SIDEKIQ_PASSWORD"]]
+  end
+  mount Sidekiq::Web, at: '/sidekiq'
   root to: 'welcome#index'
   get 'aboutus' => 'welcome#aboutus'
   get 'shopping_guide' => "welcome#shopping_guide"
