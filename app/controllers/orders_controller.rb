@@ -56,12 +56,12 @@ class OrdersController < ApplicationController
     products.each {|product| product_infos[product.id] = product}
     @order_products = []
     product_ids.each { |id| @order_products << product_infos[id] }
-    # client = Allpay::Client.new(mode: :test)
-    production_client = Allpay::Client.new({
-      merchant_id: ENV['ALLPAY_ID'],
-      hash_key: ENV['ALLPAY_HASH_KEY'],
-      hash_iv: ENV['ALLPAY_HASH_IV']
-    })
+    client = Allpay::Client.new(mode: :test)
+    # production_client = Allpay::Client.new({
+    #   merchant_id: ENV['ALLPAY_ID'],
+    #   hash_key: ENV['ALLPAY_HASH_KEY'],
+    #   hash_iv: ENV['ALLPAY_HASH_IV']
+    # })
     @params = client.generate_checkout_params(MerchantTradeNo: @order.code.to_i+100,
                                             TotalAmount: @order.total,
                                             TradeDesc: "HANCHOR CO., LTD",
