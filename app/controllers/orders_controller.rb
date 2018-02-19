@@ -26,7 +26,7 @@ class OrdersController < ApplicationController
 
       if @order.save
         @order.apply_discount(params[:code]) if params[:code].present?
-        @order.update_attribute(:code, @order.created_at.strftime("%y%m%d")+ (Order.where("created_at > ?", @order.created_at.to_date).size).to_s.rjust(3, '0'))
+        @order.update_attribute(:code, generate_order_code(@order))
         @order.deduct_quanitity
         if(@order.payment == "AllPay")
           redirect_to pay_with_credit_card_orders_path(order: @order)
@@ -62,7 +62,7 @@ class OrdersController < ApplicationController
     #   hash_key: ENV['ALLPAY_HASH_KEY'],
     #   hash_iv: ENV['ALLPAY_HASH_IV']
     # })
-    @params = client.generate_checkout_params(MerchantTradeNo: @order.code.to_i+100,
+    @params = client.generate_checkout_params(MerchantTradeNo: @order.code,
                                             TotalAmount: @order.total,
                                             TradeDesc: "HANCHOR CO., LTD",
                                             ItemName: @order_products.map(&:name).join(","),
@@ -82,6 +82,10 @@ class OrdersController < ApplicationController
   end
 
   private
+
+  def generate_order_code order
+    (order.created_at.strftime("%y%m%d")+ (Order.where("created_at > ?", order.created_at.to_date).size).to_s.rjust(3, '0')).to_i + 100
+  end
 
   def get_good_from_store(order)
     order.shipping_cost_id == 3
