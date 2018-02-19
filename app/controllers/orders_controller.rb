@@ -62,7 +62,7 @@ class OrdersController < ApplicationController
       hash_key: ENV['ALLPAY_HASH_KEY'],
       hash_iv: ENV['ALLPAY_HASH_IV']
     })
-    @params = client.generate_checkout_params(MerchantTradeNo: @order.code,
+    @params = production_client.generate_checkout_params(MerchantTradeNo: @order.code,
                                             TotalAmount: @order.total,
                                             TradeDesc: "HANCHOR CO., LTD",
                                             ItemName: @order_products.map(&:name).join(","),
