@@ -48,7 +48,12 @@
               =(image_tag product.thumb.pic_url, :itemprop => "image", :class => "v-centerimg")
             .info
               %h3.name.text-14.lh-24.color-gray-333.bold= product.name
-              %p.price.text-13.lh-20.color-main-lb= showed_price(product.price)
+              .discount
+                - unless product.special_price
+                  %p.price.text-13.lh-20.color-main-lb.inlineblock= showed_price(product.price)
+                - else
+                  %p.price.text-13.lh-20.color-gray-999.text-del.inlineblock.mg-r-10= showed_price(product.price)
+                  %p.price.text-13.lh-20.color-main-lb.inlineblock= showed_price(product.special_price)
       / page select menu
       %nav.page-menu.relative
         = will_paginate(@products, :renderer => 'BootstrapPaginationHelper::LinkRenderer', :inner_window => 2, :outer_window => 0)
