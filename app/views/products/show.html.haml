@@ -40,7 +40,13 @@
       / 
       .grid-2.product-info
         %h2.name.mg-b-10= @product.name
-        %p.price.mg-b-20= showed_price(@product.price)
+
+        - unless @product.special_price
+          %p.price.mg-b-20= showed_price(@product.price)
+        - else
+          %p.price.mg-b-20.text-del.inlineblock.color-gray-999= showed_price(@product.price)
+          %p.price.mg-b-20.inlineblock.mg-l-10= showed_price(@product.special_price)
+          
         .line.mg-b-25
         .form-section
           = form_for @item, url: add_item_to_cart_cart_index_path(product: @product) do |f|

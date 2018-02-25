@@ -8,6 +8,6 @@ class ProductColorUploader < CarrierWave::Uploader::Base
   end
 
   version :thumb do
-    process :resize_to_limit => [50, 50]
+    process :resize_to_limit => [24, 24]
   end
 end
