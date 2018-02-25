@@ -1,0 +1,137 @@
+=content_for :head do
+  <meta name="description" content="#{t("about_description")}">
+  <title>HANCHOR｜#{t("aboutus")}</title>
+  
+/ visual
+.pages-visual
+  = image_tag "about-visual.jpg", :class => "v-centerimg"
+/ -visual
+/ breadcrumbs
+%section.breadcrumbs
+  / rwd width limited
+  .rwd-width-limited.clearfix
+    .text-13.color-gray-666.lh-18.breadcrumb
+      = render_breadcrumbs :separator => ' / '
+  / rwd width limited
+/ breadcrumbs
+/ start main
+.wrapper
+  / full width block
+  %section.bg-w.pd-v-20.mg-t-30.sidebar-point
+    / rwd width limited
+    .rwd-width-limited
+      / sidebar and con
+      .clearfix.sidebar-con
+        / sd con
+        .clearfix.sc-con.grid-800px
+          / 
+          .member-sec.relative.mg-b-80
+            %h2.title-line.inlineblock.mg-b-30 Light Weight, Functional, Urban Outdoor Style
+            .mg-b-30.about-inner
+              = image_tag "about-1.jpg", :class => "mg-b-25"
+              %p.text-14.lh-30.color-gray-666
+                The HANCHOR brand was created in Taipei, Taiwan in 2012. We have been designing and making bags for outdoor adventures since 2010, and our logo symbolizes a chalked hand with a solid grip on a hold. HANCHOR = Hand+Anchor, both of which keep us on the wall when we climb, and our mission is to design innovative, simple, and high-quality bags to hold your stuff for all your adventures.
+          / 
+          / 
+          .member-sec.relative.mg-b-80
+            %h2.title-line.inlineblock.mg-b-30 ISPO
+            .mg-b-30.about-inner
+              = image_tag "ISPO.jpg", :class => "mg-b-25"
+              %h3.text-15.bold.color-grey-333.mg-b-17 ISPO BRANDNEW FINALIST 2016/2017
+              %p.text-14.lh-30.color-gray-666
+                ISPO BRANDNEW FINALIST 2016/2017 HANCHOR was chosen to be a finalist of ISPO BRANDNEW at ISPO MUNICH 2016/2017. HANCHOR is the first Taiwan Brand to receive this honor since this award established in 2000.
+          / 
+          / 
+          .member-sec.relative.mg-b-80
+            %h2.title-line.inlineblock.mg-b-30 KICKSTARTER Projects 
+            .mg-b-30.about-inner
+              %a.text-15.bold.color-lb.mg-b-17.block{:hov => "0.75", :href => "https://www.kickstarter.com/projects/1790400234/a-revolutionary-chalkbag-hula-and-kangaroo", :target => "_blank"} Kickstarter Project 2013 - A Revolutionary Chalkbag- HULA & KANGAROO
+              %br/
+              .ks.block.mg-b-45
+                %iframe.ks-video{:frameborder => "0", :scrolling => "no", :src => "https://www.kickstarter.com/projects/1790400234/a-revolutionary-chalkbag-hula-and-kangaroo/widget/video.html"}
+              %a.text-15.bold.color-lb.mg-b-17.block{:hov => "0.75", :href => "https://www.kickstarter.com/projects/1790400234/a-revolutionary-chalkbag-hula-and-kangaroo", :target => "_blank"} Kickstarter Project 2014 - From Urban to Outdoor, The Ultimate Travel Backpack
+              %br/
+              .ks.block
+                %iframe.ks-video{:frameborder => "0", :scrolling => "no", :src => "https://www.kickstarter.com/projects/1790400234/from-urban-to-outdoor-the-ultimate-travel-backpack/widget/video.html"}
+          / 
+          / 
+          .member-sec.relative.mg-b-80
+            %h2.title-line.inlineblock.mg-b-30 Partnership
+            .mg-b-30.about-inner
+              .clearfix
+                / one partner
+                .grid-3-1.about-partner
+                  .pic
+                    = image_tag "partner/GautierSupper.jpg", :class => "v-centerimg"
+                  .info
+                    %h3 Gautier Supper
+                / one partner
+                / one partner
+                .grid-3-1.about-partner
+                  .pic
+                    = image_tag "partner/Dinara.jpg", :class => "v-centerimg"
+                  .info
+                    %h3 Dinara
+                / one partner
+                / one partner
+                .grid-3-1.about-partner
+                  .pic
+                    = image_tag "partner/Gabriela.jpg", :class => "v-centerimg"
+                  .info
+                    %h3 Gabriela
+                / one partner
+                / one partner
+                .grid-3-1.about-partner
+                  .pic
+                    = image_tag "partner/GarethLeah.jpg", :class => "v-centerimg"
+                  .info
+                    %h3 Gareth Leah
+                / one partner
+                / one partner
+                .grid-3-1.about-partner
+                  .pic
+                    = image_tag "partner/JulianneMcCarron.jpg", :class => "v-centerimg"
+                  .info
+                    %h3 Julianne McCarron
+                / one partner
+                / one partner
+                .grid-3-1.about-partner
+                  .pic
+                    = image_tag "partner/LisonBernard.jpg", :class => "v-centerimg"
+                  .info
+                    %h3 Lison Bernard
+                / one partner
+                / one partner
+                .grid-3-1.about-partner
+                  .pic
+                    = image_tag "partner/MATTFIORETTI.jpg", :class => "v-centerimg"
+                  .info
+                    %h3 Matt Fioretti
+                / one partner
+                / one partner
+                .grid-3-1.about-partner
+                  .pic
+                    = image_tag "partner/NinaAtrhaud.jpg", :class => "v-centerimg"
+                  .info
+                    %h3 Nina Atrhaud
+                / one partner
+                / one partner
+                .grid-3-1.about-partner
+                  .pic
+                    = image_tag "partner/Shanon.jpg", :class => "v-centerimg"
+                  .info
+                    %h3 Shanon
+                / one partner
+                / one partner
+                .grid-3-1.about-partner
+                  .pic
+                    = image_tag "partner/SophieMcCarron.jpg", :class => "v-centerimg"
+                  .info
+                    %h3 Sophie McCarron
+                / one partner
+          / 
+        / sd con
+      / sidebar and con
+    / rwd width limited
+  / full width block
+/ end main

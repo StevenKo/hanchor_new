@@ -4,7 +4,7 @@ class WelcomeController < ApplicationController
   add_breadcrumb I18n.t("product.home"), :root_path
 
   def index
-    @news = News.locale(params[:locale]).select("news.id, title, release_date, pic, slug").limit(5).order("news.release_date DESC")
+    @news = News.locale(params[:locale]).select("news.id, title, release_date, pic, slug").limit(6).order("news.release_date DESC")
     @video = Video.first
     @products = Product.includes(:thumb).joins(:product_infos).where("product_infos.country_id = #{@country_id} and is_show_at_index = true").order_by_views_and_sort.select_info
     @banners = Banner.order("sort DESC")

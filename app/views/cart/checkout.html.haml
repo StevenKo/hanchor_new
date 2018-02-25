@@ -30,7 +30,8 @@
                       #{t("account.name_html")}
                   .input
                     = f.text_field :shipping_name, class: 'input-text mg-b-20', placeholder: t("placeholder.name"), value: @current_user.name
-                    %p.note #{t("cart.user_name_note")}
+                    - if ["zh-TW","zh"].include?( params[:locale] )
+                      %p.note #{t("cart.user_name_note")}
                 / one input
                 / one input
                 .one-input
@@ -71,7 +72,8 @@
                       #{t("account.state_html")}
                   .input
                     = f.text_field :state, class: 'input-text mg-b-20', placeholder: t("placeholder.state"), value: @current_user.state
-                    %p.note #{t("cart.state_note")}
+                    - if ["zh-TW","zh"].include?( params[:locale] )
+                      %p.note #{t("cart.state_note")}
                 / one input
                 / one input
                 .one-input
@@ -118,7 +120,10 @@
                   .title
                     %p #{t("cart.comment")}
                   .input
-                    = text_area_tag :memo, nil,class: "input-text input-textarea mg-b-20", :placeholder => t("placeholder.note")
+                    - if ["zh-TW","zh"].include?( params[:locale] )
+                      = text_area_tag :memo, nil,class: "input-text input-textarea mg-b-20", :placeholder => t("placeholder.note")
+                    - else
+                      = text_area_tag :memo, nil,class: "input-text input-textarea mg-b-20"
                 / one input
             / 
             / line

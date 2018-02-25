@@ -1,0 +1,137 @@
+=content_for :head do
+  <meta name="description" content="#{t("about_description")}">
+  <title>HANCHOR｜#{t("aboutus")}</title>
+  
+/ visual
+.pages-visual
+  = image_tag "about-visual.jpg", :class => "v-centerimg"
+/ -visual
+/ breadcrumbs
+%section.breadcrumbs
+  / rwd width limited
+  .rwd-width-limited.clearfix
+    .text-13.color-gray-666.lh-18.breadcrumb
+      = render_breadcrumbs :separator => ' / '
+  / rwd width limited
+/ breadcrumbs
+/ start main
+.wrapper
+  / full width block
+  %section.bg-w.pd-v-20.mg-t-30.sidebar-point
+    / rwd width limited
+    .rwd-width-limited
+      / sidebar and con
+      .clearfix.sidebar-con
+        / sd con
+        .clearfix.sc-con.grid-800px
+          / 
+          .member-sec.relative.mg-b-80
+            %h2.title-line.inlineblock.mg-b-30 工作室介紹
+            .mg-b-30.about-inner
+              = image_tag "about-1.jpg", :class => "mg-b-25"
+              %p.text-14.lh-30.color-gray-666
+                Hanchor 2012年創立於台灣台北，始於2010年著手設計、手工製作戶外用品。品牌圖案呈現攀岩者沾滿白色碳酸鎂粉的手抓住岩塊；HANCHOR= Hand+ Anchor，結合兩項攀岩者與岩牆連結的重要元素，象徵穩固及堅持、用力生活的精神。由攀岩概念出發的原創設計，致力於輕量化並兼具堅固及功能性的城市戶外風格，包款均經過反覆測試與及親身使用，提供最完美的背負感受。
+          / 
+          / 
+          .member-sec.relative.mg-b-80
+            %h2.title-line.inlineblock.mg-b-30 ISPO 獎項
+            .mg-b-30.about-inner
+              = image_tag "ISPO.jpg", :class => "mg-b-25"
+              %h3.text-15.bold.color-grey-333.mg-b-17 ISPO BRANDNEW FINALIST 2016/2017
+              %p.text-14.lh-30.color-gray-666
+                入圍戶外界最具代表性的 ISPO 新品牌決選名單獎，根據主辦單位表示，HANCHOR是此項選拔2000年開辦以來入選的第一個台灣品牌。
+          / 
+          / 
+          .member-sec.relative.mg-b-80
+            %h2.title-line.inlineblock.mg-b-30 Kickstarter 募資計畫
+            .mg-b-30.about-inner
+              %a.text-15.bold.color-lb.mg-b-17.block{:hov => "0.75", :href => "https://www.kickstarter.com/projects/1790400234/a-revolutionary-chalkbag-hula-and-kangaroo", :target => "_blank"} Kickstarter Project 2013 - 新一代革命粉袋
+              %br/
+              .ks.block.mg-b-45
+                %iframe.ks-video{:frameborder => "0", :scrolling => "no", :src => "https://www.kickstarter.com/projects/1790400234/a-revolutionary-chalkbag-hula-and-kangaroo/widget/video.html"}
+              %a.text-15.bold.color-lb.mg-b-17.block{:hov => "0.75", :href => "https://www.kickstarter.com/projects/1790400234/a-revolutionary-chalkbag-hula-and-kangaroo", :target => "_blank"} Kickstarter Project 2014 - 終極旅行背包
+              %br/
+              .ks.block
+                %iframe.ks-video{:frameborder => "0", :scrolling => "no", :src => "https://www.kickstarter.com/projects/1790400234/from-urban-to-outdoor-the-ultimate-travel-backpack/widget/video.html"}
+          / 
+          / 
+          .member-sec.relative.mg-b-80
+            %h2.title-line.inlineblock.mg-b-30 合作夥伴
+            .mg-b-30.about-inner
+              .clearfix
+                / one partner
+                .grid-3-1.about-partner
+                  .pic
+                    = image_tag "partner/GautierSupper.jpg", :class => "v-centerimg"
+                  .info
+                    %h3 Gautier Supper
+                / one partner
+                / one partner
+                .grid-3-1.about-partner
+                  .pic
+                    = image_tag "partner/Dinara.jpg", :class => "v-centerimg"
+                  .info
+                    %h3 Dinara
+                / one partner
+                / one partner
+                .grid-3-1.about-partner
+                  .pic
+                    = image_tag "partner/Gabriela.jpg", :class => "v-centerimg"
+                  .info
+                    %h3 Gabriela
+                / one partner
+                / one partner
+                .grid-3-1.about-partner
+                  .pic
+                    = image_tag "partner/GarethLeah.jpg", :class => "v-centerimg"
+                  .info
+                    %h3 Gareth Leah
+                / one partner
+                / one partner
+                .grid-3-1.about-partner
+                  .pic
+                    = image_tag "partner/JulianneMcCarron.jpg", :class => "v-centerimg"
+                  .info
+                    %h3 Julianne McCarron
+                / one partner
+                / one partner
+                .grid-3-1.about-partner
+                  .pic
+                    = image_tag "partner/LisonBernard.jpg", :class => "v-centerimg"
+                  .info
+                    %h3 Lison Bernard
+                / one partner
+                / one partner
+                .grid-3-1.about-partner
+                  .pic
+                    = image_tag "partner/MATTFIORETTI.jpg", :class => "v-centerimg"
+                  .info
+                    %h3 Matt Fioretti
+                / one partner
+                / one partner
+                .grid-3-1.about-partner
+                  .pic
+                    = image_tag "partner/NinaAtrhaud.jpg", :class => "v-centerimg"
+                  .info
+                    %h3 Nina Atrhaud
+                / one partner
+                / one partner
+                .grid-3-1.about-partner
+                  .pic
+                    = image_tag "partner/Shanon.jpg", :class => "v-centerimg"
+                  .info
+                    %h3 Shanon
+                / one partner
+                / one partner
+                .grid-3-1.about-partner
+                  .pic
+                    = image_tag "partner/SophieMcCarron.jpg", :class => "v-centerimg"
+                  .info
+                    %h3 Sophie McCarron
+                / one partner
+          / 
+        / sd con
+      / sidebar and con
+    / rwd width limited
+  / full width block
+/ end main
