@@ -107,7 +107,7 @@ class Product < ActiveRecord::Base
 
   def update_slug
     infos = product_infos
-    if infos[1].name.present?
+    if infos.size > 1 && infos[1].name.present?
       update_column(:slug, infos[1].name)
     end
   end
