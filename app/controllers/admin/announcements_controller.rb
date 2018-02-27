@@ -40,7 +40,7 @@ class Admin::AnnouncementsController < Admin::AdminController
 
 private
   def announcement_param
-    params.require(:announcement).permit(:message,:message_en,:link,:sort)
+    params.require(:announcement).permit(:message,:message_en,:link,:link_en,:sort)
   end
 
 end

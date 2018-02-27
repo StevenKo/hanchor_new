@@ -26,4 +26,12 @@ module ApplicationHelper
       announcement.message_en
     end
   end
+
+  def link_to_announceemnt announcement
+    if ["zh-TW","zh"].include?( params[:locale] )
+      link_to announcement.message, announcement.link, {class: "h-msg-l", :voh => "0.4"}
+    else
+      link_to announcement.message_en, announcement.link_en, {class: "h-msg-l", :voh => "0.4"}
+    end
+  end
 end

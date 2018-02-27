@@ -3,10 +3,12 @@
     = form_for announcement, url: url,:html => {multipart: true} do |f|
       %h3.text-16.lh-24.bold 訊息
       = f.text_field :message, :class => "span7", label: "訊息"
-      %h3.text-16.lh-24.bold 英文訊息
-      = f.text_field :message_en, :class => "span7", label: "英文訊息"
       %h3.text-16.lh-24.bold 連結
       = f.text_field :link, :class => "span7", label: "連結"
+      %h3.text-16.lh-24.bold 英文訊息
+      = f.text_field :message_en, :class => "span7", label: "英文訊息"
+      %h3.text-16.lh-24.bold 英文訊息連結
+      = f.text_field :link_en, :class => "span7", label: "英文訊息連結"
       %h3.text-16.lh-24.bold 排序(數字越大，排序越前面)
       = f.text_field :sort, :class => "span7", label: "排序(數字越大，排序越前面)"
       %br
