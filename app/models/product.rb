@@ -21,7 +21,6 @@ class Product < ActiveRecord::Base
                                     product_infos.special_price,
                                     product_infos.quick_overview, 
                                     products.id,
-                                    product_category_id,
                                     products.slug"
                         ) }
 
@@ -35,19 +34,16 @@ class Product < ActiveRecord::Base
                                     product_infos.feature,
                                     products.views,
                                     products.id,
-                                    product_category_id,
                                     products.slug"
                         ) }
   scope :cart_info, -> { select(" product_infos.name,
                                     product_infos.price,
                                     product_infos.shipping,
                                     products.id,
-                                    product_category_id,
                                     products.slug"
                         ) }
   scope :admin_index_info, -> { select("products.id,
                                         no,
-                                        product_category_id,
                                         product_infos.name,
                                         product_infos.price,
                                         product_infos.special_price,
@@ -56,7 +52,7 @@ class Product < ActiveRecord::Base
                                         product_infos.is_visible,
                                         products.slug"
                               )}
-  scope :order_by_views_and_sort, -> { order("sort desc,views desc")}
+  scope :order_by_views_and_sort, -> { order("products.sort desc,views desc")}
 
   def to_param
     slug
