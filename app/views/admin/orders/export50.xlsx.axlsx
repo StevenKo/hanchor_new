@@ -1,0 +1,25 @@
+wb = xlsx_package.workbook
+wb.add_worksheet(name: @sheet_name) do |sheet|
+  header_highlight = sheet.styles.add_style(:bg_color => "D1D1D1", :border => Axlsx::STYLE_THIN_BORDER)
+  content_highlight = sheet.styles.add_style(:bg_color => "C6E0B4", border: Axlsx::STYLE_THIN_BORDER)
+  bold_font = sheet.styles.add_style(:b => true, border: Axlsx::STYLE_THIN_BORDER)
+  border_wrap = sheet.styles.add_style border: Axlsx::STYLE_THIN_BORDER
+  item_quantity_style = sheet.styles.add_style(:bg_color => "C6E0B4", :border => Axlsx::STYLE_THIN_BORDER, :alignment => { :horizontal => :center, :vertical => :center, :wrap_text => true})
+  @order_list.each_with_index do |order, index|
+    sheet.add_row ['訂單編號', '訂單日期', '訂購用戶', '收件人姓名', '付款方式','運送方式','總金額','狀態','地址','店送'], style: border_wrap
+    sheet.add_row [order.code, display_date(order.created_at), order.user.name, order.shipping_name, order.payment, order.shipping_cost.description,order.total,t("order.#{order.status}"), order.shipping_address, order.shipping_store ], style: bold_font
+    sheet.add_row ['出貨編號', '品名', '尺寸', '顏色', '單價','數量'], style: header_highlight
+    order.order_items.each_with_index do |order_item,index|
+      (order_item.product_size)? size = order_item.product_size.size : size = "nil" 
+      (order_item.product_color)? color = order_item.product_color.color : color = "nil"
+      sheet.add_row [order.code + (index+1).to_s.rjust(2, '0'), order_item.product.product_infos.first.name, size, color, order_item.price, order_item.quantity], :height => 25, style: content_highlight
+    end
+    sheet["D#{sheet.rows.count-order.order_items.size}:D#{sheet.rows.count}"].each {|c| c.style = item_quantity_style}
+    sheet.add_row ['備註', order.memo, nil, nil, nil], style:Axlsx::STYLE_THIN_BORDER
+    sheet.merge_cells("B#{sheet.rows.count}:E#{sheet.rows.count}")
+    sheet.add_row
+    sheet.add_row
+    sheet.add_row
+    sheet.add_row
+  end
+end

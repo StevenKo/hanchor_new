@@ -79,11 +79,22 @@ Rails.application.routes.draw do
     post '/login', to: 'sessions#create'
     get '/logout', to: 'sessions#destroy'
 
-    resources :subscriptions
-    resources :users
+    resources :subscriptions do
+      collection do
+        get 'export'
+      end
+    end
+    resources :users do
+      collection do
+        get 'export'
+      end
+    end
     resources :orders do
       member do
         get 'change_status'
+      end
+      collection do
+        get 'export50'
       end
     end
     resources :products do

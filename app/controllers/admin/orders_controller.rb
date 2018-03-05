@@ -28,4 +28,13 @@ class Admin::OrdersController < Admin::AdminController
     redirect_to admin_orders_path
   end
 
+  def export50
+    @sheet_name = '處理中訂單清單'
+    @order_list = Order.showed.limit(50).order("id DESC")
+    respond_to do |format|
+      format.html
+      format.xlsx
+    end
+  end
+
 end
