@@ -17,7 +17,7 @@ class ProductsController < ApplicationController
       add_breadcrumb "#{t("product.product")} - #{@sub_category.locale(params[:locale])}", products_index_path(@base_category.name_en, sub: @sub_category.name_en)
     end
     if params[:sub]
-      @products = Product.includes(:thumb).joins(:product_infos,:product_categories).where("product_category_ships.product_category_id in (#{select_ids.join(",")}) and product_infos.country_id = #{@country_id} and product_category_id = #{@sub_category.id}").visible.order_by_views_and_sort.select_info.paginate(:page => params[:page], :per_page => page_size)
+      @products = Product.includes(:thumb).joins(:product_infos,:product_categories).where("product_category_ships.product_category_id in (#{select_ids.join(",")}) and product_infos.country_id = #{@country_id} and product_category_ships.product_category_id = #{@sub_category.id}").visible.order_by_views_and_sort.select_info.paginate(:page => params[:page], :per_page => page_size)
     else
       @products = Product.includes(:thumb).joins(:product_infos,:product_categories).where("product_category_ships.product_category_id in (#{select_ids.join(",")}) and product_infos.country_id = #{@country_id}").visible.order_by_views_and_sort.select_info.paginate(:page => params[:page], :per_page => page_size)
     end
