@@ -30,7 +30,7 @@ class Admin::OrdersController < Admin::AdminController
 
   def export_orders
     attributes = %w{出貨編號 訂單日期 名字 聯絡電話 運送方式 國家 洲 城市 郵遞區號 收件地址 收款方式 付費資訊 總金額 意見 狀態 品名 尺寸 顏色 單價 數量 金額}
-    @orders = Order.showed.limit(500).order("id DESC")
+    @orders = Order.showed.order("id DESC")
     file = CSV.generate(headers: true) do |csv|
       csv << attributes
 
