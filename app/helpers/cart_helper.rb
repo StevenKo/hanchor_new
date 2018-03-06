@@ -35,9 +35,9 @@ module CartHelper
       end
     elsif coupon.discount_type == DiscountRule::DISCOUNT_TYPE[1]
       if current_currency.symbol == "NTD"
-        " - #{(total*(100-coupon.discount_percentage)/100).round}"
+        " - #{(total*coupon.discount_percentage/100).round}"
       else
-        " - #{(total*(100-coupon.discount_percentage)/100/current_currency.sell).round(2)}"
+        " - #{(total*coupon.discount_percentage/100/current_currency.sell).round(2)}"
       end
     end
   end

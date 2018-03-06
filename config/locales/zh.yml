@@ -195,7 +195,7 @@ zh:
     pay_when_shipped: "貨到付款"
     applied_code: "已使用折扣碼"
     code_threshold: "消費未滿%{threshold}元"
-    not_suitable_code: "不符使用折扣碼"
+    not_suitable_code: "商品不符使用折扣碼"
     coupon_code: "折扣碼"
 
   order:

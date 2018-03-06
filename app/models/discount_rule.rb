@@ -10,6 +10,7 @@ class DiscountRule < ActiveRecord::Base
 
   scope :active, -> { where("? >= start_date AND ? < end_date", Time.now, Time.now) }
 
+  validates :code, uniqueness: true
 
   def check_date_job
     if saved_change_to_attribute?(:start_date)

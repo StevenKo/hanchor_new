@@ -94,7 +94,7 @@ Rails.application.routes.draw do
         get 'change_status'
       end
       collection do
-        get 'export50'
+        get 'export_orders'
       end
     end
     resources :products do

@@ -10,16 +10,12 @@ class CartController < ApplicationController
     if params[:code].present?
       @coupon = DiscountRule.find_by(code: params[:code])
       @is_useable = current_shopping_cart.calculate_coupon(@coupon.id)
-      if @is_useable[0]
+      if @is_useable.is_valid
         @coupon_message = I18n.t("cart.applied_code")
-      elsif @is_useable[1].blank?
+      elsif @is_useable.is_less_than_threshold
         @coupon_message = I18n.t("cart.code_threshold",threshold: @coupon.threshold)
       else
-        @coupon_message = ""
-        @cart_products.each do |p|
-          @coupon_message << p.name if @is_useable[1].include? p.id
-        end
-        @coupon_message += I18n.t("cart.not_suitable_code")
+        @coupon_message = I18n.t("cart.not_suitable_code")
       end
     end
   end

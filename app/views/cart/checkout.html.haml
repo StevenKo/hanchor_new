@@ -184,7 +184,7 @@
                           %i.fa.fa-trash-o.mg-l-10{"aria-hidden" => "true"}
               .tright
                 .price-show
-                  - if @coupon && @is_useable[0]
+                  - if @coupon && @is_useable.is_valid
                     %p.scart-total-price-s.mg-b-10
                       %span> #{t("cart.coupon_code")}
                       ="  #{params[:code]}"
@@ -198,7 +198,7 @@
                     %span> #{t("cart.sum")}
                     #{showed_price(sum_cart_items_price @cart_items)}
                     - if @coupon && @is_useable
-                      = discount_text(@coupon,sum_cart_items_price(@cart_items))
+                      = discount_text(@coupon,@is_useable.discount_sum)
                 .mg-b-30.text-15.lh-30.color-gray-333.bold
                   #{t("cart.read_shopping_gudide_message")}
                   = link_to(t("cart.shopping_guide"), shopping_guide_path,{:class=>"bold color-lb mg-b-17",:hov => "0.75"})

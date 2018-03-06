@@ -4,6 +4,9 @@ class OrdersController < ApplicationController
   before_action :load_base_cateogries, :only => [:result,:pay_with_credit_card]
   
   def create
+    
+    redirect_to root_path and return unless current_shopping_cart
+    
     @order = Order.new(order_params)
     unless get_good_from_store(@order)
       @order.store_code = 0
@@ -28,6 +31,13 @@ class OrdersController < ApplicationController
         @order.apply_discount(params[:code]) if params[:code].present?
         @order.update_attribute(:code, generate_order_code(@order))
         @order.deduct_quanitity
+
+        if @order.total == 0
+          UserMailer.order_notification(current_user,@order).deliver
+          @order.update_attribute("is_show",true)
+          redirect_to result_orders_url(order: @order) and return
+        end
+
         if(@order.payment == "AllPay")
           redirect_to pay_with_credit_card_orders_path(order: @order)
         elsif(@order.payment == "PayPal")

@@ -1,4 +1,4 @@
-- if @coupon && @is_useable[0] && @coupon.discount_type == "free_shipping"
+- if @coupon && @is_useable.is_valid && @coupon.discount_type == "free_shipping"
   .price-show
     %p.scart-total-price-s.mg-b-10
       %span> #{t("cart.coupon_code")}
@@ -13,7 +13,7 @@
       %span> #{t("cart.sum")}
       NT$#{sub_total.to_i}
       = discount_text(@coupon,sub_total.to_i)
-- elsif @coupon && @is_useable[0]
+- elsif @coupon && @is_useable.is_valid
   .price-show
     %p.scart-total-price-s.mg-b-10
       %span> #{t("cart.coupon_code")}
@@ -27,7 +27,7 @@
     %p#ssss.scart-total-price.mg-b-40
       %span> #{t("cart.sum")}
       NT$#{sub_total.to_i + shipping_cost.to_i}
-      = discount_text(@coupon,sub_total.to_i)
+      = discount_text(@coupon,@is_useable.discount_sum)
 - else
   .price-show
     %p.scart-total-price-s.mg-b-10

@@ -182,7 +182,7 @@ en:
     pay_when_shipped: "Pay When Delivered"
     applied_code: "Applied Code"
     code_threshold: "Consumption is not over $%{threshold}"
-    not_suitable_code: " can not use this code"
+    not_suitable_code: "Products can not use this code"
     coupon_code: "Coupon Code"
 
   order:

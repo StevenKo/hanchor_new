@@ -62,12 +62,30 @@ class Order < ActiveRecord::Base
   def apply_discount code
     coupon = DiscountRule.find_by(code: code)
     record = DiscountRecord.create(order_id: id, discount_rule_id: coupon.id)
+
+    discount_products_ids = coupon.discount_products.map{|p| p.product_id}
+    suitable_products = []
+    discount_sum = 0
+    sum = 0
+    order_items.each do |item|
+      sum += (item.price * item.quantity)
+      if discount_products_ids.include? item.product_id
+        suitable_products << item.product_id
+        discount_sum += (item.price * item.quantity)
+      end
+    end
+
     if coupon.discount_type == DiscountRule::DISCOUNT_TYPE[2]
-      self.total = self.total - shipping_cost.cost
+      self.total = sum
     elsif coupon.discount_type == DiscountRule::DISCOUNT_TYPE[0]
-      self.total = self.total - coupon.discount_money
+      dif = sum - discount_sum
+      discount_sum = discount_sum - coupon.discount_money
+      discount_sum = 0 if discount_sum < 0
+      self.total = dif + discount_sum
     elsif coupon.discount_type == DiscountRule::DISCOUNT_TYPE[1]
-      self.total = (self.total * coupon.discount_percentage / 100).round
+      dif = sum - discount_sum
+      discount_sum = (discount_sum * (100 - coupon.discount_percentage) / 100).round
+      self.total = dif + discount_sum + shipping_cost.cost
     end
     self.save
   end

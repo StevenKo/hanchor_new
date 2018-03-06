@@ -60,13 +60,13 @@
             %p.scart-total-price.mg-b-40
               %span> #{t("cart.sum")}
               #{showed_price(sum_cart_items_price @cart_items)}
-              - if @coupon && @is_useable[0]
-                = discount_text(@coupon,sum_cart_items_price(@cart_items))
+              - if @coupon && @is_useable.is_valid
+                = discount_text(@coupon,@is_useable.discount_sum)
             .scart-submit
               = link_to products_index_path("Packing"), class: "btn-l btn-lblue inlineblock-imp", :hov => "0.75" do
                 %i.fa.fa-chevron-left.mg-r-20{"aria-hidden" => "true"}>
                 #{t("cart.continue")}
-              - if @is_useable && @is_useable[0]
+              - if @is_useable && @is_useable.is_valid
                 = link_to checkout_cart_index_path(code: params[:code]), class: "btn-l btn-blue inlineblock-imp", :hov => "0.75" do
                   #{t("cart.checkout")}
                   %i.fa.fa-chevron-right.mg-l-20{"aria-hidden" => "true"}
