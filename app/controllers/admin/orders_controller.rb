@@ -59,7 +59,11 @@ class Admin::OrdersController < Admin::AdminController
           total = order.total
           memo = order.memo
           status = t("order.#{order.status}")
-          item_name = order_item.product.product_infos.first.name
+          if order_item.product.present?
+            item_name = order_item.product.product_infos.first.name
+          else
+            item_name = "已刪除"
+          end
           if order_item.product_size
             item_size = order_item.product_size.size
           else
