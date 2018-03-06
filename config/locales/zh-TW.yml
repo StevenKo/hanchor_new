@@ -197,6 +197,7 @@ zh-TW:
     code_threshold: "消費未滿%{threshold}元"
     not_suitable_code: "商品不符使用折扣碼"
     coupon_code: "折扣碼"
+    discount: "折扣"
 
   order:
     history: "訂單紀錄"

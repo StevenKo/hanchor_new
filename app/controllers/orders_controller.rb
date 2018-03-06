@@ -60,6 +60,7 @@ class OrdersController < ApplicationController
 
   def pay_with_credit_card
     @order = Order.find(params[:order])
+    @discount_record = DiscountRecord.find_by(order_id: @order.id)
     product_ids = @order.order_items.map(&:product_id)
     products = Product.includes(:thumb).joins(:product_infos).where("product_infos.country_id = #{@country_id} and products.id in (#{product_ids.join(",")})").cart_info
     product_infos = {}
