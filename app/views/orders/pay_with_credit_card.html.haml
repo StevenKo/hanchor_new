@@ -68,11 +68,6 @@
                   %td
                     NT$
                     = item.price * item.quantity
-              %tr#shippig_cost_tr{:bgcolor => "FFF9E5"}
-                %td{:align => "right", :colspan => "6"}= t('cart.shipping_cost')
-                %td{:align => "right", :style => "font-size:1.2em; font-weight:bold"}
-                  NT$
-                  %span#total= @order.shipping_cost.cost
               %tr#subtotal_tr{:bgcolor => "FFF9E5"}
                 %td{:align => "right", :colspan => "6"}
                   = t('cart.items')
@@ -80,18 +75,24 @@
                   = succeed "," do
                     %strong= @order.order_items.size
                   = t('cart.subtotal')
-                %td{:align => "right", :style => "font-size:1.2em; font-weight:bold"}
-                  NT$#{@order.sum_item_price}
+                %td
+                  NT$
+                  %span#total= @order.sum_item_price
+              %tr#shippig_cost_tr{:bgcolor => "FFF9E5"}
+                %td{:align => "right", :colspan => "6"}= t('cart.shipping_cost')
+                %td
+                  NT$
+                  %span#total= @order.shipping_cost.cost
               - if @discount_record.present?
                 %tr
                   %td{:colspan => "6", :class => "total"}= t('cart.discount')
                   %td.total-price
                     NT$
                     %span#sum
-                      = @order.sum_item_price + @order.shipping_cost.cost - @order.total
+                      ="-#{@order.sum_item_price + @order.shipping_cost.cost - @order.total}"
               %tr
                 %td{:colspan => "6", :class => "total"}= t('cart.sum')
-                %td.total-price
+                %td.total-price{:align => "right", :style => "font-size:1.2em; font-weight:bold"}
                   NT$
                   %span#sum
                     = @order.total
@@ -102,7 +103,6 @@
                 - @params.each do |k, v|
                   %input{:name => k, :type => "text", :value => v, style: "display: none"}/
                 %input{value: t('cart.pay_by_credit_card'),:type => "submit", class: "btn-l btn-blue inlineblock-imp"}/
-
 
 :javascript
   $("input[name=utf8]").remove();
