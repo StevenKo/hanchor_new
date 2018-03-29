@@ -88,7 +88,7 @@
                   %td.total-price
                     NT$
                     %span#sum
-                      = @order.sum_item_price - @order.total
+                      = @order.sum_item_price + @order.shipping_cost.cost - @order.total
               %tr
                 %td{:colspan => "6", :class => "total"}= t('cart.sum')
                 %td.total-price

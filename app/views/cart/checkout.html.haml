@@ -184,21 +184,21 @@
                           %i.fa.fa-trash-o.mg-l-10{"aria-hidden" => "true"}
               .tright
                 .price-show
+                  %p.scart-total-price-s.mg-b-10
+                    %span.color-gray-333> #{t("cart.subtotal")}
+                    =" #{showed_price(sum_cart_items_price @cart_items)}"
                   - if @coupon && @is_useable.is_valid
                     %p.scart-total-price-s.mg-b-10
-                      %span> #{t("cart.coupon_code")}
-                      ="  #{params[:code]}"
+                      %span.color-gray-333> #{t("cart.coupon_code")}
+                      =" #{params[:code]}"
+                      %span.mg-l-10.color-red #{discount_text(@coupon,@is_useable.discount_sum)}
                   %p.scart-total-price-s.mg-b-10
-                    %span> #{t("cart.shipping_cost")}
-                    ="  NT$0"
-                  %p.scart-total-price-s.mg-b-10
-                    %span> #{t("cart.subtotal")}
-                    ="  #{showed_price(sum_cart_items_price @cart_items)}"
-                  %p#ssss.scart-total-price.mg-b-40
-                    %span> #{t("cart.sum")}
-                    #{showed_price(sum_cart_items_price @cart_items)}
-                    - if @coupon && @is_useable
-                      = discount_text(@coupon,@is_useable.discount_sum)
+                    %span.color-gray-333> #{t("cart.shipping_cost")}
+                    =" #{showed_price(0)}"
+                  %p.scart-total-price.mg-b-40
+                    %span.color-gray-333> #{t("cart.sum")}
+                    =" #{showed_price(calculate_total(sum_cart_items_price(@cart_items), @coupon, @is_useable))}"
+                    
                 .mg-b-30.text-15.lh-30.color-gray-333.bold
                   #{t("cart.read_shopping_gudide_message")}
                   = link_to(t("cart.shopping_guide"), shopping_guide_path,{:class=>"bold color-lb mg-b-17",:hov => "0.75"})
