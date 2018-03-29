@@ -32,11 +32,12 @@ class ProductQuantity < ActiveRecord::Base
   end
 
   def self.delete_color_quantity product_color_id
-    ProductQuantity.delete_all("product_color_id = #{product_color_id}")
+
+    ProductQuantity.where("product_color_id = #{product_color_id}").delete_all
   end
 
   def self.delete_size_quantity product_size_id
-    ProductQuantity.delete_all("product_size_id = #{product_size_id}")
+    ProductQuantity.where("product_size_id = #{product_size_id}").delete_all
   end
 
   def quantity_selector
