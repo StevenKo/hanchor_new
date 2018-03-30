@@ -1,6 +1,6 @@
 # encoding: utf-8
 namespace :fix do
-  task :iamge => :environment do
+  task :image => :environment do
     ProductInfo.all.each do |p|
       matches = p.feature.scan(/<img.*\/>/)
       matches.each do |m|

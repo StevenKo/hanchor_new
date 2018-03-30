@@ -5,4 +5,6 @@ class Banner < ActiveRecord::Base
   BLOG_BANNER_ID = 2
   FAQ_BANNER_ID = 3
 
+  scope :showed, -> { where("id > 3") }
+
 end
