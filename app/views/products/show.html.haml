@@ -147,12 +147,12 @@
         .tab.tab-sel.clearfix.tcenter.right.mg-b-25
           %a.tab-btn.active{"data-tab" => "tab-1"} #{t('product.description')}
           / active on this one
-          %a.tab-btn{"data-tab" => "tab-2"} Reviews
+          / %a.tab-btn{"data-tab" => "tab-2"} Reviews
         .tab-con
           .product-desc.tab-inner.tab-inner-article.tab-1.active
             = @product.feature.html_safe
-          %p.pruduct-preview.tab-inner.tab-2
-            測試測文拉拉字文字 。
+          / %p.pruduct-preview.tab-inner.tab-2
+          /   測試測文拉拉字文字 。
       / spec / info
     / rwd width limited
   / full width block
