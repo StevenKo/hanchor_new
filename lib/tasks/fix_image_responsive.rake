@@ -19,3 +19,25 @@ namespace :fix do
     end
   end
 end
+
+
+
+# ProductInfo.all.each do |p|
+#   # matches = p.feature.scan(/<img.*\/>/)
+#   matches = p.feature.scan(/<iframe.*\/iframe>/)
+#   matches.each do |m|
+#     new_string  = m.gsub("height=\"100%\"","height=\"350\"")
+    
+#     p.feature.gsub!(m,new_string)
+#   end
+#   p.save
+# end
+
+
+# ProductInfo.all.each do |p|
+
+#   matches = p.feature.scan(/<iframe.*\/iframe>/)
+#   puts matches[0]
+#   puts p.id
+
+# end
