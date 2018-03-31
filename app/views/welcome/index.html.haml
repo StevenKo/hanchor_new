@@ -21,7 +21,7 @@
           .pic
             .cover
             = image_tag("index-pcover-#{index+1}.jpg", :class => "v-centerimg")
-            %div{class: "info color-#{index+1} cenmid"}= category.locale(params[:locale])
+            %div{class: "info color-#{index+1} cenmid"}= category.locale(session[:locale])
       / index product classify
     / rwd width limited
   %section.bg-w.pd-v-50

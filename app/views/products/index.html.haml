@@ -23,13 +23,13 @@
       / product classify tab
       .product-classify-tab.product-classify-tab-fix.clearfix.mg-b-40
         - @base_categories.each_with_index do |category,i|
-          = link_to_category products_index_path(category.name_en), category.locale(params[:locale]), i + 1
+          = link_to_category products_index_path(category.name_en), category.locale(session[:locale]), i + 1
       / product classify tab
       .gray-h-line.mg-b-30
       .tab.clearfix.mg-b-30
         .rwd-tab-cate
           - if @sub_category.present?
-            %span.left #{t("category.category")}#{@sub_category.locale(params[:locale])}
+            %span.left #{t("category.category")}#{@sub_category.locale(session[:locale])}
           - else
             %span.left #{t("category.category")}#{t("category.all")}
           %span.right

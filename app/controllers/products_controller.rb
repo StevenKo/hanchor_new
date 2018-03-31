@@ -10,11 +10,11 @@ class ProductsController < ApplicationController
     
     @base_category = ProductCategory.find_by(name_en: params[:category])
     select_ids = @base_category.child_category_ids << @base_category.id
-    add_breadcrumb "#{t("product.product")} - #{@base_category.locale(params[:locale])}", products_index_path(params[:category])
+    add_breadcrumb "#{t("product.product")} - #{@base_category.locale(session[:locale])}", products_index_path(params[:category])
 
     if params[:sub]
       @sub_category = ProductCategory.find_by(name_en: params[:sub])
-      add_breadcrumb "#{t("product.product")} - #{@sub_category.locale(params[:locale])}", products_index_path(@base_category.name_en, sub: @sub_category.name_en)
+      add_breadcrumb "#{t("product.product")} - #{@sub_category.locale(session[:locale])}", products_index_path(@base_category.name_en, sub: @sub_category.name_en)
     end
     if params[:sub]
       @products = Product.includes(:thumb).joins(:product_infos,:product_categories).where("product_category_ships.product_category_id in (#{select_ids.join(",")}) and product_infos.country_id = #{@country_id} and product_category_ships.product_category_id = #{@sub_category.id}").visible.order_by_views_and_sort.select_info.paginate(:page => params[:page], :per_page => page_size)
@@ -33,7 +33,7 @@ class ProductsController < ApplicationController
     @product_color_selector = @product.color_selector(params[:locale])
     @colors = @product.colors(params[:locale])
     @related_products = @product.recommends.includes(:thumb).joins(:product_infos).select_info.where("product_infos.country_id = #{@country_id}").limit(4)
-    add_breadcrumb "#{t("product.product")} - #{@base_category.locale(params[:locale])}", products_index_path(params[:category])
+    add_breadcrumb "#{t("product.product")} - #{@base_category.locale(session[:locale])}", products_index_path(params[:category])
     add_breadcrumb @product.name, products_show_path(@product.product_categories[0].name_en, @product)
   end
 

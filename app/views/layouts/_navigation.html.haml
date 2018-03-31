@@ -59,7 +59,7 @@
                 - @base_categories.each_with_index do |category,index|
                   %li.layer-2-li
                     = link_to products_index_path(category.name_en), class: "layer-3" do
-                      %h4 #{category.locale(params[:locale])}
+                      %h4 #{category.locale(session[:locale])}
             %li.layer-1-li
               = link_to news_index_path(news_tag_id: 0), {:class => "layer-1 menu-line"} do
                 %h2= t('news_events')
