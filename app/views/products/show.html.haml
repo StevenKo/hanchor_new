@@ -122,17 +122,17 @@
               - if @product.weight.present?
                 %span.bold.text-16.lh-30 #{t('product.weight')}
                 %br/
-                #{@product.weight}
+                =@product.weight.html_safe
                 %br/
               - if @product.capacity.present?
                 %span.bold.text-16.lh-30 #{t('product.dimension')}
                 %br/
-                #{@product.capacity}
+                =@product.capacity.html_safe
                 %br/
               - if @product.material.present?
                 %span.bold.text-16.lh-30 #{t('product.material')}
                 %br/
-                #{@product.material}
+                =@product.material.html_safe
                 %br/        
         / spec / info
       / 
