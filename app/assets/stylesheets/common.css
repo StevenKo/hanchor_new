@@ -29,7 +29,7 @@
 .title-line{font-size:18px;font-weight:bold;line-height:40px;height:40px;padding:0 25px;border:none;cursor: pointer;outline: none;box-sizing: border-box;border:1px solid #1f60cb;color:#1f60cb;}
 
 .tab-btn{padding:8px 20px;line-height:24px;font-size:15px;color:#666;font-weight:bold;margin:0 2px;transition:0.25s;display:inline-block;margin-bottom: 10px;}
-.tab-btn:hover{color:#333;background:#f5f5f5;}
+.tab-btn:hover{color:#333;background:#f5f5f5;cursor: pointer;}
 .tab-btn.active{background:#ddd;color:#333;}
 
 .grid-2{width:calc(50% - 40px);margin:0 20px;float:left;}
