@@ -100,3 +100,26 @@
   %h3.text-24.lh-40.color-gray-333.bold.mg-b-20= t("subscribe.fail")
 .white-popup.mfp-hide{id: "subscribed"}
   %h3.text-24.lh-40.color-gray-333.bold.mg-b-20= t("subscribe.subscribed")
+:javascript
+  var getUrlParameter = function getUrlParameter(sParam) {
+    var sPageURL = decodeURIComponent(window.location.search.substring(1)),
+        sURLVariables = sPageURL.split('&'),
+        sParameterName,
+        i;
+
+    for (i = 0; i < sURLVariables.length; i++) {
+        sParameterName = sURLVariables[i].split('=');
+
+        if (sParameterName[0] === sParam) {
+            return sParameterName[1] === undefined ? true : sParameterName[1];
+        }
+    }
+  };
+  var tech = getUrlParameter('login');
+  if (tech == "true") {
+    alert("Login Success!")
+  }
+  var tech = getUrlParameter('register');
+  if (tech == "true") {
+    alert("Register Success!")
+  }

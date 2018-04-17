@@ -67,14 +67,38 @@
                 %i.fa.fa-chevron-left.mg-r-20{"aria-hidden" => "true"}>
                 #{t("cart.continue")}
               - if @is_useable && @is_useable.is_valid
-                = link_to checkout_cart_index_path(code: params[:code]), class: "btn-l btn-blue inlineblock-imp", :hov => "0.75" do
+                = link_to checkout_cart_index_path(code: params[:code], cart: "true"), class: "btn-l btn-blue inlineblock-imp", :hov => "0.75" do
                   #{t("cart.checkout")}
                   %i.fa.fa-chevron-right.mg-l-20{"aria-hidden" => "true"}
               - else
-                = link_to checkout_cart_index_path, class: "btn-l btn-blue inlineblock-imp", :hov => "0.75" do
+                = link_to checkout_cart_index_path(cart: "true"), class: "btn-l btn-blue inlineblock-imp", :hov => "0.75" do
                   #{t("cart.checkout")}
                   %i.fa.fa-chevron-right.mg-l-20{"aria-hidden" => "true"}
         / sd con
       / sidebar and con
     / rwd width limited
   / full width block
+
+:javascript
+  var getUrlParameter = function getUrlParameter(sParam) {
+    var sPageURL = decodeURIComponent(window.location.search.substring(1)),
+        sURLVariables = sPageURL.split('&'),
+        sParameterName,
+        i;
+
+    for (i = 0; i < sURLVariables.length; i++) {
+        sParameterName = sURLVariables[i].split('=');
+
+        if (sParameterName[0] === sParam) {
+            return sParameterName[1] === undefined ? true : sParameterName[1];
+        }
+    }
+  };
+  var tech = getUrlParameter('login');
+  if (tech == "true") {
+    alert("Login Success!")
+  }
+  var tech = getUrlParameter('register');
+  if (tech == "true") {
+    alert("Register Success!")
+  }

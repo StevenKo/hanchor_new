@@ -8,6 +8,7 @@ class OrdersController < ApplicationController
     redirect_to root_path and return unless current_shopping_cart
     
     @order = Order.new(order_params)
+    save_orders_info
     unless get_good_from_store(@order)
       @order.store_code = 0
       @order.store_name = "Fake Store"
@@ -93,6 +94,17 @@ class OrdersController < ApplicationController
   end
 
   private
+
+  def save_orders_info
+    current_user.name = params[:order][:shipping_name] if current_user.name.nil?
+    current_user.shipping_address = params[:order][:shipping_address] if current_user.shipping_address.nil?
+    current_user.phone = params[:order][:phone] if current_user.phone.nil?
+    current_user.zip_code = params[:order][:zip_code] if current_user.zip_code.nil?
+    current_user.city = params[:order][:city] if current_user.city.nil?
+    current_user.state = params[:order][:state] if current_user.state.nil?
+    current_user.country = params[:order][:country] if current_user.country.nil?
+    current_user.save
+  end
 
   def generate_order_code order
     (order.created_at.strftime("%y%m%d")+ (Order.where("created_at > ?", order.created_at.to_date).size).to_s.rjust(3, '0')).to_i + 100

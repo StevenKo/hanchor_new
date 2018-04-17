@@ -30,7 +30,7 @@ class ApplicationController < ActionController::Base
   def require_user
     unless logged_in?
       flash[:error] = "Must logged_in"
-      redirect_to login_path
+      redirect_to login_path(cart: params[:cart])
     end
   end
 

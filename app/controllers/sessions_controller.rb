@@ -8,7 +8,7 @@ class SessionsController < ApplicationController
     if user && user.authenticate(params[:password])
       session[:user_id] = user.id
       update_current_shopping_cart_user(user.id)
-      (params[:redirect_to_cart].present?)? redirect_to(cart_index_path) : redirect_to(root_path)
+      (params[:redirect_to_cart].present?)? redirect_to(cart_index_path(login: true)) : redirect_to(root_path(login: true))
     else
       flash[:error] = "Something wrong, login fail!"
       redirect_back fallback_location: root_path
