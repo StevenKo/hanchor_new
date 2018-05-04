@@ -107,7 +107,7 @@ class OrdersController < ApplicationController
   end
 
   def generate_order_code order
-    (order.created_at.strftime("%y%m%d")+ (Order.where("created_at > ?", order.created_at.to_date).size).to_s.rjust(3, '0')).to_i + 100
+    (order.created_at.strftime("%y%m%d")+ (Order.where("created_at > ?", order.created_at.to_date.in_time_zone("Taipei")).size).to_s.rjust(3, '0')).to_i + 100
   end
 
   def get_good_from_store(order)
