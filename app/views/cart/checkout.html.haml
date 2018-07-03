@@ -164,7 +164,7 @@
                 - @cart_items.each_with_index do |item, i|
                   .one-scart.clearfix
                     .pic
-                      = image_tag @cart_products[i].thumb.pic_url, :itemprop => "image", :class => "v-centerimg"
+                      = image_tag @cart_products[i].thumb.pic.thumb.url, :itemprop => "image", :class => "v-centerimg"
                     .os-rwd-float
                       .info
                         %h3.product-name= @cart_products[i].name
