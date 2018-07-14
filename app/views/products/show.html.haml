@@ -6,7 +6,7 @@
   <meta property="og:type" content="website" />
   <meta name="description" content="#{strip_tags(@product.quick_overview)}">
   <title>HANCHOR｜#{@product.name}</title>
-  
+
 
 / breadcrumbs
 %section.breadcrumbs
@@ -22,7 +22,7 @@
   %section.bg-w.pd-v-50
     / rwd width limited
     .rwd-width-limited.clearfix
-      / 
+      /
       .grid-2
         / gallery
         .product-slidr.relative
@@ -36,8 +36,8 @@
                 = image_tag pic.pic_url
           / <p><span id="slider-prev"></span> | <span id="slider-next"></span></p>
         / gallery
-      / 
-      / 
+      /
+      /
       .grid-2.product-info
         %h2.name.mg-b-10= @product.name
 
@@ -46,7 +46,7 @@
         - else
           %p.price.mg-b-20.text-del.inlineblock.color-gray-999= showed_price(@product.price)
           %p.price.mg-b-20.inlineblock.mg-l-10= showed_price(@product.special_price)
-          
+
         .line.mg-b-25
         .form-section
           = form_for @item, url: add_item_to_cart_cart_index_path(product: @product) do |f|
@@ -133,9 +133,9 @@
                 %span.bold.text-16.lh-30 #{t('product.material')}
                 %br/
                 =@product.material.html_safe
-                %br/        
+                %br/
         / spec / info
-      / 
+      /
     / rwd width limited
   / full width block
   / full width block
@@ -151,10 +151,14 @@
         .tab-con
           .product-desc.tab-inner.tab-inner-article.tab-1.active
             = @product.feature.html_safe
+
+          / render comment form
+          = render partial: 'comment'
           / %p.pruduct-preview.tab-inner.tab-2
           /   測試測文拉拉字文字 。
       / spec / info
     / rwd width limited
+
   / full width block
   / full width block
   %section.product-bottom-bg.pd-v-50
@@ -174,12 +178,40 @@
 / end main
 
 :javascript
-  $('.bxslider').bxSlider({
-    pagerCustom: '#bx-pager',
-    mode: 'fade',
-    captions: true,
-    speed: 300,
-    controls:true
+
+  function initComment(){
+    $('.bxslider').bxSlider({
+      pagerCustom: '#bx-pager',
+      mode: 'fade',
+      captions: true,
+      speed: 300,
+      controls:true
+    });
+
+    $('.star-sel').barrating({
+      theme: 'fontawesome-stars',
+      showSelectedRating: false
+    });
+
+    $('.star-sel-fixed').barrating({
+      theme: 'fontawesome-stars',
+      showSelectedRating: false,
+      readonly: true
+    });
+
+    var currentRating = $('.star-sel-rdly').data('current-rating');
+
+    $('.star-sel-rdly').barrating({
+      theme: 'fontawesome-stars-o',
+      showSelectedRating: false,
+      initialRating: currentRating,
+      readonly: true,
+    });
+  }
+
+  $(function() {
+    initComment();
   });
+
   //nextSelector: '#slider-next',prevSelector: '#slider-prev'
 
