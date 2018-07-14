@@ -11,8 +11,8 @@ b, u, i, center,
 dl, dt, dd, ol, ul, li,
 fieldset, form, label, legend,
 table, caption, tbody, tfoot, thead, tr, th, td,
-article, aside, canvas, details, embed, 
-figure, figcaption, footer, header, hgroup, 
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
 menu, nav, output, ruby, section, summary,
 time, mark, audio, video {
   margin: 0;
@@ -37,20 +37,20 @@ table {border-collapse: collapse;border-spacing: 0;}
 .relative{position:relative;}
 a{text-decoration:none;}
 
- 
-/* clearfix */ 
+
+/* clearfix */
 .clearfix:after {
- content: "."; 
- display: block; 
-height: 0; 
- clear: both; 
+ content: ".";
+ display: block;
+height: 0;
+ clear: both;
  visibility: hidden;
  }
  .clearfix{display: inline-block;}
 /* Hides from IE-mac \*/
 * html .clearfix{height: 1%;}
 .clearfix{display: block;}
-/* End hide from IE-mac */  
+/* End hide from IE-mac */
 
 
 /*****************************************************************/
@@ -87,6 +87,7 @@ height: 0;
 .color-gray-333{color:#333;}
 .color-gray-666{color:#666;}
 .color-gray-999{color:#999;}
+.color-gray-aaa{color:#aaa;}
 .color-gray-ddd{color:#ddd;}
 .text-del{text-decoration:line-through;}
 
