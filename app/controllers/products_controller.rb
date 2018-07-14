@@ -7,7 +7,7 @@ class ProductsController < ApplicationController
   def index
     page_size = 12
     page_size = 100 if params[:all]
-    
+
     @base_category = ProductCategory.find_by(name_en: params[:category])
     select_ids = @base_category.child_category_ids << @base_category.id
     add_breadcrumb "#{t("product.product")} - #{@base_category.locale(session[:locale])}", products_index_path(params[:category])
@@ -26,7 +26,7 @@ class ProductsController < ApplicationController
   def show
     @base_category = ProductCategory.find_by name_en: params[:category]
     @product = Product.includes(:product_pics).joins(:product_infos).where("product_infos.country_id = #{@country_id}").all_info.find_by_slug(params[:id])
-    @product = Product.includes(:product_pics).joins(:product_infos).where("product_infos.country_id = #{@country_id}").all_info.find(params[:id]) unless @product
+    @product = Product.includes(:thumb).includes(:product_pics).joins(:product_infos).where("product_infos.country_id = #{@country_id}").all_info.find(params[:id]) unless @product
     @product.update_attribute("views",@product.views+1)
     @item = CartItem.new
     @product_size_selector = @product.size_selector(params[:locale])
@@ -35,6 +35,8 @@ class ProductsController < ApplicationController
     @related_products = @product.recommends.includes(:thumb).joins(:product_infos).select_info.where("product_infos.country_id = #{@country_id}").limit(4)
     add_breadcrumb "#{t("product.product")} - #{@base_category.locale(session[:locale])}", products_index_path(params[:category])
     add_breadcrumb @product.name, products_show_path(@product.product_categories[0].name_en, @product)
+    @comments = @product.comments.includes(:user).order(id: :desc)
+    @rating = Comment.compute_rating(@comments.pluck(:rating))
   end
 
   def quantity
