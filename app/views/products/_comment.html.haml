@@ -13,7 +13,7 @@
               平均
               %span.text-20.bold.color-lb= @rating
               分
-            %select.star-sel-rdly{"data-current-rating" => "<haml_loud", name: "rating"}
+            %select.star-sel-rdly{"data-current-rating" => @rating, name: "rating"}
               @rating  autocomplete="off"&gt;
               %option{value: "1"} 1
               %option{value: "2"} 2
