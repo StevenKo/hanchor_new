@@ -12,14 +12,15 @@ class Product < ActiveRecord::Base
 
   has_many :product_category_ships
   has_many :product_categories, -> { distinct }, :through => :product_category_ships
-  
+  has_many :comments
+
   scope :showed, -> { where(is_visible: true) }
   scope :visible, -> {where("product_infos.is_visible = true")}
 
   scope :select_info, -> { select(" product_infos.name,
                                     product_infos.price,
                                     product_infos.special_price,
-                                    product_infos.quick_overview, 
+                                    product_infos.quick_overview,
                                     products.id,
                                     products.slug"
                         ) }
@@ -107,5 +108,4 @@ class Product < ActiveRecord::Base
       update_column(:slug, infos[1].name)
     end
   end
-
 end

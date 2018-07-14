@@ -2,6 +2,7 @@ class User < ActiveRecord::Base
   FAKE_PASSWORD = SecureRandom.urlsafe_base64
   has_one :cart
   has_many :orders
+  has_many :comments
 
   has_secure_password validations: false
   validates :password, presence: true, on: :create, length: {minimum: 5}
