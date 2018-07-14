@@ -1,0 +1,84 @@
+.product-desc.tab-inner.tab-inner-article.tab-2.active
+  / rating and comment
+  %div
+    = form_with url: comments_path, data: { type: :json }, id: "add_comment" do |form|
+      / rating upper
+      .rt-upper.flex-sec.mg-b-10
+        .pic.flex-2
+          = image_tag(@product.thumb.pic_url)
+        .con.flex-2
+          %h2.name.mg-v-10= @product.name
+          .stars.stars-example-css.stars-lb.mg-b-20.inlineblock.mg-r-10
+            %p.text-13.color-gray-666.lh-30
+              平均
+              %span.text-20.bold.color-lb= @rating
+              分
+            %select.star-sel-rdly{"data-current-rating" => "<haml_loud", name: "rating"}
+              @rating  autocomplete="off"&gt;
+              %option{value: "1"} 1
+              %option{value: "2"} 2
+              %option{value: "3"} 3
+              %option{value: "4"} 4
+              %option{value: "5"} 5
+          .stars.stars-example-css.mg-b-10.inlineblock
+            %p.text-13.color-gray-666.lh-30 你的評分
+            %select.star-sel{autocomplete: "off", name: "rating"}
+              %option{value: "1"} 1
+              %option{value: "2"} 2
+              %option{value: "3"} 3
+              %option{value: "4"} 4
+              %option{value: "5"} 5
+      / rating upper
+      = form.text_field :name, class: "input-text mg-b-10", placeholder: "留下姓名" if !current_user
+      / comment
+      = form.text_area :context, class: "rt-textarea mg-b-10", placeholder: "寫下評論"
+      / comment
+      = hidden_field_tag :product_id, @product.id
+      = form.submit '送出', class: "btn-m btn-blue inlineblock-imp mg-b-10", hov: "0.75"
+      / <button class="btn-m btn-blue inlineblock-imp mg-b-10" hov="0.75">送出</button>
+  / rating and comment
+  #comments-list
+    - @comments.each do |comment|
+      .one-rt-common
+        %div
+          %h2.name= comment&.user.name || comment.name
+          .stars.stars-example-css.mg-b-10
+            %select.star-sel-fixed{autocomplete: "off", name: "rating"}
+              = options_for_select([1, 2, 3, 4, 5], [comment.rating])
+          %p.comment
+            = comment.context
+    / one other rating/comment
+:javascript
+  jQuery(document).ready(function($) {
+    var skillsForm = document.getElementById("add_comment");
+    skillsForm.addEventListener('ajax:success', function(res) {
+      var data = jQuery.parseJSON(res.detail[0].data)
+      var $commentsList = $('#comments-list');
+
+      $commentsList.prepend(
+        '<div class="one-rt-common">' +
+          '<div>' +
+            '<h2 class="name">' + data.name + '</h2>' +
+            '<div class="stars stars-example-css mg-b-10">' +
+              '<select class="star-sel-fixed" name="rating" autocomplete="off">' +
+                '<option value="1">1</option>' +
+                '<option value="2">2</option>' +
+                '<option value="3">3</option>' +
+                '<option value="4">4</option>' +
+                '<option value="5">5</option>' +
+              '</select>' +
+            '</div>' +
+            '<p class="comment">' +
+              data.context +
+            '</p>' +
+          '</div>' +
+        '</div>'
+      );
+      // Let option to become star style
+      $commentsList.find('.star-sel-fixed').first().barrating({
+        theme: 'fontawesome-stars',
+        showSelectedRating: false,
+        initialRating: data.rating,
+      });
+    });
+  });
