@@ -31,7 +31,6 @@ gem 'actionview-encoded_mail_to'
 gem 'allpay_client'
 
 gem 'will_paginate'
-gem 'babosa'
 
 # gem 'compass-rails', github: 'Compass/compass-rails'
 gem 'bootstrap'
