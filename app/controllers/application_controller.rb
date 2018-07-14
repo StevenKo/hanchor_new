@@ -37,7 +37,7 @@ class ApplicationController < ActionController::Base
   def get_cart_items
     if current_shopping_cart
       @cart_items = current_shopping_cart.cart_items.includes(:product_size, :product_color)
-      return if @cart_items.blank? 
+      return if @cart_items.blank?
       product_ids = @cart_items.map(&:product_id)
       products = Product.includes(:thumb).joins(:product_infos).where("product_infos.country_id = #{@country_id} and products.id in (#{product_ids.join(",")})").cart_info
       product_infos = {}
@@ -58,8 +58,13 @@ class ApplicationController < ActionController::Base
     @base_categories =  ProductCategory.where('parent_id is null')
   end
 
+  def ok(info={})
+    render json: { status: 'ok', data: info }
+    true
+  end
+
 private
-  
+
   def set_locale
     if params[:locale] && ["en", "zh-TW","zh"].include?( params[:locale] )
       session[:locale] = params[:locale]
@@ -73,5 +78,5 @@ private
   def extract_locale_from_accept_language_header
     request.env['HTTP_ACCEPT_LANGUAGE'].scan(/^[a-z]{2}/).first if request.env['HTTP_ACCEPT_LANGUAGE']
   end
-  
+
 end

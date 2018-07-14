@@ -44,14 +44,14 @@ Rails.application.routes.draw do
   get 'account/orders' => "account#orders"
 
   resources :paid_notify, only: [:create]
-  
+
   get '/forget_password', to: 'forgot_passwords#new'
   resources :forgot_passwords, only: [:create]
   get '/confirm_password_reset', to: 'forgot_passwords#confirm_password_reset'
 
   resources :password_resets, only: [:show, :create]
   get '/invalid_token', to: 'password_resets#invalid_token'
-  
+
 
   resources :cart, only: [:index] do
     collection do
@@ -72,6 +72,8 @@ Rails.application.routes.draw do
       get 'pay_with_credit_card'
     end
   end
+
+  resources :comments, only: [:create, :destroy]
 
   namespace :admin do
     get '/' => 'admin#index'
@@ -118,7 +120,7 @@ Rails.application.routes.draw do
     end
     resources :news_tags, except: [:show]
     resources :categories do
-      collection { 
+      collection {
         post :product_select
         get :product_select_form
       }
