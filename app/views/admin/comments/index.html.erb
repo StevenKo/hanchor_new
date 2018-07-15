@@ -1,0 +1,33 @@
+<input name="product-name" class="product-search-input" >
+<button class='btn btn-s btn-blue inlineblock-imp'> 搜尋 </button>
+
+<table class="admin-table">
+  <tbody>
+    <tr>
+      <th>ID</th>
+      <th>產品</th>
+      <th>評論</th>
+      <th>星等</th>
+      <th>時間</th>
+      <th>姓名</th>
+      <th>Action</th>
+    </tr>
+
+    <% @comments.each do |comment| %>
+      <tr>
+        <td><%= comment.id %></td>
+        <td><%= comment.product.product_infos.first.name %></td>
+        <td><%= comment.context %></td>
+        <td><%= comment.rating %></td>
+        <td><%= comment.created_at %></td>
+        <td><%= comment.name %></td>
+        <td> 刪除 </td>
+      </tr>
+    <% end %>
+
+  </tbody>
+</table>
+
+<nav class="page-menu relative">
+  <%= will_paginate(@comments, :renderer => 'BootstrapPaginationHelper::LinkRenderer') %>
+</nav>
