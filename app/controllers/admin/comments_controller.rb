@@ -9,4 +9,10 @@ class Admin::CommentsController < Admin::AdminController
 
     @comments = @comments.paginate(page: params[:page], per_page: 20)
   end
+
+  def destroy
+    comment = Comment.find_by(id: params[:id])
+    comment.destroy!
+    redirect_to admin_comments_path, :notice => "The Comment has been deleted!"
+  end
 end

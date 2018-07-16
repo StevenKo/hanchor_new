@@ -132,7 +132,7 @@ Rails.application.routes.draw do
     resources :videos, except: [:show]
     resources :announcements, except: [:show]
     resources :discounts
-    resources :comments, only: [:index]
+    resources :comments, only: [:index, :destroy]
   end
 
   get "/*other" => redirect("/")

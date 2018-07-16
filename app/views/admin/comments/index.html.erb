@@ -24,7 +24,12 @@
         <td><%= comment.rating %></td>
         <td><%= comment.created_at %></td>
         <td><%= comment.name %></td>
-        <td> 刪除 </td>
+        <td>
+          <%= button_to "delete", {
+            controller: :comments, action: 'destroy', id: comment.id },
+            method: :delete, data: { confirm: 'Are you sure?' }, style: 'color:red;'
+          %>
+        </td>
       </tr>
     <% end %>
 

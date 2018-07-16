@@ -11,8 +11,4 @@ class CommentsController < ApplicationController
     return ok(comment.to_json) if comment.save
     head(404)
   end
-
-
-  def destroy
-  end
 end
