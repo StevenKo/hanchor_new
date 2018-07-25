@@ -162,3 +162,10 @@ div.desc {
   padding: 10px;
   margin: 20px;
 }
+
+.reply-block{
+  margin-left: 15px;
+  line-height: 1.5em;
+  font-size: 20px;
+}
+

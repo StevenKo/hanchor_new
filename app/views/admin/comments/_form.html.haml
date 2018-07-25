@@ -1,0 +1,17 @@
+= form_for [:admin, @reply] do |f|
+  - if @reply.errors.any?
+    #error_explanation
+      %h2
+        = "#{pluralize(@reply.errors.count, "error")} prohibited this reply from being saved:"
+      %ul
+        - @reply.errors.full_messages.each do |message|
+          %li
+            = message
+  .field
+    %h2 回覆內容：
+    = f.text_area :context, style: 'width:75%; height: 150px'
+  - if params[:action] == 'new'
+    = f.hidden_field :product_id, value: params[:product_id]
+    = f.hidden_field :comment_id, value: params[:comment_id]
+  .actions
+    = f.submit 'Save', class: 'btn btn-s btn-blue inlineblock-imp'

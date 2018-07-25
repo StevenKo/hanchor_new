@@ -1,0 +1,3 @@
+.reply-block
+  = render 'form'
+  = link_to 'Delete', delete_reply_admin_comments_path(@reply), method: :post, data: { confirm: 'Are you sure?' }, class: 'btn btn-s btn-red inlineblock-imp'

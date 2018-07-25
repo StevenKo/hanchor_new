@@ -1,0 +1,34 @@
+= form_tag admin_comments_path, method: 'get', style: 'margin: 10px' do
+  = label_tag(:product_name, "產品名稱:")
+  = text_field_tag :search, params[:search], class: 'product-name'
+  = submit_tag '搜尋', class: 'btn btn-s btn-blue inlineblock-imp'
+%table.admin-table
+  %tbody
+    %tr
+      %th ID
+      %th 產品
+      %th 評論
+      %th 星等
+      %th 時間
+      %th 姓名
+      %th Action
+      %th 回覆
+    - @comments.each do |comment|
+      %tr
+        %td= comment.id
+        %td= comment.product.product_infos.first.name
+        %td= comment.context
+        %td= comment.rating
+        %td= comment.created_at
+        %td= comment.name
+        %td
+          = button_to "delete", {                                                    |
+            controller: :comments, action: 'destroy', id: comment.id },              |
+            method: :delete, data: { confirm: 'Are you sure?' }, style: 'color:red;' |
+        %td
+          - if comment.reply
+            = link_to 'Edit', edit_admin_comment_path(comment.reply)
+          - else
+            = link_to 'Create', new_admin_comment_path(comment_id: comment.id, product_id: comment.product.id)
+%nav.page-menu.relative
+  = will_paginate(@comments, :renderer => 'BootstrapPaginationHelper::LinkRenderer')

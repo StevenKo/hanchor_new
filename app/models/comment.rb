@@ -4,9 +4,10 @@ class Comment < ApplicationRecord
 
   validates :product_id, presence: true
   validates :context, presence: true
-  validates :rating, presence: true
-  validates :name, presence: true
 
+  has_one :reply, foreign_key: 'comment_id', class_name: 'Comment'
+
+  scope :normal, ->{ where(comment_id: nil) }
 
   def self.compute_rating(comments_arr)
     return 0 if comments_arr.blank?

@@ -1,0 +1,8 @@
+.reply-block
+  %h2
+    內容：
+  %p{style: "color:grey;"}
+    = @reply.context
+  = link_to 'Edit', edit_admin_comment_path(@reply), class: 'btn btn-s btn-grey inlineblock-imp'
+  %br/
+  = link_to 'Delete', delete_reply_admin_comments_path(@reply), method: :post, data: { confirm: 'Are you sure?' }, class: 'btn btn-s btn-red inlineblock-imp'
