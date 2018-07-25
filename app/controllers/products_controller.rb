@@ -35,7 +35,8 @@ class ProductsController < ApplicationController
     @related_products = @product.recommends.includes(:thumb).joins(:product_infos).select_info.where("product_infos.country_id = #{@country_id}").limit(4)
     add_breadcrumb "#{t("product.product")} - #{@base_category.locale(session[:locale])}", products_index_path(params[:category])
     add_breadcrumb @product.name, products_show_path(@product.product_categories[0].name_en, @product)
-    @comments = @product.comments.includes(:user).order(id: :desc)
+    @comments = @product.comments.normal.includes(:user).order(id: :desc)
+    @comments_reply_hash = Comment.reply_hash(@comments.pluck(:id))
     @rating = Comment.compute_rating(@comments.pluck(:rating))
   end
 

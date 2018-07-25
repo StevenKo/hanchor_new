@@ -47,6 +47,14 @@
               = options_for_select([1, 2, 3, 4, 5], [comment.rating])
           %p.comment
             = comment.context
+        - if @comments_reply_hash[comment.id]
+          .reply
+            %p.text-14.color-gray-333.mg-b-10.bold.lh-20 站方回覆
+            %p.date.text-12.lh-13.mg-b-10.color-gray-aaa
+              = @comments_reply_hash[comment.id][:datetime]
+            %p.text-13.color-gray-666.lh-20
+              = @comments_reply_hash[comment.id][:context]
+
     / one other rating/comment
 :javascript
   jQuery(document).ready(function($) {
