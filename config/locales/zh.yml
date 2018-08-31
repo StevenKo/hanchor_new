@@ -198,6 +198,7 @@ zh:
     not_suitable_code: "商品不符使用折扣碼"
     coupon_code: "折扣碼"
     discount: "折扣"
+    credit_card_for_taiwan: "(台灣信用卡)"
 
   order:
     history: "訂單紀錄"

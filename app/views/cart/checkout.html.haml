@@ -136,8 +136,10 @@
                 - if (["zh-TW","zh"].include?( params[:locale]))
                   .mg-b-20.clearfix.tw_payment
                     = f.radio_button :payment, "AllPay",checked: true, class: "pay-1 pay-radio"
-                    %label.pay-text{:for => "pay-1"}
-                      %img.pay-method-pic{:alt => "", :src => "https://www.allpay.com.tw/Content/Themes/WebStyle20131201/images/header_logo.png"}/
+                    %label.pay-text{:for => "pay-1"} 
+                      %img.pay-method-pic{:alt => "", :src => "https://www.allpay.com.tw/Content/Themes/WebStyle20131201/images/header_logo.png"}
+                      #content
+                        %span #{t('cart.credit_card_for_taiwan')}
                   .mg-b-20.clearfix.tw_payment
                     = f.radio_button :payment, "PayPal", class: "pay-2 pay-radio"
                     %label.pay-text{:for => "pay-2"}
