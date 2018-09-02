@@ -10,6 +10,7 @@ class Admin::CommentsController < Admin::AdminController
     end
 
     @comments = @comments.paginate(page: params[:page], per_page: 20)
+    @comments_reply_hash = Comment.reply_hash(@comments.pluck(:id))
   end
 
   def destroy
