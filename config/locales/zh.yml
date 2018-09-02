@@ -434,13 +434,13 @@ zh:
   activemodel:
     errors:
       <<: *errors
-  
+
   activerecord:
     attributes:
       user:
         name: "帳號"
         password: "密碼"
-   
+
     errors:
       models:
         user:
@@ -461,7 +461,12 @@ zh:
     next_label: "下一頁"
     page_gap: "&hellip;"
 
-
-
-
-
+  comments:
+    placeholder:
+      name: 留下姓名
+      review: 寫下評論
+    admin_reply: 站方回覆
+    submit: 送出
+    average: 平均
+    rate_unit: 分
+    your_rate: 你的評分

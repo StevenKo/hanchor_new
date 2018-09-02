@@ -114,7 +114,7 @@ en:
       notes: "Memo"
       apply_code: "Apply Discount Code"
 
-  
+
   product:
     home: "Home"
     product: "Product"
@@ -231,4 +231,14 @@ en:
     previous_label: "Previous"
     next_label: "Next"
     page_gap: "&hellip;"
+
+  comments:
+    placeholder:
+      name: Name
+      comment: Comment...
+    admin_reply: Reply by Hanchor
+    submit: Submit
+    average: Average
+    rate_unit: ""
+    your_rate: "Your Rate"
 
