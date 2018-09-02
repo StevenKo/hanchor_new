@@ -29,9 +29,9 @@
               %option{value: "4"} 4
               %option{value: "5"} 5
       / rating upper
-      = form.text_field :name, class: "input-text mg-b-10", placeholder: "留下姓名" if !current_user
+      = form.text_field :name, class: "input-text mg-b-10", placeholder: "留下姓名", id: "name-input" if !current_user
       / comment
-      = form.text_area :context, class: "rt-textarea mg-b-10", placeholder: "寫下評論"
+      = form.text_area :context, class: "rt-textarea mg-b-10", placeholder: "寫下評論", id: "context-input"
       / comment
       = hidden_field_tag :product_id, @product.id
       = form.submit '送出', class: "btn-m btn-blue inlineblock-imp mg-b-10", hov: "0.75"
@@ -41,7 +41,7 @@
     - @comments.each do |comment|
       .one-rt-common
         %div
-          %h2.name= comment&.user.name || comment.name
+          %h2.name= comment&.user&.name || comment.name
           .stars.stars-example-css.mg-b-10
             %select.star-sel-fixed{autocomplete: "off", name: "rating"}
               = options_for_select([1, 2, 3, 4, 5], [comment.rating])
@@ -88,5 +88,8 @@
         showSelectedRating: false,
         initialRating: data.rating,
       });
+
+      // Remove form data
+      $('#name-input, #context-input').val('');
     });
   });
