@@ -1,5 +1,5 @@
 class Banner < ActiveRecord::Base
-  mount_uploader :pic, ImageUploader
+  mount_uploader :pic, BannerUploader
 
   PRODUCT_BANNER_ID = 1
   BLOG_BANNER_ID = 2

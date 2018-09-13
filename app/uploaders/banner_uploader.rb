@@ -1,4 +1,4 @@
-class ImageUploader < CarrierWave::Uploader::Base
+class BannerUploader < CarrierWave::Uploader::Base
   include CarrierWave::MiniMagick
 
   storage :file
@@ -8,6 +8,6 @@ class ImageUploader < CarrierWave::Uploader::Base
   end
 
   version :thumb do
-    process :resize_to_limit => [250, 250]
+    process :resize_to_limit => [1200, 900]
   end
 end

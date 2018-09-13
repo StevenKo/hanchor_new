@@ -240,6 +240,23 @@
 .about-partner .info{position:absolute;background:rgba(0,0,0,.35);bottom:0;display:block;width:calc(100% - 40px);padding:14px 20px;}
 .about-partner .info h3{color:#fff;font-size:14px;line-height:20px;}
 
+
+label.pay-text #content {
+  display: inline-block;
+}
+label.pay-text img {
+  vertical-align: middle;
+}
+label.pay-text #content span {
+  display: inline-block;
+  vertical-align: middle;
+}
+
+/* for visual purposes */
+label.pay-text #content {
+  position: relative;
+}
+
 .white-popup {
   position: relative;
   background: #FFF;

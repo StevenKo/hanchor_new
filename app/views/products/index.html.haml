@@ -45,7 +45,7 @@
         - @products.each do |product|
           =link_to products_show_path(product.product_categories[0].name_en,product), { :class => "index-recommend-item flex-4",:hov => "0.8"} do
             .pic
-              =(image_tag product.thumb.pic_url, :itemprop => "image", :class => "v-centerimg")
+              =(image_tag product.thumb.pic.thumb.url, :itemprop => "image", :class => "v-centerimg")
             .info
               %h3.name.text-14.lh-24.color-gray-333.bold= product.name
               .discount

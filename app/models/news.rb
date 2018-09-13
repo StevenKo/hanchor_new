@@ -1,5 +1,5 @@
 class News < ActiveRecord::Base
-  mount_uploader :pic, ImageUploader
+  mount_uploader :pic, NewsUploader
 
   has_many :news_tags_relations
   has_many :tags, :through => :news_tags_relations
