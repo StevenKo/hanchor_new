@@ -8,6 +8,6 @@ class BannerUploader < CarrierWave::Uploader::Base
   end
 
   version :thumb do
-    process :resize_to_limit => [900, 675]
+    process :resize_to_limit => [1200, 900]
   end
 end
