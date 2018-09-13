@@ -32,7 +32,7 @@
       / rating upper
       = form.text_field :name, class: "input-text mg-b-10", placeholder: t('comments.placeholder.name'), id: "name-input" if !current_user
       / comment
-      = form.text_area :context, class: "rt-textarea mg-b-10", placeholder: t('comments.placeholder.comment'), id: "context-input"
+      = form.text_area :context, class: "rt-textarea mg-b-10", placeholder: t('comments.placeholder.review'), id: "context-input"
       / comment
       = hidden_field_tag :product_id, @product.id
       = form.submit t("comments.submit"), class: "btn-m btn-blue inlineblock-imp mg-b-10", hov: "0.75"
