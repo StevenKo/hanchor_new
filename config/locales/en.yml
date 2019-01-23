@@ -236,7 +236,7 @@ en:
     placeholder:
       name: Name
       review: Enter your comment here...
-    admin_reply: Reply by Hanchor
+    admin_reply: Hanchor
     submit: Submit
     average: Average
     rate_unit: ""
