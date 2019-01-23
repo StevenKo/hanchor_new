@@ -3,6 +3,6 @@
     內容：
   %p{style: "color:grey;"}
     = @reply.context
-  = button_to 'Edit', edit_admin_comment_path(@reply)
+  = button_to 'Edit', edit_admin_comment_path(@reply), method: :get
   = button_to 'Delete', delete_reply_admin_comments_path(@reply), method: :post, data: { confirm: 'Are you sure?' }, class: 'btn btn btn-default inlineblock-imp'
-  = button_to 'Back', admin_comments_path
+  = button_to 'Back', admin_comments_path, method: :get
