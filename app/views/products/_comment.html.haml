@@ -39,6 +39,8 @@
       .one-rt-common
         %div
           %h2.name= comment&.user&.name || comment.name
+          %p.date.text-12.lh-13.mg-b-10.color-gray-aaa
+            = comment.created_at.strftime("%Y/%m/%d")
           .stars.stars-example-css.mg-b-10
             %select.star-sel-fixed{autocomplete: "off", name: "rating"}
               = options_for_select([1, 2, 3, 4, 5], [comment.rating])
