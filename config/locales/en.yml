@@ -236,6 +236,7 @@ en:
     placeholder:
       name: Name
       review: Enter your comment here...
+      email: Email (Address never made public)
     admin_reply: Hanchor
     submit: Submit
     average: Average
