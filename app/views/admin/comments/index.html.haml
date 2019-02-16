@@ -11,6 +11,7 @@
       %th 星等
       %th 時間
       %th 姓名
+      %th Email
       %th Action
       %th 回覆
     - @comments.each do |comment|
@@ -25,6 +26,7 @@
         %td= comment.rating
         %td= comment.created_at.strftime("%Y-%m-%d %H:%M:%S")
         %td= comment.name
+        %td= comment.email
         %td
           = button_to "delete", {                                                    |
             controller: :comments, action: 'destroy', id: comment.id },              |

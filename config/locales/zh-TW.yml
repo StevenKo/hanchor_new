@@ -466,6 +466,7 @@ zh-TW:
     placeholder:
       name: 留下姓名
       review: 寫下評論
+      email: Email(不會公開)
     admin_reply: 站方回覆
     submit: 送出
     average: 平均

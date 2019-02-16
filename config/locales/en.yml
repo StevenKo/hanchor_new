@@ -235,10 +235,11 @@ en:
   comments:
     placeholder:
       name: Name
-      comment: Comment...
-    admin_reply: Reply by Hanchor
+      review: Enter your comment here...
+      email: Email (Address never made public)
+    admin_reply: Hanchor
     submit: Submit
     average: Average
     rate_unit: ""
-    your_rate: "Your Rate"
+    your_rate: Your Rate
 

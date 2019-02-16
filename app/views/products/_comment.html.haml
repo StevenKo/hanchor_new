@@ -23,16 +23,14 @@
           .stars.stars-example-css.mg-b-10.inlineblock
             %p.text-13.color-gray-666.lh-30
               =t("comments.your_rate")
-            %select.star-sel{autocomplete: "off", name: "rating"}
-              %option{value: "1"} 1
-              %option{value: "2"} 2
-              %option{value: "3"} 3
-              %option{value: "4"} 4
-              %option{value: "5"} 5
+            %select.star-sel{name: "rating"}
+              = options_for_select([1, 2, 3, 4, 5], [5])
       / rating upper
-      = form.text_field :name, class: "input-text mg-b-10", placeholder: t('comments.placeholder.name'), id: "name-input" if !current_user
+      = form.text_field :name, class: "input-text mg-b-10", placeholder: t('comments.placeholder.name'), id: "name-input", required: true if !current_user
+      %p
+        = form.email_field :email, class: "input-text mg-b-10 input-email", placeholder: t('comments.placeholder.email'), id: "name-input", required: true if !current_user
       / comment
-      = form.text_area :context, class: "rt-textarea mg-b-10", placeholder: t('comments.placeholder.review'), id: "context-input"
+      = form.text_area :context, class: "rt-textarea mg-b-10", placeholder: t('comments.placeholder.review'), id: "context-input", required: true
       / comment
       = hidden_field_tag :product_id, @product.id
       = form.submit t("comments.submit"), class: "btn-m btn-blue inlineblock-imp mg-b-10", hov: "0.75"
@@ -43,6 +41,8 @@
       .one-rt-common
         %div
           %h2.name= comment&.user&.name || comment.name
+          %p.date.text-12.lh-13.mg-b-10.color-gray-aaa
+            = comment.created_at.strftime("%Y/%m/%d")
           .stars.stars-example-css.mg-b-10
             %select.star-sel-fixed{autocomplete: "off", name: "rating"}
               = options_for_select([1, 2, 3, 4, 5], [comment.rating])
