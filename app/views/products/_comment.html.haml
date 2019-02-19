@@ -53,7 +53,7 @@
             %p.text-14.color-gray-333.mg-b-10.bold.lh-20
               =t("comments.admin_reply")
             %p.date.text-12.lh-13.mg-b-10.color-gray-aaa
-              = @comments_reply_hash[comment.id][:datetime]
+              = @comments_reply_hash[comment.id][:datetime][0..-7]
             %p.text-13.color-gray-666.lh-20
               = @comments_reply_hash[comment.id][:context]
 
@@ -69,6 +69,7 @@
         '<div class="one-rt-common">' +
           '<div>' +
             '<h2 class="name">' + data.name + '</h2>' +
+            '<p class="date text-12 lh-13 mg-b-10 color-gray-aaa">' + data.created_at.substr(0,10).replace(/\-/g,'/') + '</p>' +
             '<div class="stars stars-example-css mg-b-10">' +
               '<select class="star-sel-fixed" name="rating" autocomplete="off">' +
                 '<option value="1">1</option>' +
